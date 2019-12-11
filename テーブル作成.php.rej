@@ -1,0 +1,10 @@
+diff a/テーブル作成.php b/テーブル作成.php	(rejected hunks)
+@@ -77,7 +77,7 @@
+             year TEXT,
+             month TEXT,
+             day TEXT,
+-            create_date timestamp time zone DEFAULT now() NOT NULL
++            create_date without timestamp time zone DEFAULT now() NOT NULL
+             );
+             
+             ALTER TABLE ONLY ABCD

@@ -60,7 +60,7 @@ if(isset($_POST["ABCD"])){
         print $newtab;
         //pg_query("CREATE TABLE `". $newtab . "`(
         pg_query(
-            "CREATE TABLE MMM(
+            "CREATE TABLE `" . $newtab . "`(
             id CHAR(12) NOT NULL,
 		    cardID TEXT,
 		    member TEXT,
@@ -70,7 +70,6 @@ if(isset($_POST["ABCD"])){
             year TEXT,
             month TEXT,
             day TEXT,
-            create_date without timestamp time zone DEFAULT now() NOT NULL,
             PRIMARY KEY(id))
             ");
 
