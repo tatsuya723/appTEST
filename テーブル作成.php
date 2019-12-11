@@ -60,7 +60,7 @@ if(isset($_POST["ABCD"])){
         print $newtab;
         //pg_query("CREATE TABLE `". $newtab . "`(
         pg_query(
-            "CREATE TABLE `" . $newtab . "`(
+            "CREATE TABLE `$newtab`(
             id CHAR(12) NOT NULL,
 		    cardID TEXT,
 		    member TEXT,
