@@ -56,11 +56,11 @@ if(isset($_POST["ABCD"])){
         port=5432
         password=d2144f11fa2bc512c9f5f4d65cef0b1f804fabef86759d786bd6ca430eba6fa8
         ");
-        $newtab="f_".$year."_".$month;
+        $newtab="b_".$year."_".$month;
         print $newtab;
         //pg_query("CREATE TABLE `". $newtab . "`(
         pg_query(
-            "CREATE TABLE `{$newtab}`(
+            "CREATE TABLE `"$newtab"`(
             id CHAR(12) NOT NULL,
 		    cardID TEXT,
 		    member TEXT,
