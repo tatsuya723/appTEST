@@ -59,8 +59,16 @@ if(isset($_POST["ABCD"])){
         $newtab="f_".$year."_".$month;
         print $newtab;
         //pg_query("CREATE TABLE `". $newtab . "`(
-        pg_query("CREATE TABLE ABC(
-            id CHAR(9) AUTO_INCREMENT NOT NULL,
+        pg_query(
+            "CREATE SEQUENCE ABC_id_seq
+                START WITH 1
+                INCREMENT BY 1
+                NO MAXVALUE
+                NO MINVALUE
+                CACHE 1;
+
+            CREATE TABLE ABC(
+            ABC_id integer DEFAULT nextval('ABC_id_seq') NOT NULL,
 		    cardID TEXT,
 		    member TEXT,
             rane TEXT,
@@ -69,8 +77,12 @@ if(isset($_POST["ABCD"])){
             year TEXT,
             month TEXT,
             day TEXT,
-		    PRIMARY KEY(id)
-            ) ");
+            create_date timestamp without time zone DEFAULT now() NOT NULL
+            );
+            
+            ALTER TABLE ONLY ABC
+                ADD CONSTRAINT ABC_pkey PRIMARY KEY (ABC_id);
+             ");
 
         //pg_close($dbh);
         
