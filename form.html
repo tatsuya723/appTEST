@@ -1,0 +1,31 @@
+<html>
+<head>
+    <title>データを表示するテスト</title>
+    <meta charset=utf-8>
+</head>
+
+
+<body bgcolor="#FFFFFB" text="#000222">
+<font size="5">新規登録画面</font>
+<hr size="1" noshade>
+[<a href="list.php">戻る</a>]<br>
+<form name="form1" method="post" action="list.php">
+    カードID:<br>
+    <input type="text" name="cardID"><br>
+    氏名:<br>
+    <input type="text" name="member"><br>
+    作業内容:<br>
+    <input type="text" name="work"><br>
+    その他情報1:<br>
+    <input type="text" name="info1"><br>
+    その他情報2:<br>
+    <input type="text" name="info2"><br>
+
+    <input type="hidden" name="action" value="insert">
+    <input type="submit" value="送信">
+</form>
+</body>
+</html>
+
+
+
