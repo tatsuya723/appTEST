@@ -58,7 +58,8 @@ if(isset($_POST["ABCD"])){
         ");
         $newtab="f_".$year."_".$month;
         print $newtab;
-        pg_query("CREATE TABLE `". $newtab . "`(
+        //pg_query("CREATE TABLE `". $newtab . "`(
+        pg_query("CREATE TABLE ABC(
             id CHAR(9) AUTO_INCREMENT NOT NULL,
 		    cardID TEXT,
 		    member TEXT,
