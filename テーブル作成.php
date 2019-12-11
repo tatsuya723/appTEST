@@ -77,7 +77,7 @@ if(isset($_POST["ABCD"])){
             year TEXT,
             month TEXT,
             day TEXT,
-            create_date without timestamp time zone DEFAULT now() NOT NULL
+            create_date timestamp time zone DEFAULT now() NOT NULL
             );
             
             ALTER TABLE ONLY ABCD
