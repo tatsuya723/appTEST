@@ -48,13 +48,15 @@ if(isset($_POST["ABCD"])){
     //if($month!=$yday_m){
     //try{   
         //$dbh = new PDO("mysql:host=localhost; dbname=tes;", 'tatsuya', 'slkmb');
+       
         $dbh = pg_connect("
         host=ec2-174-129-255-46.compute-1.amazonaws.com
         dbname=dflv6jh505d9tv
         user=qajdgcrnucpdpx
+        port=5432
         password=d2144f11fa2bc512c9f5f4d65cef0b1f804fabef86759d786bd6ca430eba6fa8
         ");
-        $newtab="f_".$year."_".$month;
+        /*$newtab="f_".$year."_".$month;
         print $newtab;
         pg_query("CREATE TABLE `". $newtab . "`(
             id CHAR(9) AUTO_INCREMENT NOT NULL,
@@ -70,7 +72,31 @@ if(isset($_POST["ABCD"])){
             ) ");
 
         pg_close($dbh);
-            
+        */
+        
+        $result=pg_query('SELECT * FROM staff');
+        if(!$result){
+            die('クエリが失敗しました。'.pg_last_error());
+        }
+        ?>
+        
+    <table width="1100" border="1" cellspacing="2" cellpadding="18">
+    <tbody>
+    <tr><th>id</th><th>名前</th><th>年齢</th></tr>
+    
+    <?php
+        for ($i = 0 ; $i < pg_num_rows($result) ; $i++){
+        $row = pg_fetch_array($result, NULL, PGSQL_ASSOC);
+    ?> 
+
+    <tr>
+    <td align="center"><?=htmlspecialchars($row['id'])?></td>
+    <td align="center"><?=htmlspecialchars($row['name'])?></td>
+    <td align="center"><?=htmlspecialchars($row['age'])?></td>
+    </tr>
+
+    <?
+        }
         //SQL実行
         //$res = $dbh->pg_query($sql);
         //}catch(PDOException $e) {
