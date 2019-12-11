@@ -67,7 +67,7 @@ if(isset($_POST["ABCD"])){
                 NO MINVALUE
                 CACHE 1;
 
-            CREATE TABLE ABC(
+            CREATE TABLE ABCD(
             ABC_id integer DEFAULT nextval('ABC_id_seq') NOT NULL,
 		    cardID TEXT,
 		    member TEXT,
