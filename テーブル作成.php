@@ -49,24 +49,24 @@ if(isset($_POST["ABCD"])){
     //try{   
         //$dbh = new PDO("mysql:host=localhost; dbname=tes;", 'tatsuya', 'slkmb');
         $dbh = pg_connect("
-        host=ec2-174-129-255-37.compute-1.amazonaws.com 
-        dbname=d5v6is7df4kfu2 
-        user=aqhcspiasvixkn 
-        password=82c25b626c5bc385254210b149f906f8d0f6927c0b2b5305768c0f8b0a452b54
+        host=ec2-174-129-255-46.compute-1.amazonaws.com
+        dbname=dflv6jh505d9tv
+        user=qajdgcrnucpdpx
+        password=d2144f11fa2bc512c9f5f4d65cef0b1f804fabef86759d786bd6ca430eba6fa8
         ");
         $newtab="f_".$year."_".$month;
         print $newtab;
         pg_query("CREATE TABLE `". $newtab . "`(
-            id INT(11) AUTO_INCREMENT PRIMARY KEY,
-		    cardID VARCHAR(20),
-		    member VARCHAR(20),
-            rane VARCHAR(20),
-            work VARCHAR(20),
-            time VARCHAR(20),
-            year VARCHAR(20),
-            month VARCHAR(20),
-            day VARCHAR(20),
-		    registry_datetime DATETIME
+            id CHAR(9) AUTO_INCREMENT NOT NULL,
+		    cardID TEXT,
+		    member TEXT,
+            rane TEXT,
+            work TEXT,
+            time TEXT,
+            year TEXT,
+            month TEXT,
+            day TEXT,
+		    PRIMARY KEY(id)
             ) ");
 
         pg_close($dbh);
