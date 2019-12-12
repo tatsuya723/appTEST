@@ -64,9 +64,9 @@ $dbhost="ec2-174-129-255-46.compute-1.amazonaws.com";
 $dbname="dflv6jh505d9tv";
 $dbuser="qajdgcrnucpdpx";
 $dbpass="d2144f11fa2bc512c9f5f4d65cef0b1f804fabef86759d786bd6ca430eba6fa8";
-$dbtype="postgresql";
+$dbtype="pgsql";
 
-$dsn = "$dbtype:host=$dbhost;dbname=$dbname";
+$dsn = "$dbtype:dbname=$dbname host=$dbhost port=5432";
 
 try{
     $pdo=new PDO($dsn,$dbuser,$dbpass);
