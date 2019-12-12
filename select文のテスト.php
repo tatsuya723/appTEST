@@ -49,7 +49,7 @@
 
 <?php
 
-if($_POST['search_key']!="" && $_POST['year']!="" && $_POST['month']!=""){
+if($_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]!=""){
 
 
 $dbh = pg_connect("
@@ -60,14 +60,15 @@ port=5432
 password=d2144f11fa2bc512c9f5f4d65cef0b1f804fabef86759d786bd6ca430eba6fa8
 ");
 
-$tabname="a_".$_POST['year']."_".$_POST['month'];
-$search_key='%'. $_POST['search_key'].'%';
-
-$result=pg_query("SELECT * FROM `". $tabname ."` WHERE(name like :name OR age like :age)");
-$stmh=$dbh->prepare($sql);
+$tabname="a_".$_POST["year"]."_".$_POST["month"];
+$search_key = $_POST["search_key"];
+print $tabname;
+//$result=pg_query("SELECT * FROM `". $tabname ."` WHERE(name like :name OR age like :age)");
+$result=pg_query("SELECT * FROM a_ WHERE(name = :name OR age = :age)");
 $stmh=$dbh->prepare($sql);
 $stmh->bindValue(':name',$search_key,PDO::PARAM_STR);
 $stmh->bindValue(':age',$search_key,PDO::PARAM_STR);
+$stmh->execute();
 
 if(!$result){
     die('クエリが失敗しました。'.pg_last_error());
