@@ -60,19 +60,41 @@ port=5432
 password=d2144f11fa2bc512c9f5f4d65cef0b1f804fabef86759d786bd6ca430eba6fa8
 ");
 
+$dbhost="ec2-174-129-255-46.compute-1.amazonaws.com";
+$dbname="dflv6jh505d9tv";
+$dbuser="qajdgcrnucpdpx";
+$dbpass="d2144f11fa2bc512c9f5f4d65cef0b1f804fabef86759d786bd6ca430eba6fa8";
+$dbtype="postgresql";
+
+$dsn = "$dbtype:host=$dbhost;dbname=$dbname";
+
+try{
+    $pdo=new PDO($dsn,$dbuser,$dbpass);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+    $pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES,false);
+    print"接続しました<br>";
+}catch(PDOException $Exception){
+    die('エラー:'.$Exception->getMessage());
+}
+
 $tabname="a_".$_POST["year"]."_".$_POST["month"];
 $search_key = $_POST["search_key"];
 print $tabname;
 //$result=pg_query("SELECT * FROM `". $tabname ."` WHERE(name like :name OR age like :age)");
-$sql=pg_query("SELECT * FROM a_2019_11 WHERE name = :name OR age = :age");
+try{
+$sql=pg_query("SELECT * FROM a_2019_11 WHERE name = :name");
 $stmh=$dbh->prepare($sql);
 $stmh->bindValue(':name',$search_key,PDO::PARAM_STR);
 $stmh->bindValue(':age',$search_key,PDO::PARAM_STR);
 $stmh->execute();
-
-if(!$result){
-    die('クエリが失敗しました。'.pg_last_error());
+}catch(PDOException $Exception){
+    print "エラー:".$Exception->getMessage();
 }
+
+
+//if(!$result){
+  //  die('クエリが失敗しました。'.pg_last_error());
+//}
 ?>
 
 <table width="1100" border="1" cellspacing="2" cellpadding="18">
@@ -80,7 +102,7 @@ if(!$result){
 <tr><th>id</th><th>名前</th><th>年齢</th></tr>
 
 <?php
-for ($i = 0 ; $i < pg_num_rows($result) ; $i++){
+for ($i = 0 ; $i < pg_num_rows($) ; $i++){
 $row = pg_fetch_array($result, NULL, PGSQL_ASSOC);
 ?> 
 
