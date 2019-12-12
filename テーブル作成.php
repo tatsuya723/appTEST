@@ -73,7 +73,7 @@ if(isset($_POST["ABCD"])){
             PRIMARY KEY(id))
             ");
 
-        //pg_close($dbh);
+        pg_close($dbh);
         
         
         $result=pg_query('SELECT * FROM staff');

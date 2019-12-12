@@ -187,7 +187,9 @@
 
             if($_POST['day']!="" && $_POST['month']!=""){ //年月日すべて指定
                 $search_key='%'. $_POST['search_key'].'%';
-                //$D=$_POST['year']."/".$_POST['month']."/".$_POST['day'];
+                $D=$_POST['year'].$_POST['month'].$_POST['day'];//年月日の結合させた変数。
+                $YM=$_POST['year'].$_POST['month']
+                
                 $sql="SELECT * FROM work2 WHERE ( cardID like :cardID OR member like :member OR work like :work ) AND ( year = :year AND month = :month AND day = :day )";
                 $stmh=$pdo->prepare($sql);
                 $stmh->bindValue(':cardID',$search_key,PDO::PARAM_STR);
