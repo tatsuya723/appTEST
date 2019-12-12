@@ -82,7 +82,7 @@ $search_key = $_POST["search_key"];
 print $tabname;
 //$result=pg_query("SELECT * FROM `". $tabname ."` WHERE(name like :name OR age like :age)");
 try{
-$sql=pg_query("SELECT * FROM a_2019_11 WHERE name = :name");
+$sql="SELECT * FROM a_2019_11 WHERE name = :name";
 $stmh=$dbh->prepare($sql);
 $stmh->bindValue(':name',$search_key,PDO::PARAM_STR);
 $stmh->bindValue(':age',$search_key,PDO::PARAM_STR);
@@ -102,8 +102,10 @@ $stmh->execute();
 <tr><th>id</th><th>名前</th><th>年齢</th></tr>
 
 <?php
-for ($i = 0 ; $i < pg_num_rows($) ; $i++){
+/*for ($i = 0 ; $i < pg_num_rows($) ; $i++){
 $row = pg_fetch_array($result, NULL, PGSQL_ASSOC);
+*/
+while($row=$stmh->fetch(PDO::FETCH_ASSOC)){
 ?> 
 
 <tr>
