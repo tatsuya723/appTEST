@@ -1,0 +1,7 @@
+h2 {
+    position: relative;
+    padding: 0.1em 0.5em;
+    background: -webkit-linear-gradient(to right, rgb(154, 223, 253), transparent);
+    background: linear-gradient(to right, rgb(154, 223, 255), transparent);
+    color: #545454;
+  }
