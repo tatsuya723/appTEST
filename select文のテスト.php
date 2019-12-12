@@ -82,10 +82,11 @@ $search_key = $_POST["search_key"];
 print $tabname;
 //$result=pg_query("SELECT * FROM `". $tabname ."` WHERE(name like :name OR age like :age)");
 try{
-$sql='SELECT * FROM a_2019_11 WHERE name = :name';
+$sql="SELECT * FROM a_2019_11 WHERE name = '$search_key'";
 $stmh=$dbh->prepare($sql);
-$stmh->bindValue(':name',$search_key,PDO::PARAM_STR);
+/*$stmh->bindValue(':name',$search_key,PDO::PARAM_STR);
 $stmh->bindValue(':age',$search_key,PDO::PARAM_STR);
+*/
 $stmh->execute();
 }catch(PDOException $Exception){
     print "エラー:".$Exception->getMessage();
