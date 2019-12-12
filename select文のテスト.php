@@ -107,7 +107,7 @@ $stmh->execute();
 $row = pg_fetch_array($result, NULL, PGSQL_ASSOC);
 */
 //while($row=$stmh->fetch(PDO::FETCH_ASSOC)){
-$rs = $stmt->fetchall ();
+$rs = $stmh->fetchall ();
 foreach ( $rs as $row ) {
 //        echo "id：" . $row ["id"] . " name:" . $row [1] . "<br />\r\n";
 
