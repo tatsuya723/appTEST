@@ -15,6 +15,7 @@ print "テスト<br>";
     <br>
     <font >
     <a href="テーブル作成.php">PostgreSQLテーブル作成テスト</a>
+    <a href="select文のテスト.php">SELECT試験ページ</a>
     <!--<a href="作業記録管理.php"><font size="5">作業記録管理ページ</font></a><br>
     <a href="カード管理.php"><font size="5">カード管理ページ</font></a><br>-->
     <br><br>
