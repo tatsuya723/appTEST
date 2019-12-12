@@ -64,7 +64,7 @@ $tabname="a_".$_POST["year"]."_".$_POST["month"];
 $search_key = $_POST["search_key"];
 print $tabname;
 //$result=pg_query("SELECT * FROM `". $tabname ."` WHERE(name like :name OR age like :age)");
-$result=pg_query("SELECT * FROM a_ WHERE(name = :name OR age = :age)");
+$result=pg_query("SELECT * FROM a_2019_11 WHERE(name = :name OR age = :age)");
 $stmh=$dbh->prepare($sql);
 $stmh->bindValue(':name',$search_key,PDO::PARAM_STR);
 $stmh->bindValue(':age',$search_key,PDO::PARAM_STR);
