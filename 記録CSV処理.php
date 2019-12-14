@@ -1,5 +1,5 @@
 <?php
-require_once("MYDB.php");
+require_once("DB接続.php");
 $pdo=db_connect();
 
 header("Content-Type: application/octet-stream");
