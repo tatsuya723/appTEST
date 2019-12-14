@@ -78,11 +78,16 @@ try{
 }
 
 $tabname="b_".$_POST["year"]."_".$_POST["month"];
+$tabsel="SELECT * FROM".$tabname;
 $search_key = $_POST["search_key"];
+$tabwhe="WHERE name=".$search_key;
+$tabsql=$tabsel.$tabwhe;
+
 print $tabname;
 //$result=pg_query("SELECT * FROM `". $tabname ."` WHERE(name like :name OR age like :age)");
 try{
-$stmh=$pdo->query("SELECT * FROM `$tab_name` WHERE name='$search_key'");
+//$stmh=$pdo->query("SELECT * FROM `$tab_name` WHERE name='$search_key'");
+$stmh=$pdo->query($tabsql);
 //$stmh=$dbh->prepare($sql);
 /*$stmh->bindValue(':name',$search_key,PDO::PARAM_STR);
 $stmh->bindValue(':age',$search_key,PDO::PARAM_STR);

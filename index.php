@@ -31,6 +31,12 @@ print "テスト<br>";
     <h2>加藤:　<font color="#ff0000">10レーン</font></h2>
     <h2>西川:　<font color="#ff0000">10レーン</font></h2>
 
+<?php
 
+$testa="test";
+$testb="TEST".$testa;
+print $testb;
+
+?>
 </body>
 </html>
