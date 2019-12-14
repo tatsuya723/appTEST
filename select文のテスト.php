@@ -106,7 +106,7 @@ $stmh->execute();
 
 <table width="1100" border="1" cellspacing="2" cellpadding="18">
 <tbody>
-<tr><th>カードid</th><th>名前</th><th>作業時間</th><th>作業内容</th><th>レーン</th><th>年月日</th><th>時刻</th></tr>
+<tr><th>カードid</th><th>名前</th><th>作業時間[分]</th><th>作業内容</th><th>レーン</th><th>年月日</th><th>時刻</th></tr>
 
 <?php
 /*for ($i = 0 ; $i < pg_num_rows($) ; $i++){
@@ -117,19 +117,21 @@ $rs = $stmh->fetchall ();
 foreach ( $rs as $row ) {
 //        echo "id：" . $row ["id"] . " name:" . $row [1] . "<br />\r\n";
 
+    if($row['member']=$search_key){
 ?> 
 
-<tr>
-<td align="center"><?=htmlspecialchars($row['card_id'])?></td>
-<td align="center"><?=htmlspecialchars($row['member'])?></td>
-<td align="center"><?=htmlspecialchars($row['work_time'])?></td>
-<td align="center"><?=htmlspecialchars($row['work'])?></td>
-<td align="center"><?=htmlspecialchars($row['rane'])?></td>
-<td align="center"><?=htmlspecialchars($row['d_ymd'])?></td>
-<td align="center"><?=htmlspecialchars($row['dt'])?></td>
-</tr>
+    <tr>
+    <td align="center"><?=htmlspecialchars($row['card_id'])?></td>
+    <td align="center"><?=htmlspecialchars($row['member'])?></td>
+    <td align="center"><?=htmlspecialchars($row['work_time'])?></td>
+    <td align="center"><?=htmlspecialchars($row['work'])?></td>
+    <td align="center"><?=htmlspecialchars($row['rane'])?></td>
+    <td align="center"><?=htmlspecialchars($row['d_ymd'])?></td>
+    <td align="center"><?=htmlspecialchars($row['dt'])?></td>
+    </tr>
 
 <?
+    }
 }
 
 }
