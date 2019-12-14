@@ -81,8 +81,8 @@ $tabname="b_".$_POST["year"]."_".$_POST["month"];
 $tabsel="SELECT * FROM ".$tabname;
 $search_key=$_POST["search_key"];
 //$tabwhe=" WHERE member=\"".$search_key."\"";
-$tabwhe=" WHERE card_id=1111";
-$tabsql=$tabsel.$tabwhe;
+//$tabwhe=" WHERE card_id=1111";
+$tabsql=$tabsel;
 
 print $tabsql;
 //$result=pg_query("SELECT * FROM `". $tabname ."` WHERE(name like :name OR age like :age)");
