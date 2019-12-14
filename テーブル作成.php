@@ -56,28 +56,26 @@ if(isset($_POST["ABCD"])){
         port=5432
         password=d2144f11fa2bc512c9f5f4d65cef0b1f804fabef86759d786bd6ca430eba6fa8
         ");
-        $newtab="b_".$year."_".$month;
+        $newtab="c_".$year."_".$month;
         print $newtab;
         //pg_query("CREATE TABLE `". $newtab . "`(
         pg_query(
-            "CREATE TABLE `" .{$newtab}. "`(
-            id CHAR(12) NOT NULL,
+            "CREATE TABLE `" .$newtab. "`(
 		    cardID TEXT,
 		    member TEXT,
-            rane TEXT,
+            work_time TEXT,
             work TEXT,
-            time TEXT,
-            year TEXT,
-            month TEXT,
-            day TEXT,
-            PRIMARY KEY(id))
+            rane TEXT,
+            d_ymd TEXT,
+            dt TEXT,
+            dd TEXT,
             ");
 
         pg_close($dbh);
         
         
-        $result=pg_query('SELECT * FROM staff');
-        if(!$result){
+        $results=pg_query("SELECT * FROM `"$newtab"`");
+        if(!$results){
             die('クエリが失敗しました。'.pg_last_error());
         }
         ?>
@@ -87,14 +85,18 @@ if(isset($_POST["ABCD"])){
     <tr><th>id</th><th>名前</th><th>年齢</th></tr>
     
     <?php
-        for ($i = 0 ; $i < pg_num_rows($result) ; $i++){
-        $row = pg_fetch_array($result, NULL, PGSQL_ASSOC);
+        for ($i = 0 ; $i < pg_num_rows($results) ; $i++){
+        $row = pg_fetch_array($results, NULL, PGSQL_ASSOC);
     ?> 
 
     <tr>
-    <td align="center"><?=htmlspecialchars($row['id'])?></td>
-    <td align="center"><?=htmlspecialchars($row['name'])?></td>
-    <td align="center"><?=htmlspecialchars($row['age'])?></td>
+    <td align="center"><?=htmlspecialchars($row['card_id'])?></td>
+    <td align="center"><?=htmlspecialchars($row['member'])?></td>
+    <td align="center"><?=htmlspecialchars($row['work_time'])?></td>
+    <td align="center"><?=htmlspecialchars($row['work'])?></td>
+    <td align="center"><?=htmlspecialchars($row['rane'])?></td>
+    <td align="center"><?=htmlspecialchars($row['d_ymd'])?></td>
+    <td align="center"><?=htmlspecialchars($row['dt'])?></td>
     </tr>
 
     <?
