@@ -1,4 +1,3 @@
-<?php session_start();?>
 <html>
     <head>
         <title>作業記録を表示するページ</title>
@@ -16,7 +15,7 @@
         ・年月日指定をする場合、年は必ず入力してください。<br>
         　○年のみ指定、○年月のみ指定　　×月日のみ指定、×日のみ指定</p><br>
 
-        <form name="form1" method="post" action="作業記録管理.php">
+        <form name="form1" method="post" action="仮作業記録管理.php">
         <font size="4" color="#000000">名前で検索:</font><br>
         <input type="text" name="search_key"><br>
        
@@ -698,8 +697,7 @@
         }
 
     }catch(PDOException $Exception){
-        
-        print"エラー:".$Exception->getMessage();
+            print"エラー:".$Exception->getMessage();
     } 
 
 ?>
