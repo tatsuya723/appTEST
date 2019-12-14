@@ -117,18 +117,17 @@ $rs = $stmh->fetchall ();
 foreach ( $rs as $row ) {
 //        echo "id：" . $row ["id"] . " name:" . $row [1] . "<br />\r\n";
 
-    if($row['member']=$search_key){
+    if($search_key==$row['member']){
 ?> 
-
-    <tr>
-    <td align="center"><?=htmlspecialchars($row['card_id'])?></td>
-    <td align="center"><?=htmlspecialchars($row['member'])?></td>
-    <td align="center"><?=htmlspecialchars($row['work_time'])?></td>
-    <td align="center"><?=htmlspecialchars($row['work'])?></td>
-    <td align="center"><?=htmlspecialchars($row['rane'])?></td>
-    <td align="center"><?=htmlspecialchars($row['d_ymd'])?></td>
-    <td align="center"><?=htmlspecialchars($row['dt'])?></td>
-    </tr>
+        <tr>
+        <td align="center"><?=htmlspecialchars($row['card_id'])?></td>
+        <td align="center"><?=htmlspecialchars($row['member'])?></td>
+        <td align="center"><?=htmlspecialchars($row['work_time'])?></td>
+        <td align="center"><?=htmlspecialchars($row['work'])?></td>
+        <td align="center"><?=htmlspecialchars($row['rane'])?></td>
+        <td align="center"><?=htmlspecialchars($row['d_ymd'])?></td>
+        <td align="center"><?=htmlspecialchars($row['dt'])?></td>
+        </tr>
 
 <?
     }
