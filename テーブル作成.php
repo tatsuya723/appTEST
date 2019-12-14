@@ -56,10 +56,10 @@ if(isset($_POST["ABCD"])){
         port=5432
         password=d2144f11fa2bc512c9f5f4d65cef0b1f804fabef86759d786bd6ca430eba6fa8
         ");
-        $newtab="c_".$year."_".$month;
+        $newtab="b_".$year."_".$month;
         print $newtab;
         //pg_query("CREATE TABLE `". $newtab . "`(
-        pg_query(
+        /*pg_query(
             "CREATE TABLE `" .$newtab. "`(
 		    cardID TEXT,
 		    member TEXT,
@@ -72,7 +72,7 @@ if(isset($_POST["ABCD"])){
             ");
 
         pg_close($dbh);
-        
+        */
         
         $results=pg_query("SELECT * FROM `"$newtab"`");
         if(!$results){
