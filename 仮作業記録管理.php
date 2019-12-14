@@ -221,16 +221,7 @@
             <font size="4" color="#ff0000"><?=$KEY2?></font><br>
             <font size="3" color="#000000">指定年月日：</font>
             <font size="4" color="#ff0000"><?=$KEY21?>年<?=$KEY22?>月<?=$KEY23?>日</font><br>
-                
-            <form name="formcsv" method="post" action="記録CSV処理.php">
-                <input type="hidden" name="key1" value="<?=$KEY1?>">
-                <input type="hidden" name="key2" value="<?=$KEY2?>">
-                <input type="hidden" name="key21" value="<?=$KEY21?>">
-                <input type="hidden" name="key22" value="<?=$KEY22?>">
-                <input type="hidden" name="key23" value="<?=$KEY23?>">
-                <input type="submit" value="CSVファイルダウンロード">
-            </form>
-
+            
             <table width="1100" border="1" cellspacing="2" cellpadding="18">
             <tbody>
             <tr><th>カードid</th><th>名前</th><th>作業時間[分]</th><th>作業内容</th><th>レーン</th><th>年月日</th><th>時刻</th></tr>
@@ -253,7 +244,7 @@
                 }
             }
             ?>
-            </tbody></table>
+
 
 <?php
         /*■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
@@ -314,7 +305,7 @@
                 }
             }
             ?>
-            </tbody></table>
+
 
 <?php
         /*■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
@@ -375,7 +366,7 @@
                 }    
             }
             ?>
-            </tbody></table>
+
 
           
 <?php
@@ -482,7 +473,7 @@
                 }
             }
             ?>
-            </tbody></table>
+
 
 <?php         
 
@@ -544,7 +535,7 @@
                 
             }
             ?>
-            </tbody></table>
+
 
 <?php
         /*■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
@@ -691,7 +682,7 @@
                 
             }
             ?>
-            </tbody></table>
+
 
 <?php           
         }
