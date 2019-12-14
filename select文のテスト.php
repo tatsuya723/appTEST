@@ -81,7 +81,7 @@ $tabname="b_".$_POST["year"]."_".$_POST["month"];
 $tabsel="SELECT * FROM ".$tabname;
 $search_key=$_POST["search_key"];
 //$tabwhe=" WHERE member=\"".$search_key."\"";
-$tabwhe=" WHERE member=\"岡林\"";
+$tabwhe=" WHERE member=岡林";
 $tabsql=$tabsel.$tabwhe;
 
 print $tabsql;
