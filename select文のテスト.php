@@ -117,7 +117,7 @@ $rs = $stmh->fetchall ();
 foreach ( $rs as $row ) {
 //        echo "id：" . $row ["id"] . " name:" . $row [1] . "<br />\r\n";
 
-    if($search_key==$row['member']){
+    if($row['member']==$search_key){
 ?> 
         <tr>
         <td align="center"><?=htmlspecialchars($row['card_id'])?></td>
