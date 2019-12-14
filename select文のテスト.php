@@ -77,12 +77,12 @@ try{
     die('エラー:'.$Exception->getMessage());
 }
 
-$tabname="a_".$_POST["year"]."_".$_POST["month"];
+$tabname="b_".$_POST["year"]."_".$_POST["month"];
 $search_key = $_POST["search_key"];
 print $tabname;
 //$result=pg_query("SELECT * FROM `". $tabname ."` WHERE(name like :name OR age like :age)");
 try{
-$stmh=$pdo->query("SELECT * FROM a_2019_11 WHERE name='$search_key'");
+$stmh=$pdo->query("SELECT * FROM `$tab_name` WHERE name='$search_key'");
 //$stmh=$dbh->prepare($sql);
 /*$stmh->bindValue(':name',$search_key,PDO::PARAM_STR);
 $stmh->bindValue(':age',$search_key,PDO::PARAM_STR);
@@ -100,7 +100,7 @@ $stmh->execute();
 
 <table width="1100" border="1" cellspacing="2" cellpadding="18">
 <tbody>
-<tr><th>id</th><th>名前</th><th>年齢</th></tr>
+<tr><th>カードid</th><th>名前</th><th>作業時間</th><th>作業内容</th><th>レーン</th><th>年月日</th><th>時刻</th></tr>
 
 <?php
 /*for ($i = 0 ; $i < pg_num_rows($) ; $i++){
@@ -114,9 +114,13 @@ foreach ( $rs as $row ) {
 ?> 
 
 <tr>
-<td align="center"><?=htmlspecialchars($row['id'])?></td>
-<td align="center"><?=htmlspecialchars($row['name'])?></td>
-<td align="center"><?=htmlspecialchars($row['age'])?></td>
+<td align="center"><?=htmlspecialchars($row['card_id'])?></td>
+<td align="center"><?=htmlspecialchars($row['member'])?></td>
+<td align="center"><?=htmlspecialchars($row['work_time'])?></td>
+<td align="center"><?=htmlspecialchars($row['work'])?></td>
+<td align="center"><?=htmlspecialchars($row['rane'])?></td>
+<td align="center"><?=htmlspecialchars($row['d_ymd'])?></td>
+<td align="center"><?=htmlspecialchars($row['dt'])?></td>
 </tr>
 
 <?
