@@ -80,7 +80,7 @@ try{
 $tabname="b_".$_POST["year"]."_".$_POST["month"];
 $tabsel="SELECT * FROM ".$tabname;
 $search_key=$_POST["search_key"];
-$tabwhe=" WHERE name=".$search_key;
+$tabwhe=" WHERE member=".$search_key;
 $tabsql=$tabsel.$tabwhe;
 
 print $tabsql;
