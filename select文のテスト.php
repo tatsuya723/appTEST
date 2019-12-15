@@ -235,8 +235,169 @@ if($_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]!="" && $DAY
         }//foreachの括弧
     
     }
-}
+/*■■■■■■■■■■■■■■■■■■■
+(4)年、月、日
+パターン番号＝21
+■■■■■■■■■■■■■■■■■■■■■*/
+}elseif($_POST["search_key"]=="" && $_POST["year"]!="" && $_POST["month"]!="" && $DAY!=""){
+    $tabname="b_".$_POST["year"]."_".$_POST["month"];//テーブル名作成
+    $tabsel="SELECT * FROM ".$tabname;//セレクト文作成
+    $search_key=$_POST["search_key"];
+    //クエリ実行
+    try{
+    $stmh=$pdo->query($tabsel);
+    $stmh->execute();
+    }catch(PDOException $Exception){
+        print "エラー:".$Exception->getMessage();
+    }
     ?>
+
+    <table width="1100" border="1" cellspacing="2" cellpadding="18">
+    <tbody>
+    <tr><th>カードid</th><th>名前</th><th>作業時間[分]</th><th>作業内容</th><th>レーン</th><th>年月日</th><th>時刻</th></tr>
+
+    <?php
+    $rs = $stmh->fetchall ();
+    foreach ( $rs as $row ) {
+        if($row['day']==$DAY){
+    ?> 
+            <tr>
+            <td align="center"><?=htmlspecialchars($row['card_id'])?></td>
+            <td align="center"><?=htmlspecialchars($row['member'])?></td>
+            <td align="center"><?=htmlspecialchars($row['work_time'])?></td>
+            <td align="center"><?=htmlspecialchars($row['work'])?></td>
+            <td align="center"><?=htmlspecialchars($row['rane'])?></td>
+            <td align="center"><?=htmlspecialchars($row['d_ymd'])?></td>
+            <td align="center"><?=htmlspecialchars($row['dt'])?></td>
+            </tr>
+
+    <?php
+        }
+    }//foreachの括弧
+/*■■■■■■■■■■■■■■■■■■■
+(5)年、月
+パターン番号＝22
+■■■■■■■■■■■■■■■■■■■■■*/
+}elseif($_POST["search_key"]=="" && $_POST["year"]!="" && $_POST["month"]!="" && $DAY==""){
+    $tabname="b_".$_POST["year"]."_".$_POST["month"];//テーブル名作成
+    $tabsel="SELECT * FROM ".$tabname;//セレクト文作成
+    $search_key=$_POST["search_key"];
+    //クエリ実行
+    try{
+    $stmh=$pdo->query($tabsel);
+    $stmh->execute();
+    }catch(PDOException $Exception){
+        print "エラー:".$Exception->getMessage();
+    }
+    ?>
+
+    <table width="1100" border="1" cellspacing="2" cellpadding="18">
+    <tbody>
+    <tr><th>カードid</th><th>名前</th><th>作業時間[分]</th><th>作業内容</th><th>レーン</th><th>年月日</th><th>時刻</th></tr>
+
+    <?php
+    $rs = $stmh->fetchall ();
+    foreach ( $rs as $row ) {
+    
+    ?> 
+            <tr>
+            <td align="center"><?=htmlspecialchars($row['card_id'])?></td>
+            <td align="center"><?=htmlspecialchars($row['member'])?></td>
+            <td align="center"><?=htmlspecialchars($row['work_time'])?></td>
+            <td align="center"><?=htmlspecialchars($row['work'])?></td>
+            <td align="center"><?=htmlspecialchars($row['rane'])?></td>
+            <td align="center"><?=htmlspecialchars($row['d_ymd'])?></td>
+            <td align="center"><?=htmlspecialchars($row['dt'])?></td>
+            </tr>
+
+    <?php
+        
+    }//foreachの括弧
+/*■■■■■■■■■■■■■■■■■■■
+(6)年
+パターン番号＝23
+■■■■■■■■■■■■■■■■■■■■■*/
+}elseif($_POST["search_key"]=="" && $_POST["year"]!="" && $_POST["month"]=="" && $DAY==""){
+    ?>
+    <table width="1100" border="1" cellspacing="2" cellpadding="18">
+    <tbody>
+    <tr><th>カードid</th><th>名前</th><th>作業時間[分]</th><th>作業内容</th><th>レーン</th><th>年月日</th><th>時刻</th></tr>
+    <?php
+    for($mm=1;$mm<13;$mm++){                //ループで、1月～12月のテーブルを全て取得
+        $tabname="b_".$_POST["year"]."_".$mm;   //テーブル名を作成
+        $tabsel="SELECT * FROM ".$tabname;//セレクト文作成
+        $search_key=$_POST["search_key"];
+        //クエリ実行
+        try{
+            $stmh=$pdo->query($tabsel);
+            $stmh->execute();
+        }catch(PDOException $Exception){
+            print "エラー:".$Exception->getMessage();
+        }
+ 
+        $rs = $stmh->fetchall ();
+        foreach ( $rs as $row ) {
+            
+    ?> 
+                <tr>
+                <td align="center"><?=htmlspecialchars($row['card_id'])?></td>
+                <td align="center"><?=htmlspecialchars($row['member'])?></td>
+                <td align="center"><?=htmlspecialchars($row['work_time'])?></td>
+                <td align="center"><?=htmlspecialchars($row['work'])?></td>
+                <td align="center"><?=htmlspecialchars($row['rane'])?></td>
+                <td align="center"><?=htmlspecialchars($row['d_ymd'])?></td>
+                <td align="center"><?=htmlspecialchars($row['dt'])?></td>
+                </tr>
+
+    <?php
+            
+        }//foreachの括弧
+    
+    }
+/*■■■■■■■■■■■■■■■■■■■
+(7)名前
+パターン番号＝31
+■■■■■■■■■■■■■■■■■■■■■*/
+}elseif($_POST["search_key"]!="" && $_POST["year"]=="" && $_POST["month"]=="" && $DAY==""){
+    ?>
+    <table width="1100" border="1" cellspacing="2" cellpadding="18">
+    <tbody>
+    <tr><th>カードid</th><th>名前</th><th>作業時間[分]</th><th>作業内容</th><th>レーン</th><th>年月日</th><th>時刻</th></tr>
+    <?php
+    for($mm=1;$mm<13;$mm++){                //ループで、1月～12月のテーブルを全て取得
+        $tabname="b_".$_POST["year"]."_".$mm;   //テーブル名を作成
+        $tabsel="SELECT * FROM ".$tabname;//セレクト文作成
+        $search_key=$_POST["search_key"];
+        //クエリ実行
+        try{
+            $stmh=$pdo->query($tabsel);
+            $stmh->execute();
+        }catch(PDOException $Exception){
+            print "エラー:".$Exception->getMessage();
+        }
+ 
+        $rs = $stmh->fetchall ();
+        foreach ( $rs as $row ) {
+            if($row['member']==$search_key){
+    ?> 
+                <tr>
+                <td align="center"><?=htmlspecialchars($row['card_id'])?></td>
+                <td align="center"><?=htmlspecialchars($row['member'])?></td>
+                <td align="center"><?=htmlspecialchars($row['work_time'])?></td>
+                <td align="center"><?=htmlspecialchars($row['work'])?></td>
+                <td align="center"><?=htmlspecialchars($row['rane'])?></td>
+                <td align="center"><?=htmlspecialchars($row['d_ymd'])?></td>
+                <td align="center"><?=htmlspecialchars($row['dt'])?></td>
+                </tr>
+            
+    <?php
+            
+            }
+    
+        }//foreachの括弧
+    }
+}
+?>
 
 
 </body>
