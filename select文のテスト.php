@@ -117,6 +117,12 @@ $DAY = (string) $_POST["day"];
 ■■■■■■■■■■■■■■■■■■■■■*/
 if($_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]!="" && $DAY!=""){
 
+    $KEY1="11";
+    $KEY21=$_POST["search_key"];
+    $KEY31=$_POST["year"];
+    $KEY32=$_POST["month"];
+    $KEY33=$DAY;
+
     $tabname="b_".$_POST["year"]."_".$_POST["month"];//テーブル名作成
     $tabsel="SELECT * FROM ".$tabname;//セレクト文作成
     $search_key=$_POST["search_key"];
@@ -132,6 +138,16 @@ if($_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]!="" && $DAY
     <font size="4" color="#ff0000"><?=$search_key?></font><br>
     <font size="3" color="#000000">指定年月日：</font>
     <font size="4" color="#ff0000"><?=$_POST["year"]?>年<?=$_POST["month"]?>月<?=$_POST["day"]?>日</font><br>
+
+    <form name="formcsv" method="post" action="記録CSV処理.php">
+        <input type="hidden" name="key1" value="<?=$KEY1?>">
+        <input type="hidden" name="key21" value="<?=$KEY21?>">
+        <input type="hidden" name="key31" value="<?=$KEY31?>">
+        <input type="hidden" name="key32" value="<?=$KEY32?>">
+        <input type="hidden" name="key33" value="<?=$KEY33?>">
+        <input type="submit" value="CSVファイルを保存">
+    </form>
+
     <table width="1100" border="1" cellspacing="2" cellpadding="18">
     <tbody>
     <tr><th>カードid</th><th>名前</th><th>作業時間[分]</th><th>作業内容</th><th>レーン</th><th>年月日</th><th>時刻</th></tr>
@@ -160,6 +176,12 @@ if($_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]!="" && $DAY
 パターン番号＝12
 ■■■■■■■■■■■■■■■■■■■■■*/
 }elseif($_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]!="" && $DAY==""){
+    $KEY1="12";
+    $KEY21=$_POST["search_key"];
+    $KEY31=$_POST["year"];
+    $KEY32=$_POST["month"];
+    $KEY33=$DAY;
+    
     $tabname="b_".$_POST["year"]."_".$_POST["month"];//テーブル名作成
     $tabsel="SELECT * FROM ".$tabname;//セレクト文作成
     $search_key=$_POST["search_key"];
@@ -175,6 +197,16 @@ if($_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]!="" && $DAY
     <font size="4" color="#ff0000"><?=$_POST["search_key"]?></font><br>
     <font size="3" color="#000000">指定年月日：</font>
     <font size="4" color="#ff0000"><?=$_POST["year"]?>年<?=$_POST["month"]?>月</font><br>
+
+    <form name="formcsv" method="post" action="記録CSV処理.php">
+        <input type="hidden" name="key1" value="<?=$KEY1?>">
+        <input type="hidden" name="key21" value="<?=$KEY21?>">
+        <input type="hidden" name="key31" value="<?=$KEY31?>">
+        <input type="hidden" name="key32" value="<?=$KEY32?>">
+        <input type="hidden" name="key33" value="<?=$KEY33?>">
+        <input type="submit" value="CSVファイルを保存">
+    </form>
+
     <table width="1100" border="1" cellspacing="2" cellpadding="18">
     <tbody>
     <tr><th>カードid</th><th>名前</th><th>作業時間[分]</th><th>作業内容</th><th>レーン</th><th>年月日</th><th>時刻</th></tr>
@@ -202,11 +234,26 @@ if($_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]!="" && $DAY
 パターン番号＝13
 ■■■■■■■■■■■■■■■■■■■■■*/
 }elseif($_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]=="" && $DAY==""){
+    $KEY1="13";
+    $KEY21=$_POST["search_key"];
+    $KEY31=$_POST["year"];
+    $KEY32=$_POST["month"];
+    $KEY33=$DAY;
     ?>
     <font size="3" color="#000000">検索ワード：</font>
     <font size="4" color="#ff0000"><?=$_POST["search_key"]?></font><br>
     <font size="3" color="#000000">指定年月日：</font>
     <font size="4" color="#ff0000"><?=$_POST["year"]?>年</font><br>
+    
+    <form name="formcsv" method="post" action="記録CSV処理.php">
+        <input type="hidden" name="key1" value="<?=$KEY1?>">
+        <input type="hidden" name="key21" value="<?=$KEY21?>">
+        <input type="hidden" name="key31" value="<?=$KEY31?>">
+        <input type="hidden" name="key32" value="<?=$KEY32?>">
+        <input type="hidden" name="key33" value="<?=$KEY33?>">
+        <input type="submit" value="CSVファイルを保存">
+    </form>
+    
     <table width="1100" border="1" cellspacing="2" cellpadding="18">
     <tbody>
     <tr><th>カードid</th><th>名前</th><th>作業時間[分]</th><th>作業内容</th><th>レーン</th><th>年月日</th><th>時刻</th></tr>
@@ -247,6 +294,12 @@ if($_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]!="" && $DAY
 パターン番号＝21
 ■■■■■■■■■■■■■■■■■■■■■*/
 }elseif($_POST["search_key"]=="" && $_POST["year"]!="" && $_POST["month"]!="" && $DAY!=""){
+    $KEY1="21";
+    $KEY21=$_POST["search_key"];
+    $KEY31=$_POST["year"];
+    $KEY32=$_POST["month"];
+    $KEY33=$DAY;
+
     $tabname="b_".$_POST["year"]."_".$_POST["month"];//テーブル名作成
     $tabsel="SELECT * FROM ".$tabname;//セレクト文作成
     $search_key=$_POST["search_key"];
@@ -262,6 +315,16 @@ if($_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]!="" && $DAY
     <font size="4" color="#ff0000">無し</font><br>
     <font size="3" color="#000000">指定年月日：</font>
     <font size="4" color="#ff0000"><?=$_POST["year"]?>年<?=$_POST["month"]?>月<?=$_POST["day"]?>日</font><br>
+    
+    <form name="formcsv" method="post" action="記録CSV処理.php">
+        <input type="hidden" name="key1" value="<?=$KEY1?>">
+        <input type="hidden" name="key21" value="<?=$KEY21?>">
+        <input type="hidden" name="key31" value="<?=$KEY31?>">
+        <input type="hidden" name="key32" value="<?=$KEY32?>">
+        <input type="hidden" name="key33" value="<?=$KEY33?>">
+        <input type="submit" value="CSVファイルを保存">
+    </form>
+    
     <table width="1100" border="1" cellspacing="2" cellpadding="18">
     <tbody>
     <tr><th>カードid</th><th>名前</th><th>作業時間[分]</th><th>作業内容</th><th>レーン</th><th>年月日</th><th>時刻</th></tr>
@@ -289,6 +352,12 @@ if($_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]!="" && $DAY
 パターン番号＝22
 ■■■■■■■■■■■■■■■■■■■■■*/
 }elseif($_POST["search_key"]=="" && $_POST["year"]!="" && $_POST["month"]!="" && $DAY==""){
+    $KEY1="22";
+    $KEY21=$_POST["search_key"];
+    $KEY31=$_POST["year"];
+    $KEY32=$_POST["month"];
+    $KEY33=$DAY;
+
     $tabname="b_".$_POST["year"]."_".$_POST["month"];//テーブル名作成
     $tabsel="SELECT * FROM ".$tabname;//セレクト文作成
     $search_key=$_POST["search_key"];
@@ -304,6 +373,16 @@ if($_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]!="" && $DAY
     <font size="4" color="#ff0000">なし</font><br>
     <font size="3" color="#000000">指定年月日：</font>
     <font size="4" color="#ff0000"><?=$_POST["year"]?>年<?=$_POST["month"]?>月</font><br>
+    
+    <form name="formcsv" method="post" action="記録CSV処理.php">
+        <input type="hidden" name="key1" value="<?=$KEY1?>">
+        <input type="hidden" name="key21" value="<?=$KEY21?>">
+        <input type="hidden" name="key31" value="<?=$KEY31?>">
+        <input type="hidden" name="key32" value="<?=$KEY32?>">
+        <input type="hidden" name="key33" value="<?=$KEY33?>">
+        <input type="submit" value="CSVファイルを保存">
+    </form>
+    
     <table width="1100" border="1" cellspacing="2" cellpadding="18">
     <tbody>
     <tr><th>カードid</th><th>名前</th><th>作業時間[分]</th><th>作業内容</th><th>レーン</th><th>年月日</th><th>時刻</th></tr>
@@ -331,11 +410,26 @@ if($_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]!="" && $DAY
 パターン番号＝23
 ■■■■■■■■■■■■■■■■■■■■■*/
 }elseif($_POST["search_key"]=="" && $_POST["year"]!="" && $_POST["month"]=="" && $DAY==""){
+    $KEY1="23";
+    $KEY21=$_POST["search_key"];
+    $KEY31=$_POST["year"];
+    $KEY32=$_POST["month"];
+    $KEY33=$DAY;
     ?>
     <font size="3" color="#000000">検索ワード：</font>
     <font size="4" color="#ff0000">なし</font><br>
     <font size="3" color="#000000">指定年月日：</font>
     <font size="4" color="#ff0000"><?=$_POST["year"]?>年<br>
+    
+    <form name="formcsv" method="post" action="記録CSV処理.php">
+        <input type="hidden" name="key1" value="<?=$KEY1?>">
+        <input type="hidden" name="key21" value="<?=$KEY21?>">
+        <input type="hidden" name="key31" value="<?=$KEY31?>">
+        <input type="hidden" name="key32" value="<?=$KEY32?>">
+        <input type="hidden" name="key33" value="<?=$KEY33?>">
+        <input type="submit" value="CSVファイルを保存">
+    </form>
+    
     <table width="1100" border="1" cellspacing="2" cellpadding="18">
     <tbody>
     <tr><th>カードid</th><th>名前</th><th>作業時間[分]</th><th>作業内容</th><th>レーン</th><th>年月日</th><th>時刻</th></tr>
@@ -417,10 +511,14 @@ if($_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]!="" && $DAY
     }*/
 /*■■■■■■■■■■■■■■■■■■■
 (8)全て空(今月の記録)
-パターン番号＝41
+パターン番号＝4
 ■■■■■■■■■■■■■■■■■■■■■*/
 }elseif($_POST["search_key"]=="" && $_POST["year"]=="" && $_POST["month"]=="" && $DAY==""){
-    
+    $KEY1="4";
+    $KEY21=$_POST["search_key"];
+    $KEY31=$_POST["year"];
+    $KEY32=$_POST["month"];
+    $KEY33=$DAY;
     $T=time();
     $Y=date('Y',$T);
     $M=date('m',$T);
@@ -437,6 +535,16 @@ if($_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]!="" && $DAY
     ?>
     
     <font size="4" color="#ff0000">今月の記録</font><br>
+    
+    <form name="formcsv" method="post" action="記録CSV処理.php">
+        <input type="hidden" name="key1" value="<?=$KEY1?>">
+        <input type="hidden" name="key21" value="<?=$KEY21?>">
+        <input type="hidden" name="key31" value="<?=$KEY31?>">
+        <input type="hidden" name="key32" value="<?=$KEY32?>">
+        <input type="hidden" name="key33" value="<?=$KEY33?>">
+        <input type="submit" value="CSVファイルを保存">
+    </form>
+    
     <table width="1100" border="1" cellspacing="2" cellpadding="18">
     <tbody>
     <tr><th>カードid</th><th>名前</th><th>作業時間[分]</th><th>作業内容</th><th>レーン</th><th>年月日</th><th>時刻</th></tr>

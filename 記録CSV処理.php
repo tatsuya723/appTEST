@@ -44,93 +44,136 @@ if($_POST['key1']=="11"){
         print "エラー:".$Exception->getMessage();
     }
 	$rs = $stmh->fetchall ();
-
-	for($i=0;$i<;$i++){
-		if($rs[i]['']$key21){
-
+	
+	$csv = '"","カードID","氏名","作業時間[分]","作業内容","レーン","年月日","時刻"' . "\n";
+	
+	for($i=0;$i<count($rs);$i++){
+		if(($rs[$i]['member'] == $key21) && ($rs[$i]['dd'] == $D)){
+		$csv .= "".",". $rs[$i]['card_id']  .",".  $rs[$i]['member'] .",".  $rs[$i]['work_time'] .",". $rs[$i]['work'] .",". $rs[$i]['rane'].",". $rs[$i]['d_ymd'].",".$rs[$i]['dt']. "\n";	
 		}
-
 	}
 
 //ーーーーーーーーーーーーーーーーーーーーーーーーーーーーー指定：[名前、年、月]ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 }elseif($_POST['key1']=="12"){
-	$search_key='%'. $_POST['key2'].'%';
-	//$D=$_POST['year']."-".$_POST['month']."-".$_POST['day'];
-	$sql="SELECT * FROM work2 WHERE ( cardID like :cardID OR member like :member OR work like :work ) AND ( year = :year AND month = :month)";
-	$stmh=$pdo->prepare($sql);
-	$stmh->bindValue(':cardID',$search_key,PDO::PARAM_STR);
-	$stmh->bindValue(':member',$search_key,PDO::PARAM_STR);
-	$stmh->bindValue(':work',$search_key,PDO::PARAM_STR);
-	$stmh->bindValue(':year',$_POST['key21'],PDO::PARAM_STR);
-	$stmh->bindValue(':month',$_POST['key22'],PDO::PARAM_STR);
-	$stmh->execute();
-
-
-//ーーーーーーーーーーーーーーーーーーーーーーーーーーーーー名前(orカードID,作業内容)と年指定ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
-}elseif($_POST['key1']=="13"){
-	$search_key='%'. $_POST['key2'].'%';
-	//$D=$_POST['key21']."-".$_POST['key22']."-".$_POST['key23'];
-	$sql="SELECT * FROM work2 WHERE ( cardID like :cardID OR member like :member OR work like :work ) AND ( year = :year)";
-	$stmh=$pdo->prepare($sql);
-	$stmh->bindValue(':cardID',$search_key,PDO::PARAM_STR);
-	$stmh->bindValue(':member',$search_key,PDO::PARAM_STR);
-	$stmh->bindValue(':work',$search_key,PDO::PARAM_STR);
-	$stmh->bindValue(':year',$_POST['key21'],PDO::PARAM_STR);
-	$stmh->execute();
-
-
-//ーーーーーーーーーーーーーーーーーーーーーーーーーーーーー名前(orカードID,作業内容)のみ指定ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
-}elseif($_POST['key1']=="2"){
-
-
-	$search_key='%'. $_POST['key2'].'%';
-	$sql="SELECT * FROM work2 WHERE cardID like :cardID OR member like :member OR work like :work ";
-	$stmh=$pdo->prepare($sql);
-	$stmh->bindValue(':cardID',$search_key,PDO::PARAM_STR);
-	$stmh->bindValue(':member',$search_key,PDO::PARAM_STR);
-	$stmh->bindValue(':work',$search_key,PDO::PARAM_STR);
-	$stmh->execute();
-
-
-//ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー年月日すべて指定ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
-}elseif($_POST['key1']=="31"){
-
-	$sql="SELECT * FROM work2 WHERE year = :year AND month = :month AND day = :day";
-    $stmh=$pdo->prepare($sql);
-	$stmh->bindValue(':year',$_POST['key21'],PDO::PARAM_STR);
-	$stmh->bindValue(':month',$_POST['key22'],PDO::PARAM_STR);
-	$stmh->bindValue(':day',$_POST['key23'],PDO::PARAM_STR);
+	$tabname="b_".$Y."_".$M;
+    $tabsel="SELECT * FROM ".$tabname;
+    try{
+    $stmh=$pdo->query($tabsel);
     $stmh->execute();
+    }catch(PDOException $Exception){
+        print "エラー:".$Exception->getMessage();
+    }
+	$rs = $stmh->fetchall ();
 	
+	$csv = '"","カードID","氏名","作業時間[分]","作業内容","レーン","年月日","時刻"' . "\n";
+	
+	for($i=0;$i<count($rs);$i++){
+		if($rs[$i]['member'] == $key21){
+			$csv .= "".",". $rs[$i]['card_id']  .",".  $rs[$i]['member'] .",".  $rs[$i]['work_time'] .",". $rs[$i]['work'] .",". $rs[$i]['rane'].",". $rs[$i]['d_ymd'].",".$rs[$i]['dt']. "\n";	
+		}
+	}
+
+
+//ーーーーーーーーーーーーーーーーーーーーーーーーーーーーー指定:[名前、年]ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+}elseif($_POST['key1']=="13"){
+	for($i=1;$i<13;$i++){
+		$tabname="b_".$Y."_".$i;
+    	$tabsel="SELECT * FROM ".$tabname;
+		try{
+		$stmh=$pdo->query($tabsel);
+		$stmh->execute();
+		}catch(PDOException $Exception){
+			print "エラー:".$Exception->getMessage();
+		}
+		$rs = $stmh->fetchall ();
+	}
+	$csv = '"","カードID","氏名","作業時間[分]","作業内容","レーン","年月日","時刻"' . "\n";
+	
+	for($i=0;$i<count($rs);$i++){
+		if($rs[$i]['member'] == $key21){
+			$csv .= "".",". $rs[$i]['card_id']  .",".  $rs[$i]['member'] .",".  $rs[$i]['work_time'] .",". $rs[$i]['work'] .",". $rs[$i]['rane'].",". $rs[$i]['d_ymd'].",".$rs[$i]['dt']. "\n";	
+		}
+	}
+
+
+//ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー指定：[年、月、日]ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+}elseif($_POST['key1']=="21"){
+	$tabname="b_".$Y."_".$M;
+    $tabsel="SELECT * FROM ".$tabname;
+    try{
+    $stmh=$pdo->query($tabsel);
+    $stmh->execute();
+    }catch(PDOException $Exception){
+        print "エラー:".$Exception->getMessage();
+    }
+	$rs = $stmh->fetchall ();
+	
+	$csv = '"","カードID","氏名","作業時間[分]","作業内容","レーン","年月日","時刻"' . "\n";
+	
+	for($i=0;$i<count($rs);$i++){
+		if($rs[$i]['dd'] == $D){
+			$csv .= "".",". $rs[$i]['card_id']  .",".  $rs[$i]['member'] .",".  $rs[$i]['work_time'] .",". $rs[$i]['work'] .",". $rs[$i]['rane'].",". $rs[$i]['d_ymd'].",".$rs[$i]['dt']. "\n";	
+		}
+	}
+
+
 
 //ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー年月のみ指定ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
-}elseif($_POST['key1']=="32"){
-
-	$sql="SELECT * FROM work2 WHERE year = :year AND month = :month";
-    $stmh=$pdo->prepare($sql);
-	$stmh->bindValue(':year',$_POST['key21'],PDO::PARAM_STR);
-	$stmh->bindValue(':month',$_POST['key22'],PDO::PARAM_STR);
+}elseif($_POST['key1']=="22"){
+	$tabname="b_".$Y."_".$M;
+    $tabsel="SELECT * FROM ".$tabname;
+    try{
+    $stmh=$pdo->query($tabsel);
     $stmh->execute();
+    }catch(PDOException $Exception){
+        print "エラー:".$Exception->getMessage();
+    }
+	$rs = $stmh->fetchall ();
+	
+	$csv = '"","カードID","氏名","作業時間[分]","作業内容","レーン","年月日","時刻"' . "\n";
+	
+	for($i=0;$i<count($rs);$i++){
+		$csv .= "".",". $rs[$i]['card_id']  .",".  $rs[$i]['member'] .",".  $rs[$i]['work_time'] .",". $rs[$i]['work'] .",". $rs[$i]['rane'].",". $rs[$i]['d_ymd'].",".$rs[$i]['dt']. "\n";	
+	}
 
 	
 //ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー年のみ指定ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
-}elseif($_POST['key1']=="33"){
-
-	$sql="SELECT * FROM work2 WHERE year = :year";
-    $stmh=$pdo->prepare($sql);
-	$stmh->bindValue(':year',$_POST['key21'],PDO::PARAM_STR);
-    $stmh->execute();
+}elseif($_POST['key1']=="23"){
+	for($i=1;$i<13;$i++){
+		$tabname="b_".$Y."_".$i;
+    	$tabsel="SELECT * FROM ".$tabname;
+		try{
+		$stmh=$pdo->query($tabsel);
+		$stmh->execute();
+		}catch(PDOException $Exception){
+			print "エラー:".$Exception->getMessage();
+		}
+		$rs = $stmh->fetchall ();
+	}
+	$csv = '"","カードID","氏名","作業時間[分]","作業内容","レーン","年月日","時刻"' . "\n";
+	
+	for($i=0;$i<count($rs);$i++){
+			$csv .= "".",". $rs[$i]['card_id']  .",".  $rs[$i]['member'] .",".  $rs[$i]['work_time'] .",". $rs[$i]['work'] .",". $rs[$i]['rane'].",". $rs[$i]['d_ymd'].",".$rs[$i]['dt']. "\n";	
+	}
 
 
 //ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー指定なしーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 }elseif($_POST['key1']=="4"){
-    
-	$sql="SELECT * FROM work2 WHERE year = :year AND month = :month";
-	$stmh=$pdo->prepare($sql);
-	$stmh->bindValue(':year',$_POST['key21'],PDO::PARAM_STR);
-	$stmh->bindValue(':month',$_POST['key22'],PDO::PARAM_STR);
-	$stmh->execute();
-
+	$tabname="b_".$Y."_".$M;
+    $tabsel="SELECT * FROM ".$tabname;
+    try{
+    $stmh=$pdo->query($tabsel);
+    $stmh->execute();
+    }catch(PDOException $Exception){
+        print "エラー:".$Exception->getMessage();
+    }
+	$rs = $stmh->fetchall ();
+	
+	$csv = '"","カードID","氏名","作業時間[分]","作業内容","レーン","年月日","時刻"' . "\n";
+	
+	for($i=0;$i<count($rs);$i++){
+		$csv .= "".",". $rs[$i]['card_id']  .",".  $rs[$i]['member'] .",".  $rs[$i]['work_time'] .",". $rs[$i]['work'] .",". $rs[$i]['rane'].",". $rs[$i]['d_ymd'].",".$rs[$i]['dt']. "\n";	
+	}	
 
 }
 	
@@ -139,12 +182,8 @@ if($_POST['key1']=="11"){
 
 
 /*▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲
-    //CSVファイル作成
+    //CSVファイル出力
 ▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲*/
-$csv = '"","カードID","氏名","作業時間[分]","作業内容","レーン","年月日","時刻"' . "\n";
-foreach ( $rs as $row ) {
-	$csv .= "".",". $row['card_id']  .",".  $value['member'] .",".  $value['work_time'] .",". $value['work'] .",". $value['rane'].",". $value['d_ymd'].",".$value['dt']. "\n";
-}
 
 mb_convert_variables('Shift_JIS' , 'UTF-8' , $csv );
 echo $csv;
