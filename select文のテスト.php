@@ -118,7 +118,7 @@ $DAY = (string) $_POST["day"];
 (1)名前、年、月、日
 パターン番号＝11
 ■■■■■■■■■■■■■■■■■■■■■*/
-if($_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]!="" && $ $DAY!=""){
+if($_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]!="" && $DAY!=""){
 
     $tabname="b_".$_POST["year"]."_".$_POST["month"];//テーブル名作成
     $tabsel="SELECT * FROM ".$tabname;//セレクト文作成

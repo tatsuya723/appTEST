@@ -29,5 +29,16 @@ for i in range(3):                      #配列(1次)を0～3まで全て照合�
         member = results[i][1]          #名前を変数memberに代入
         work   = results[i][2] 
     
-print(member)
-print(work)    
+#print(member)
+#print(work)
+
+dt_now = datetime.datetime.now()
+#now = datetime.datetime(year=dt_now.year, month=dt_now.month, day=dt_now.day, hour=dt_now.hour, minute=dt_now.minute-5, second=dt_now.second)#日時を取得
+now = datetime.datetime.now()
+
+#td = abs(now - MyCardReader.d1)
+#print(td.total_seconds())
+
+print(dt_now)
+print(now)
+print(type(now))
