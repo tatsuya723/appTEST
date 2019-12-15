@@ -5,7 +5,7 @@
         <link rel="stylesheet" type="text/css" href="tes1.css">
     </head>
     <body bgcolor="#e0ffff" text="#000000">
-        <a href="main.html">ホームページへ</a><br>
+        <a href="index.php">ホームページへ</a><br>
         <hr size="2" noshade>
         <h2>作業記録管理</h2>
         <hr size="2" noshade>   
