@@ -42,3 +42,6 @@ now = datetime.datetime.now()
 print(dt_now)
 print(now)
 print(type(now))
+
+for i in range(10):
+    print(i)
