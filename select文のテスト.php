@@ -9,6 +9,7 @@
        
         <font size="4" color="#000000">名前で検索:</font><br>
         <input type="text" name="search_key"><br>
+        
         <font size="4" color="#000000">日付検索:</font><br>
         <input type="text" name="seday"><br>        
 
