@@ -131,7 +131,10 @@ if($_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]!="" && $DAY
         print "エラー:".$Exception->getMessage();
     }
     ?>
-
+    <font size="3" color="#000000">検索ワード：</font>
+    <font size="4" color="#ff0000"><?=$KEY2?></font><br>
+    <font size="3" color="#000000">指定年月日：</font>
+    <font size="4" color="#ff0000"><?=$KEY21?>年<?=$KEY22?>月</font><br>
     <table width="1100" border="1" cellspacing="2" cellpadding="18">
     <tbody>
     <tr><th>カードid</th><th>名前</th><th>作業時間[分]</th><th>作業内容</th><th>レーン</th><th>年月日</th><th>時刻</th></tr>
@@ -396,6 +399,49 @@ if($_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]!="" && $DAY
     
         }//foreachの括弧
     }
+/*■■■■■■■■■■■■■■■■■■■
+(8)全て空
+パターン番号＝41
+■■■■■■■■■■■■■■■■■■■■■*/
+}elseif($_POST["search_key"]=="" && $_POST["year"]=="" && $_POST["month"]=="" && $DAY==""){
+    
+    $T=time();
+    $Y=date('Y',$T);
+    $M=date('m',$T);
+    $tabname="b_".$Y."_".$M;//テーブル名作成
+    $tabsel="SELECT * FROM ".$tabname;//セレクト文作成
+    $search_key=$_POST["search_key"];
+    //クエリ実行
+    try{
+    $stmh=$pdo->query($tabsel);
+    $stmh->execute();
+    }catch(PDOException $Exception){
+        print "エラー:".$Exception->getMessage();
+    }
+    ?>
+
+    <table width="1100" border="1" cellspacing="2" cellpadding="18">
+    <tbody>
+    <tr><th>カードid</th><th>名前</th><th>作業時間[分]</th><th>作業内容</th><th>レーン</th><th>年月日</th><th>時刻</th></tr>
+
+    <?php
+    $rs = $stmh->fetchall ();
+    foreach ( $rs as $row ) {
+    
+    ?> 
+            <tr>
+            <td align="center"><?=htmlspecialchars($row['card_id'])?></td>
+            <td align="center"><?=htmlspecialchars($row['member'])?></td>
+            <td align="center"><?=htmlspecialchars($row['work_time'])?></td>
+            <td align="center"><?=htmlspecialchars($row['work'])?></td>
+            <td align="center"><?=htmlspecialchars($row['rane'])?></td>
+            <td align="center"><?=htmlspecialchars($row['d_ymd'])?></td>
+            <td align="center"><?=htmlspecialchars($row['dt'])?></td>
+            </tr>
+
+    <?php
+        
+    }//foreachの括弧
 }
 ?>
 
