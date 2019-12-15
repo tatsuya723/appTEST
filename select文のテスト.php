@@ -224,6 +224,8 @@ if($_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]!="" && $DAY
         }
  
         $rs = $stmh->fetchall ();
+        print $rs[0]['member'];
+        print "<br>";
         foreach ( $rs as $row ) {
             if($row['member']==$search_key){
     ?> 
