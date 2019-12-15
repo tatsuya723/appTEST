@@ -155,7 +155,7 @@ if($_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]!="" && $ $_
 (2)名前、年、月
 パターン番号＝12
 ■■■■■■■■■■■■■■■■■■■■■*/
-}elseif($_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]!=""){
+}elseif($_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]!="" && $_POST["day"]==""){
     $tabname="b_".$_POST["year"]."_".$_POST["month"];//テーブル名作成
     $tabsel="SELECT * FROM ".$tabname;//セレクト文作成
     $search_key=$_POST["search_key"];
