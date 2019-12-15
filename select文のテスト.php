@@ -9,6 +9,8 @@
        
         <font size="4" color="#000000">名前で検索:</font><br>
         <input type="text" name="search_key"><br>
+        <font size="4" color="#000000">日付検索:</font><br>
+        <input type="text" name="seday"><br>        
 
         <font size="4" color="#000000">年月でテーブルを指定する:</font><br>
         <select name="year">
@@ -114,7 +116,7 @@ try{
 (1)名前、年、月、日
 パターン番号＝11
 ■■■■■■■■■■■■■■■■■■■■■*/
-if($_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]!="" && $ $_POST["day"]!=""){
+if($_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]!="" && $ $_POST["seday"]!=""){
 
     $tabname="b_".$_POST["year"]."_".$_POST["month"];//テーブル名作成
     $tabsel="SELECT * FROM ".$tabname;//セレクト文作成
@@ -135,7 +137,7 @@ if($_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]!="" && $ $_
     <?php
     $rs = $stmh->fetchall ();
     foreach ( $rs as $row ) {
-        if(($row['member']==$search_key) && ($row['dd']==$_POST["day"])){
+        if(($row['member']==$search_key) && ($row['dd']==$_POST["seday"])){
     ?> 
             <tr>
             <td align="center"><?=htmlspecialchars($row['card_id'])?></td>
