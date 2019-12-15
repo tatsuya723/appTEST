@@ -8,10 +8,7 @@
 <form name="form1" method="post" action="select文のテスト.php">
        
         <font size="4" color="#000000">名前で検索:</font><br>
-        <input type="text" name="search_key"><br>
-        
-        <font size="4" color="#000000">日付検索:</font><br>
-        <input type="text" name="seday"><br>        
+        <input type="text" name="search_key"><br>       
 
         <font size="4" color="#000000">年月でテーブルを指定する:</font><br>
         <select name="year">
@@ -358,17 +355,19 @@ if($_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]!="" && $DAY
     
     }
 /*■■■■■■■■■■■■■■■■■■■
-(7)名前
-パターン番号＝31
+(7)名前(無効)
+パターン番号＝
 ■■■■■■■■■■■■■■■■■■■■■*/
 }elseif($_POST["search_key"]!="" && $_POST["year"]=="" && $_POST["month"]=="" && $DAY==""){
+    print("年を指定してください。<br>")
     ?>
-    <table width="1100" border="1" cellspacing="2" cellpadding="18">
+<!--    <table width="1100" border="1" cellspacing="2" cellpadding="18">
     <tbody>
-    <tr><th>カードid</th><th>名前</th><th>作業時間[分]</th><th>作業内容</th><th>レーン</th><th>年月日</th><th>時刻</th></tr>
+    <tr><th>カードid</th><th>名前</th><th>作業時間[分]</th><th>作業内容</th><th>レーン</th><th>年月日</th><th>時刻</th></tr>-->
     <?php
-    for($mm=1;$mm<13;$mm++){                //ループで、1月～12月のテーブルを全て取得
-        $tabname="b_".$_POST["year"]."_".$mm;   //テーブル名を作成
+    /*for($mm=1;$mm<13;$mm++){   
+        $YEA=2019;             //ループで、1月～12月のテーブルを全て取得
+        $tabname="b_".$YEA."_".$mm;   //テーブル名を作成
         $tabsel="SELECT * FROM ".$tabname;//セレクト文作成
         $search_key=$_POST["search_key"];
         //クエリ実行
@@ -398,9 +397,9 @@ if($_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]!="" && $DAY
             }
     
         }//foreachの括弧
-    }
+    }*/
 /*■■■■■■■■■■■■■■■■■■■
-(8)全て空
+(8)全て空(今月の記録)
 パターン番号＝41
 ■■■■■■■■■■■■■■■■■■■■■*/
 }elseif($_POST["search_key"]=="" && $_POST["year"]=="" && $_POST["month"]=="" && $DAY==""){
