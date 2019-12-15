@@ -333,7 +333,7 @@
         /*■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
         名前＋年のみ指定　
         ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■*/
-        }elseif((isset($_POST['search_key']) && $_POST['search_key']!="" && $_POST['year']!=""){ 
+        /*}elseif((isset($_POST['search_key']) && $_POST['search_key']!="" && $_POST['year']!=""){ 
             $search_key=$_POST["search_key"];                   //検索boxに入力された文字列を変数search_keyに代入
             $KEY1="13";
             $KEY2="";
@@ -586,7 +586,7 @@
         /*■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
         年のみ指定
         ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■*/
-        }elseif($_POST['search_key']=="" && $_POST['year']!=""){ 
+        /*}elseif($_POST['search_key']=="" && $_POST['year']!=""){ 
             $search_key=$_POST["search_key"];                   //検索boxに入力された文字列を変数search_keyに代入
             $KEY1="33";
             $KEY2="";

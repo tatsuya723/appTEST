@@ -82,47 +82,49 @@
 </form>
 
 <?php
-
-if($_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]!=""){
-
-//require_once("DB接続.php")
-//$pdo=db_connect();
-
+/*▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲
+    //DB接続処理
+▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲*/
 $dbhost="ec2-174-129-255-46.compute-1.amazonaws.com";
 $dbname="dflv6jh505d9tv";
 $dbuser="qajdgcrnucpdpx";
 $dbpass="d2144f11fa2bc512c9f5f4d65cef0b1f804fabef86759d786bd6ca430eba6fa8";
 $dbtype="pgsql";
-
 $dsn = "$dbtype:dbname=$dbname host=$dbhost port=5432";
-
 try{
     $pdo=new PDO($dsn,$dbuser,$dbpass);
     $pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
     $pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES,false);
     print"接続しました<br>";
 }catch(PDOException $Exception){
-    die('エラー:'.$Exception->getMessage());
-}
+    die('エラー:'.$Exception->getMessage());}
+/*▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲
+▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲*/
+?>
 
 
+
+
+
+<?php
+/*▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲
+    //SELECT処理
+▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲*/
+/*■■■■■■■■■■■■■■■■■■■
+(1)名前、年、月、日
+パターン番号＝11
+■■■■■■■■■■■■■■■■■■■■■*/
+if($_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]!="" && $ $_POST['day']!=""){
 $tabname="b_".$_POST["year"]."_".$_POST["month"];//テーブル名作成
 $tabsel="SELECT * FROM ".$tabname;//セレクト文作成
 $search_key=$_POST["search_key"];
-$tabsel;
-
+//クエリ実行
 try{
 $stmh=$pdo->query($tabsel);
-
 $stmh->execute();
 }catch(PDOException $Exception){
     print "エラー:".$Exception->getMessage();
 }
-
-
-//if(!$result){
-  //  die('クエリが失敗しました。'.pg_last_error());
-//}
 ?>
 
 <table width="1100" border="1" cellspacing="2" cellpadding="18">
@@ -130,14 +132,8 @@ $stmh->execute();
 <tr><th>カードid</th><th>名前</th><th>作業時間[分]</th><th>作業内容</th><th>レーン</th><th>年月日</th><th>時刻</th></tr>
 
 <?php
-/*for ($i = 0 ; $i < pg_num_rows($) ; $i++){
-$row = pg_fetch_array($result, NULL, PGSQL_ASSOC);
-*/
-//while($row=$stmh->fetch(PDO::FETCH_ASSOC)){
 $rs = $stmh->fetchall ();
 foreach ( $rs as $row ) {
-//        echo "id：" . $row ["id"] . " name:" . $row [1] . "<br />\r\n";
-
     if($row['member']==$search_key){
 ?> 
         <tr>
@@ -152,9 +148,13 @@ foreach ( $rs as $row ) {
 
 <?
     }
-}
+}//foreachの括弧
 
-}
+/*■■■■■■■■■■■■■■■■■■■
+(2)名前、年、月
+パターン番号＝12
+■■■■■■■■■■■■■■■■■■■■■*/
+}elseif($_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]!="")
 ?>
 
 </body>
