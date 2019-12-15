@@ -273,15 +273,7 @@
             <font size="4" color="#ff0000"><?=$KEY2?></font><br>
             <font size="3" color="#000000">指定年月日：</font>
             <font size="4" color="#ff0000"><?=$KEY21?>年<?=$KEY22?>月</font><br>
-    
-            <form name="formcsv" method="post" action="記録CSV処理.php">
-                <input type="hidden" name="key1" value="<?=$KEY1?>">
-                <input type="hidden" name="key2" value="<?=$KEY2?>">
-                <input type="hidden" name="key21" value="<?=$KEY21?>">
-                <input type="hidden" name="key22" value="<?=$KEY22?>">
-                <input type="hidden" name="key23" value="<?=$KEY23?>">
-                <input type="submit" value="CSVファイルダウンロード">
-            </form>
+
 
             <table width="1100" border="1" cellspacing="2" cellpadding="18">
             <tbody>
@@ -324,14 +316,7 @@
             <font size="3" color="#000000">指定年月日：</font>
             <font size="4" color="#ff0000"><?=$KEY21?>年<br>
 
-            <form name="formcsv" method="post" action="記録CSV処理.php">
-                <input type="hidden" name="key1" value="<?=$KEY1?>">
-                <input type="hidden" name="key2" value="<?=$KEY2?>">
-                <input type="hidden" name="key21" value="<?=$KEY21?>">
-                <input type="hidden" name="key22" value="<?=$KEY22?>">
-                <input type="hidden" name="key23" value="<?=$KEY23?>">
-                <input type="submit" value="CSVファイルダウンロード">
-            </form>
+
 
             <table width="1100" border="1" cellspacing="2" cellpadding="18">
             <tbody>
@@ -441,15 +426,7 @@
             <font size="4" color="#ff0000"><?=$KEY2?></font><br>
             <font size="3" color="#000000">指定年月日：</font>
             <font size="4" color="#ff0000"><?=$KEY21?>年<?=$KEY22?>月<?=$KEY23?>日</font><br>
-
-            <form name="formcsv" method="post" action="記録CSV処理.php">
-                <input type="hidden" name="key1" value="<?=$KEY1?>">
-                <input type="hidden" name="key2" value="<?=$KEY2?>">
-                <input type="hidden" name="key21" value="<?=$KEY21?>">
-                <input type="hidden" name="key22" value="<?=$KEY22?>">
-                <input type="hidden" name="key23" value="<?=$KEY23?>">
-                <input type="submit" value="CSVファイルダウンロード">
-            </form>            
+            
 
             <table width="1100" border="1" cellspacing="2" cellpadding="18">
             <tbody>
@@ -504,14 +481,7 @@
             <font size="3" color="#000000">指定年月日：</font>
             <font size="4" color="#ff0000"><?=$KEY21?>年<?=$KEY22?>月<br>
 
-            <form name="formcsv" method="post" action="記録CSV処理.php">
-                <input type="hidden" name="key1" value="<?=$KEY1?>">
-                <input type="hidden" name="key2" value="<?=$KEY2?>">
-                <input type="hidden" name="key21" value="<?=$KEY21?>">
-                <input type="hidden" name="key22" value="<?=$KEY22?>">
-                <input type="hidden" name="key23" value="<?=$KEY23?>">
-                <input type="submit" value="CSVファイルダウンロード">
-            </form>
+
 
             <table width="1100" border="1" cellspacing="2" cellpadding="18">
             <tbody>
@@ -554,14 +524,7 @@
             <font size="3" color="#000000">指定年月日：</font>
             <font size="4" color="#ff0000"><?=$KEY21?>年<br>
 
-            <form name="formcsv" method="post" action="記録CSV処理.php">
-                <input type="hidden" name="key1" value="<?=$KEY1?>">
-                <input type="hidden" name="key2" value="<?=$KEY2?>">
-                <input type="hidden" name="key21" value="<?=$KEY21?>">
-                <input type="hidden" name="key22" value="<?=$KEY22?>">
-                <input type="hidden" name="key23" value="<?=$KEY23?>">
-                <input type="submit" value="CSVファイルダウンロード">
-            </form>
+
 
             <table width="1100" border="1" cellspacing="2" cellpadding="18">
             <tbody>
@@ -652,14 +615,6 @@
 
             <font size="4" color="#ff0000">今月の記録</font><br>
 
-            <form name="formcsv" method="post" action="記録CSV処理.php">
-                <input type="hidden" name="key1" value="<?=$KEY1?>">
-                <input type="hidden" name="key2" value="<?=$KEY2?>">
-                <input type="hidden" name="key21" value="<?=$KEY21?>">
-                <input type="hidden" name="key22" value="<?=$KEY22?>">
-                <input type="hidden" name="key23" value="<?=$KEY23?>">
-                <input type="submit" value="CSVファイルダウンロード">
-            </form>
 
             <table width="1100" border="1" cellspacing="2" cellpadding="18">
             <tbody>
