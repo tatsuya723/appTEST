@@ -43,22 +43,50 @@
         <option value="12">12</option>
         </select>
         月
+        <select name="day">
+        <option value="" selected>----日を選択してください----</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
+        <option value="13">13</option>
+        <option value="14">14</option>
+        <option value="15">15</option>
+        <option value="16">16</option>
+        <option value="17">17</option>
+        <option value="18">18</option>
+        <option value="19">19</option>
+        <option value="20">20</option>
+        <option value="21">21</option>
+        <option value="22">22</option>
+        <option value="23">23</option>
+        <option value="24">24</option>
+        <option value="25">25</option>  
+        <option value="26">26</option>
+        <option value="27">27</option>
+        <option value="28">29</option>
+        <option value="30">30</option>
+        <option value="31">31</option>
+        </select>
+        日     
         <br>
         <input type="submit" value="検索">
-        </form>
+</form>
 
 <?php
 
 if($_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]!=""){
 
+//require_once("DB接続.php")
 
-$dbh = pg_connect("
-host=ec2-174-129-255-46.compute-1.amazonaws.com
-dbname=dflv6jh505d9tv
-user=qajdgcrnucpdpx
-port=5432
-password=d2144f11fa2bc512c9f5f4d65cef0b1f804fabef86759d786bd6ca430eba6fa8
-");
 
 $dbhost="ec2-174-129-255-46.compute-1.amazonaws.com";
 $dbname="dflv6jh505d9tv";
@@ -77,22 +105,14 @@ try{
     die('エラー:'.$Exception->getMessage());
 }
 
-$tabname="b_".$_POST["year"]."_".$_POST["month"];
-$tabsel="SELECT * FROM ".$tabname;
+$tabname="b_".$_POST["year"]."_".$_POST["month"];//テーブル名作成
+$tabsel="SELECT * FROM ".$tabname;//セレクト文作成
 $search_key=$_POST["search_key"];
-//$tabwhe=" WHERE member=\"".$search_key."\"";
-//$tabwhe=" WHERE card_id=1111";
-$tabsql=$tabsel;
+$tabsel;
 
-print $tabsql;
-//$result=pg_query("SELECT * FROM `". $tabname ."` WHERE(name like :name OR age like :age)");
 try{
-//$stmh=$pdo->query("SELECT * FROM `$tab_name` WHERE name='$search_key'");
 $stmh=$pdo->query($tabsel);
-//$stmh=$dbh->prepare($sql);
-/*$stmh->bindValue(':name',$search_key,PDO::PARAM_STR);
-$stmh->bindValue(':age',$search_key,PDO::PARAM_STR);
-*/
+
 $stmh->execute();
 }catch(PDOException $Exception){
     print "エラー:".$Exception->getMessage();
