@@ -88,7 +88,7 @@ print $tabsql;
 //$result=pg_query("SELECT * FROM `". $tabname ."` WHERE(name like :name OR age like :age)");
 try{
 //$stmh=$pdo->query("SELECT * FROM `$tab_name` WHERE name='$search_key'");
-$stmh=$pdo->query($tabsql);
+$stmh=$pdo->query($tabsel);
 //$stmh=$dbh->prepare($sql);
 /*$stmh->bindValue(':name',$search_key,PDO::PARAM_STR);
 $stmh->bindValue(':age',$search_key,PDO::PARAM_STR);
