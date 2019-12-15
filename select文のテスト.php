@@ -95,7 +95,7 @@ try{
     $pdo=new PDO($dsn,$dbuser,$dbpass);
     $pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
     $pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES,false);
-    print"接続しました<br>";
+    //print"接続しました<br>";
 }catch(PDOException $Exception){
     die('エラー:'.$Exception->getMessage());}
 /*▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲
@@ -129,9 +129,9 @@ if($_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]!="" && $DAY
     }
     ?>
     <font size="3" color="#000000">検索ワード：</font>
-    <font size="4" color="#ff0000"><?=$KEY2?></font><br>
+    <font size="4" color="#ff0000"><?=$search_key?></font><br>
     <font size="3" color="#000000">指定年月日：</font>
-    <font size="4" color="#ff0000"><?=$KEY21?>年<?=$KEY22?>月</font><br>
+    <font size="4" color="#ff0000"><?=$_POST["year"]?>年<?=$_POST["month"]?>月<?=$_POST["day"]?>日</font><br>
     <table width="1100" border="1" cellspacing="2" cellpadding="18">
     <tbody>
     <tr><th>カードid</th><th>名前</th><th>作業時間[分]</th><th>作業内容</th><th>レーン</th><th>年月日</th><th>時刻</th></tr>
@@ -171,7 +171,10 @@ if($_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]!="" && $DAY
         print "エラー:".$Exception->getMessage();
     }
     ?>
-
+    <font size="3" color="#000000">検索ワード：</font>
+    <font size="4" color="#ff0000"><?=$search_key?></font><br>
+    <font size="3" color="#000000">指定年月日：</font>
+    <font size="4" color="#ff0000"><?=$_POST["year"]?>年<?=$_POST["month"]?>月</font><br>
     <table width="1100" border="1" cellspacing="2" cellpadding="18">
     <tbody>
     <tr><th>カードid</th><th>名前</th><th>作業時間[分]</th><th>作業内容</th><th>レーン</th><th>年月日</th><th>時刻</th></tr>
@@ -200,6 +203,10 @@ if($_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]!="" && $DAY
 ■■■■■■■■■■■■■■■■■■■■■*/
 }elseif($_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]=="" && $DAY==""){
     ?>
+    <font size="3" color="#000000">検索ワード：</font>
+    <font size="4" color="#ff0000"><?=$search_key?></font><br>
+    <font size="3" color="#000000">指定年月日：</font>
+    <font size="4" color="#ff0000"><?=$_POST["year"]?>年</font><br>
     <table width="1100" border="1" cellspacing="2" cellpadding="18">
     <tbody>
     <tr><th>カードid</th><th>名前</th><th>作業時間[分]</th><th>作業内容</th><th>レーン</th><th>年月日</th><th>時刻</th></tr>
@@ -251,7 +258,10 @@ if($_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]!="" && $DAY
         print "エラー:".$Exception->getMessage();
     }
     ?>
-
+    <font size="3" color="#000000">検索ワード：</font>
+    <font size="4" color="#ff0000">無し</font><br>
+    <font size="3" color="#000000">指定年月日：</font>
+    <font size="4" color="#ff0000"><?=$_POST["year"]?>年<?=$_POST["month"]?>月<?=$_POST["day"]?>日</font><br>
     <table width="1100" border="1" cellspacing="2" cellpadding="18">
     <tbody>
     <tr><th>カードid</th><th>名前</th><th>作業時間[分]</th><th>作業内容</th><th>レーン</th><th>年月日</th><th>時刻</th></tr>
@@ -290,7 +300,10 @@ if($_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]!="" && $DAY
         print "エラー:".$Exception->getMessage();
     }
     ?>
-
+    <font size="3" color="#000000">検索ワード：</font>
+    <font size="4" color="#ff0000">なし</font><br>
+    <font size="3" color="#000000">指定年月日：</font>
+    <font size="4" color="#ff0000"><?=$_POST["year"]?>年<?=$_POST["month"]?>月</font><br>
     <table width="1100" border="1" cellspacing="2" cellpadding="18">
     <tbody>
     <tr><th>カードid</th><th>名前</th><th>作業時間[分]</th><th>作業内容</th><th>レーン</th><th>年月日</th><th>時刻</th></tr>
@@ -319,6 +332,10 @@ if($_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]!="" && $DAY
 ■■■■■■■■■■■■■■■■■■■■■*/
 }elseif($_POST["search_key"]=="" && $_POST["year"]!="" && $_POST["month"]=="" && $DAY==""){
     ?>
+    <font size="3" color="#000000">検索ワード：</font>
+    <font size="4" color="#ff0000">なし</font><br>
+    <font size="3" color="#000000">指定年月日：</font>
+    <font size="4" color="#ff0000"><?=$_POST["year"]?>年<br>
     <table width="1100" border="1" cellspacing="2" cellpadding="18">
     <tbody>
     <tr><th>カードid</th><th>名前</th><th>作業時間[分]</th><th>作業内容</th><th>レーン</th><th>年月日</th><th>時刻</th></tr>
@@ -418,7 +435,8 @@ if($_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]!="" && $DAY
         print "エラー:".$Exception->getMessage();
     }
     ?>
-
+    
+    <font size="4" color="#ff0000">今月の記録</font><br>
     <table width="1100" border="1" cellspacing="2" cellpadding="18">
     <tbody>
     <tr><th>カードid</th><th>名前</th><th>作業時間[分]</th><th>作業内容</th><th>レーン</th><th>年月日</th><th>時刻</th></tr>
