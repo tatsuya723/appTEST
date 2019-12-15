@@ -85,9 +85,9 @@
 
 if($_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]!=""){
 
-require_once("DB接続.php")
-$pdo=db_connect();
-/*
+//require_once("DB接続.php")
+//$pdo=db_connect();
+
 $dbhost="ec2-174-129-255-46.compute-1.amazonaws.com";
 $dbname="dflv6jh505d9tv";
 $dbuser="qajdgcrnucpdpx";
@@ -104,7 +104,7 @@ try{
 }catch(PDOException $Exception){
     die('エラー:'.$Exception->getMessage());
 }
-*/
+
 
 $tabname="b_".$_POST["year"]."_".$_POST["month"];//テーブル名作成
 $tabsel="SELECT * FROM ".$tabname;//セレクト文作成

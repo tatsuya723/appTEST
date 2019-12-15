@@ -202,7 +202,22 @@
             $search_key=$_POST["search_key"];                   //検索boxに入力された文字列を変数search_keyに代入
             $tabname="b_".$_POST["year"]."_".$_POST["month"];   //テーブル名を作成
             $tabsql="SELECT * FROM ".$tabname;                  //SELECT文を変数tabsqlに代入
-                
+            //======================================================================================================
+            $dbhost="ec2-174-129-255-46.compute-1.amazonaws.com";
+            $dbname="dflv6jh505d9tv";
+            $dbuser="qajdgcrnucpdpx";
+            $dbpass="d2144f11fa2bc512c9f5f4d65cef0b1f804fabef86759d786bd6ca430eba6fa8";
+            $dbtype="pgsql";
+            $dsn = "$dbtype:dbname=$dbname host=$dbhost port=5432";
+            try{
+                $pdo=new PDO($dsn,$dbuser,$dbpass);
+                $pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+                $pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES,false);
+                print"接続しました<br>";
+            }catch(PDOException $Exception){
+                die('エラー:'.$Exception->getMessage());
+            }
+            //======================================================================================================    
             try{
                 $stmh=$pdo->query($tabsql);                     //検索条件にあてはまるテーブルの中身を全て取り出す。
                 $stmh->execute();                               //クエリ実行
@@ -255,7 +270,22 @@
             $search_key=$_POST["search_key"];                   //検索boxに入力された文字列を変数search_keyに代入
             $tabname="b_".$_POST["year"]."_".$_POST["month"];   //テーブル名を作成
             $tabsql="SELECT * FROM ".$tabname;                  //SELECT文を変数tabsqlに代入
-                
+            //======================================================================================================
+            $dbhost="ec2-174-129-255-46.compute-1.amazonaws.com";
+            $dbname="dflv6jh505d9tv";
+            $dbuser="qajdgcrnucpdpx";
+            $dbpass="d2144f11fa2bc512c9f5f4d65cef0b1f804fabef86759d786bd6ca430eba6fa8";
+            $dbtype="pgsql";
+            $dsn = "$dbtype:dbname=$dbname host=$dbhost port=5432";
+            try{
+                $pdo=new PDO($dsn,$dbuser,$dbpass);
+                $pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+                $pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES,false);
+                print"接続しました<br>";
+            }catch(PDOException $Exception){
+                die('エラー:'.$Exception->getMessage());
+            }
+            //======================================================================================================             
             try{
                 $stmh=$pdo->query($tabsql);                     //検索条件にあてはまるテーブルの中身を全て取り出す。
                 $stmh->execute();                               //クエリ実行
@@ -324,9 +354,24 @@
 
             <?php
             for($mm=1;$mm<13;$mm++){                //ループで、1月～12月のテーブルを全て取得
-            $tabname="b_".$_POST["year"]."_".$mm;   //テーブル名を作成
-            $tabsql="SELECT * FROM ".$tabname;      //SELECT文を変数tabsqlに代入
-            
+                $tabname="b_".$_POST["year"]."_".$mm;   //テーブル名を作成
+                $tabsql="SELECT * FROM ".$tabname;      //SELECT文を変数tabsqlに代入
+                //======================================================================================================
+                $dbhost="ec2-174-129-255-46.compute-1.amazonaws.com";
+                $dbname="dflv6jh505d9tv";
+                $dbuser="qajdgcrnucpdpx";
+                $dbpass="d2144f11fa2bc512c9f5f4d65cef0b1f804fabef86759d786bd6ca430eba6fa8";
+                $dbtype="pgsql";
+                $dsn = "$dbtype:dbname=$dbname host=$dbhost port=5432";
+                try{
+                    $pdo=new PDO($dsn,$dbuser,$dbpass);
+                    $pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+                    $pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES,false);
+                    print"接続しました<br>";
+                }catch(PDOException $Exception){
+                    die('エラー:'.$Exception->getMessage());
+                }
+                //====================================================================================================== 
                 try{
                     $stmh=$pdo->query($tabsql);     //検索条件にあてはまるテーブルの中身を全て取り出す。
                     $stmh->execute();               //クエリ実行
@@ -407,7 +452,22 @@
             $search_key=$_POST["search_key"];                   //検索boxに入力された文字列を変数search_keyに代入
             $tabname="b_".$_POST["year"]."_".$_POST["month"];   //テーブル名を作成
             $tabsql="SELECT * FROM ".$tabname;                  //SELECT文を変数tabsqlに代入
-                
+            //======================================================================================================
+            $dbhost="ec2-174-129-255-46.compute-1.amazonaws.com";
+            $dbname="dflv6jh505d9tv";
+            $dbuser="qajdgcrnucpdpx";
+            $dbpass="d2144f11fa2bc512c9f5f4d65cef0b1f804fabef86759d786bd6ca430eba6fa8";
+            $dbtype="pgsql";
+            $dsn = "$dbtype:dbname=$dbname host=$dbhost port=5432";
+            try{
+                $pdo=new PDO($dsn,$dbuser,$dbpass);
+                $pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+                $pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES,false);
+                print"接続しました<br>";
+            }catch(PDOException $Exception){
+                die('エラー:'.$Exception->getMessage());
+            }
+            //======================================================================================================    
             try{
                 $stmh=$pdo->query($tabsql);                     //検索条件にあてはまるテーブルの中身を全て取り出す。
                 $stmh->execute();                               //クエリ実行
@@ -461,7 +521,22 @@
             $search_key=$_POST["search_key"];                   //検索boxに入力された文字列を変数search_keyに代入
             $tabname="b_".$_POST["year"]."_".$_POST["month"];   //テーブル名を作成
             $tabsql="SELECT * FROM ".$tabname;                  //SELECT文を変数tabsqlに代入
-                
+            //======================================================================================================
+            $dbhost="ec2-174-129-255-46.compute-1.amazonaws.com";
+            $dbname="dflv6jh505d9tv";
+            $dbuser="qajdgcrnucpdpx";
+            $dbpass="d2144f11fa2bc512c9f5f4d65cef0b1f804fabef86759d786bd6ca430eba6fa8";
+            $dbtype="pgsql";
+            $dsn = "$dbtype:dbname=$dbname host=$dbhost port=5432";
+            try{
+                $pdo=new PDO($dsn,$dbuser,$dbpass);
+                $pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+                $pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES,false);
+                print"接続しました<br>";
+            }catch(PDOException $Exception){
+                die('エラー:'.$Exception->getMessage());
+            }
+            //======================================================================================================     
             try{
                 $stmh=$pdo->query($tabsql);                     //検索条件にあてはまるテーブルの中身を全て取り出す。
                 $stmh->execute();                               //クエリ実行
@@ -532,9 +607,24 @@
 
             <?php
             for($mm=1;$mm<13;$mm++){                //ループで、1月～12月のテーブルを全て取得
-            $tabname="b_".$_POST["year"]."_".$mm;   //テーブル名を作成
-            $tabsql="SELECT * FROM ".$tabname;      //SELECT文を変数tabsqlに代入
-            
+                $tabname="b_".$_POST["year"]."_".$mm;   //テーブル名を作成
+                $tabsql="SELECT * FROM ".$tabname;      //SELECT文を変数tabsqlに代入
+                //======================================================================================================
+                $dbhost="ec2-174-129-255-46.compute-1.amazonaws.com";
+                $dbname="dflv6jh505d9tv";
+                $dbuser="qajdgcrnucpdpx";
+                $dbpass="d2144f11fa2bc512c9f5f4d65cef0b1f804fabef86759d786bd6ca430eba6fa8";
+                $dbtype="pgsql";
+                $dsn = "$dbtype:dbname=$dbname host=$dbhost port=5432";
+                try{
+                    $pdo=new PDO($dsn,$dbuser,$dbpass);
+                    $pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+                    $pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES,false);
+                    print"接続しました<br>";
+                }catch(PDOException $Exception){
+                    die('エラー:'.$Exception->getMessage());
+                }
+                //====================================================================================================== 
                 try{
                     $stmh=$pdo->query($tabsql);     //検索条件にあてはまるテーブルの中身を全て取り出す。
                     $stmh->execute();               //クエリ実行
@@ -604,6 +694,22 @@
             
             $tabname="b_".$Y."_".$M;                            //テーブル名を作成
             $tabsql="SELECT * FROM ".$tabname;                  //SELECT文を変数tabsqlに代入
+            //======================================================================================================
+            $dbhost="ec2-174-129-255-46.compute-1.amazonaws.com";
+            $dbname="dflv6jh505d9tv";
+            $dbuser="qajdgcrnucpdpx";
+            $dbpass="d2144f11fa2bc512c9f5f4d65cef0b1f804fabef86759d786bd6ca430eba6fa8";
+            $dbtype="pgsql";
+            $dsn = "$dbtype:dbname=$dbname host=$dbhost port=5432";
+            try{
+                $pdo=new PDO($dsn,$dbuser,$dbpass);
+                $pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+                $pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES,false);
+                print"接続しました<br>";
+            }catch(PDOException $Exception){
+                die('エラー:'.$Exception->getMessage());
+            }
+            //====================================================================================================== 
             try{
                 $stmh=$pdo->query($tabsql);
                 $stmh->execute();                               //クエリ実行
