@@ -52,7 +52,7 @@
         <option value="12">12</option>
         </select>
         月
-        <select name="day">
+        <select name="oday">
         <option value="" selected>----日を選択してください----</option>
         <option value="1">1</option>
         <option value="2">2</option>
@@ -197,7 +197,7 @@
         /*■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
         名前＋年月日 指定
         ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■*/       
-        if((isset($_POST['search_key']) && $_POST['search_key']!="" && $_POST['year']!="" && $_POST['month']!="" && $_POST['day']!=""){      
+        if((isset($_POST["search_key"]) && $_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]!="" && $_POST["day"]!=""){      
                 
             $search_key=$_POST["search_key"];                   //検索boxに入力された文字列を変数search_keyに代入
             $tabname="b_".$_POST["year"]."_".$_POST["month"];   //テーブル名を作成
@@ -265,7 +265,7 @@
         /*■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
         名前＋年月のみ指定
         ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■*/
-        }elseif((isset($_POST['search_key']) && $_POST['search_key']!="" && $_POST['year']!="" && $_POST['month']!=""){ 
+        }elseif((isset($_POST["search_key"]) && $_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]!="" && $_POST["day"]==""){ 
                 
             $search_key=$_POST["search_key"];                   //検索boxに入力された文字列を変数search_keyに代入
             $tabname="b_".$_POST["year"]."_".$_POST["month"];   //テーブル名を作成
@@ -333,7 +333,7 @@
         /*■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
         名前＋年のみ指定　
         ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■*/
-        /*}elseif((isset($_POST['search_key']) && $_POST['search_key']!="" && $_POST['year']!=""){ 
+        /*}elseif((isset($_POST["search_key"]) && $_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]=="" && $_POST["day"]==""){ 
             $search_key=$_POST["search_key"];                   //検索boxに入力された文字列を変数search_keyに代入
             $KEY1="13";
             $KEY2="";
@@ -403,31 +403,31 @@
         /*■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
         名前+月のみ指定(無効)
         ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■*/
-        }elseif((isset($_POST['search_key']) && $_POST['search_key']!="" && $_POST['month']!=""){       
+        }elseif((isset((isset($_POST["search_key"]) && $_POST["search_key"]!="" && $_POST["year"]=="" && $_POST["month"]!="" && $_POST["day"]==""){       
         print "年を指定してください。<br>";
 
         /*■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
         名前+日のみ指定(無効)
         ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■*/
-        }elseif((isset($_POST['search_key']) && $_POST['search_key']!="" && $_POST['day']!=""){       
+        }elseif((isset($_POST["search_key"]) && $_POST["search_key"]!="" && $_POST["year"]=="" && $_POST["month"]=="" && $_POST["day"]!=""){       
         print "年月を指定してください。<br>";
 
         /*■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
         名前+年日のみ指定(無効)
         ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■*/
-        }elseif((isset($_POST['search_key']) && $_POST['search_key']!="" && $_POST['year']!="" && $_POST['day']!=""){       
+        }elseif((isset($_POST["search_key"]) && $_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]=="" && $_POST["day"]!=""){       
         print "月を指定してください。<br>";
 
         /*■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
         名前+月日のみ指定(無効)
         ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■*/
-        }elseif((isset($_POST['search_key']) && $_POST['search_key']!="" && $_POST['month']!="" && $_POST['day']!=""){       
+        }elseif((isset($_POST["search_key"]) && $_POST["search_key"]!="" && $_POST["year"]=="" && $_POST["month"]!="" && $_POST["day"]!=""){       
         print "年を指定してください。<br>";
  
         /*■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
         名前のみ指定(無効)
         ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■*/
-        }elseif(isset($_POST['search_key']) && $_POST['search_key']!=""){       
+        }elseif((isset($_POST["search_key"]) && $_POST["search_key"]!="" && $_POST["year"]=="" && $_POST["month"]=="" && $_POST["day"]==""){       
         print "年月を指定してください。<br>";
         
 ?>
@@ -447,7 +447,7 @@
         /*■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
         年月日指定
         ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■*/      
-        }elseif($_POST['search_key']=="" && $_POST['year']!="" && $_POST['month']!="" && $_POST['day']!=""){     
+        }elseif($_POST["search_key"]=="" && $_POST["year"]!="" && $_POST["month"]!="" && $_POST["day"]!=""){     
                 
             $search_key=$_POST["search_key"];                   //検索boxに入力された文字列を変数search_keyに代入
             $tabname="b_".$_POST["year"]."_".$_POST["month"];   //テーブル名を作成
@@ -517,7 +517,7 @@
         /*■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
         年月のみ指定
         ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■*/    
-        }elseif($_POST['search_key']=="" && $_POST['year']!="" && $_POST['month']!=""){     
+        }elseif($_POST["search_key"]=="" && $_POST["year"]!="" && $_POST["month"]!="" && $_POST["day"]==""){     
             $search_key=$_POST["search_key"];                   //検索boxに入力された文字列を変数search_keyに代入
             $tabname="b_".$_POST["year"]."_".$_POST["month"];   //テーブル名を作成
             $tabsql="SELECT * FROM ".$tabname;                  //SELECT文を変数tabsqlに代入
@@ -586,7 +586,7 @@
         /*■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
         年のみ指定
         ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■*/
-        /*}elseif($_POST['search_key']=="" && $_POST['year']!=""){ 
+        /*}elseif($_POST["search_key"]=="" && $_POST["year"]!="" && $_POST["month"]=="" && $_POST["day"]==""){ 
             $search_key=$_POST["search_key"];                   //検索boxに入力された文字列を変数search_keyに代入
             $KEY1="33";
             $KEY2="";
@@ -655,25 +655,25 @@
         /*■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
         月のみ指定(無効)
         ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■*/
-        }elseif($_POST['search_key']=="" && $_POST['month']!=""){       
+        }elseif($_POST["search_key"]=="" && $_POST["year"]=="" && $_POST["month"]!="" && $_POST["day"]==""){       
         print "年を指定してください。<br>";
 
         /*■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
         日のみ指定(無効)
         ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■*/
-        }elseif($_POST['search_key']=="" && $_POST['day']!=""){       
+        }elseif($_POST["search_key"]=="" && $_POST["year"]=="" && $_POST["month"]=="" && $_POST["day"]!=""){       
         print "年月を指定してください。<br>";
 
         /*■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
         年日のみ指定(無効)
         ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■*/
-        }elseif($_POST['search_key']=="" && $_POST['year']!="" && $_POST['day']!=""){       
+        }elseif($_POST["search_key"]=="" && $_POST["year"]!="" && $_POST["month"]=="" && $_POST["day"]!=""){       
         print "月を指定してください。<br>";
 
         /*■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
         月日のみ指定(無効)
         ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■*/
-        }elseif($_POST['search_key']=="" && $_POST['month']!="" && $_POST['day']!=""){       
+        }elseif($_POST["search_key"]=="" && $_POST["year"]=="" && $_POST["month"]!="" && $_POST["day"]!=""){       
         print "年を指定してください。<br>";        
 ?>
 
