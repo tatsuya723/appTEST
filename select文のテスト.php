@@ -139,7 +139,7 @@ if($_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]!="" && $DAY
     <?php
     $rs = $stmh->fetchall ();
     foreach ( $rs as $row ) {
-        if(($row['member']==$search_key) && ($row['dd']==$DAY){
+        if(($row['member']==$search_key) && ($row['dd']==$DAY)){
     ?> 
             <tr>
             <td align="center"><?=htmlspecialchars($row['card_id'])?></td>
