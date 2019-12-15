@@ -155,7 +155,7 @@ if($_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]!="" && $ $_
 (2)名前、年、月
 パターン番号＝12
 ■■■■■■■■■■■■■■■■■■■■■*/
-}elseif($_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]!="")
+}elseif($_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]!=""){
     $tabname="b_".$_POST["year"]."_".$_POST["month"];//テーブル名作成
     $tabsel="SELECT * FROM ".$tabname;//セレクト文作成
     $search_key=$_POST["search_key"];
@@ -190,6 +190,9 @@ if($_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]!="" && $ $_
     <?php
         }
     }//foreachの括弧
+}else{
+    print "else実行";
+}
     ?>
 
 
