@@ -10,7 +10,7 @@
         <font size="4" color="#000000">名前で検索:</font><br>
         <input type="text" name="search_key"><br>       
 
-        <font size="4" color="#000000">年月でテーブルを指定する:</font><br>
+        <font size="4" color="#000000">日付で検索:</font><br>
         <select name="year">
         <option value="" selected>----年を選択してください----</option>
         <option value="2019">2019</option>
