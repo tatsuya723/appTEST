@@ -190,7 +190,7 @@ if($_POST['key1']=="11"){
     //CSVファイル出力
 ▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲*/
 
-mb_convert_variables("UTF-8", "SJIS", $csv);
+mb_convert_encoding("UTF-8", "SJIS", $csv);
 //mb_convert_encoding('Shift_JIS' , 'UTF-8' , $csv );
 echo $csv;
 return;
