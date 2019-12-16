@@ -158,7 +158,6 @@ if($_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]!="" && $DAY
         if(($row['member']==$search_key) && ($row['dd']==$DAY)){
     ?> 
             <tr>
-            <td align="center"><?=htmlspecialchars($row['card_id'])?></td>
             <td align="center"><?=htmlspecialchars($row['member'])?></td>
             <td align="center"><?=htmlspecialchars($row['work_time'])?></td>
             <td align="center"><?=htmlspecialchars($row['work'])?></td>
@@ -217,7 +216,6 @@ if($_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]!="" && $DAY
         if($row['member']==$search_key){
     ?> 
             <tr>
-            <td align="center"><?=htmlspecialchars($row['card_id'])?></td>
             <td align="center"><?=htmlspecialchars($row['member'])?></td>
             <td align="center"><?=htmlspecialchars($row['work_time'])?></td>
             <td align="center"><?=htmlspecialchars($row['work'])?></td>
@@ -275,7 +273,6 @@ if($_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]!="" && $DAY
             if($row['member']==$search_key){
     ?> 
                 <tr>
-                <td align="center"><?=htmlspecialchars($row['card_id'])?></td>
                 <td align="center"><?=htmlspecialchars($row['member'])?></td>
                 <td align="center"><?=htmlspecialchars($row['work_time'])?></td>
                 <td align="center"><?=htmlspecialchars($row['work'])?></td>
@@ -335,7 +332,6 @@ if($_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]!="" && $DAY
         if($row['dd']==$DAY){
     ?> 
             <tr>
-            <td align="center"><?=htmlspecialchars($row['card_id'])?></td>
             <td align="center"><?=htmlspecialchars($row['member'])?></td>
             <td align="center"><?=htmlspecialchars($row['work_time'])?></td>
             <td align="center"><?=htmlspecialchars($row['work'])?></td>
@@ -393,7 +389,6 @@ if($_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]!="" && $DAY
     
     ?> 
             <tr>
-            <td align="center"><?=htmlspecialchars($row['card_id'])?></td>
             <td align="center"><?=htmlspecialchars($row['member'])?></td>
             <td align="center"><?=htmlspecialchars($row['work_time'])?></td>
             <td align="center"><?=htmlspecialchars($row['work'])?></td>
@@ -451,7 +446,6 @@ if($_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]!="" && $DAY
             
     ?> 
                 <tr>
-                <td align="center"><?=htmlspecialchars($row['card_id'])?></td>
                 <td align="center"><?=htmlspecialchars($row['member'])?></td>
                 <td align="center"><?=htmlspecialchars($row['work_time'])?></td>
                 <td align="center"><?=htmlspecialchars($row['work'])?></td>
@@ -555,7 +549,6 @@ if($_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]!="" && $DAY
     
     ?> 
             <tr>
-            <td align="center"><?=htmlspecialchars($row['card_id'])?></td>
             <td align="center"><?=htmlspecialchars($row['member'])?></td>
             <td align="center"><?=htmlspecialchars($row['work_time'])?></td>
             <td align="center"><?=htmlspecialchars($row['work'])?></td>
