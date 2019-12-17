@@ -50,13 +50,16 @@ try{
     }
 
 $rs = $stmh->fetchall ();
+$count = 0;
 foreach ( $rs as $row ) {
     if($row['rane'] != "0"){
 ?>
     <h3><?=$row['last_name']?>:　<font color="#ff0000"><?=$row['rane']?>レーン</font></h3>
 <?php
+    $count += 1;
     }
 }
 ?>
+<h4>作業中の人数：<?=$count?>人</h4>
 </body>
 </html>
