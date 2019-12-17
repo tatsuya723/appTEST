@@ -38,7 +38,7 @@ try{
     <a href="カード管理.php"><font size="5">カード管理ページ</font></a><br>-->
     <br><br>
     <hr size="4" noshade>
-    <h2>作業中のレーン</h2>
+    <h2>作業の状況</h2>
     <hr size="4" noshade>
 
 <?php
@@ -51,13 +51,11 @@ try{
 
 $rs = $stmh->fetchall ();
 foreach ( $rs as $row ) {
-    if($row['rane'] == "0"){
-        $row['rane']="－";
-    }
-
+    if($row['rane'] != "0"){
 ?>
     <h3><?=$row['last_name']?>:　<font color="#ff0000"><?=$row['rane']?>レーン</font></h3>
 <?php
+    }
 }
 ?>
 </body>
