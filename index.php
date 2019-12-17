@@ -6,9 +6,28 @@
 </head>
 
 <body bgcolor="#e0ffff" text="#000000">
+
 <?php
-print "テスト<br>";
+/*▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲
+    //DB接続処理
+▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲*/
+$dbhost="ec2-174-129-255-46.compute-1.amazonaws.com";
+$dbname="dflv6jh505d9tv";
+$dbuser="qajdgcrnucpdpx";
+$dbpass="d2144f11fa2bc512c9f5f4d65cef0b1f804fabef86759d786bd6ca430eba6fa8";
+$dbtype="pgsql";
+$dsn = "$dbtype:dbname=$dbname host=$dbhost port=5432";
+try{
+    $pdo=new PDO($dsn,$dbuser,$dbpass);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+    $pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES,false);
+    //print"接続しました<br>";
+}catch(PDOException $Exception){
+    die('エラー:'.$Exception->getMessage());}
+/*▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲
+▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲*/
 ?>
+
     <hr size="9" noshade>
     <h1>#ホーム画面</h1>
     <hr size="4" noshade>
@@ -22,20 +41,24 @@ print "テスト<br>";
     <h2>作業中のレーン</h2>
     <hr size="4" noshade>
 
-    <h2>岡林:　<font color="#ff0000">13レーン</font></h2>
-    <h2>永野:　<font color="#ff0000">11レーン</font></h2>
-    <h2>田中:　<font color="#ff0000">5レーン</font></h2>
-    <h2>中山:　<font color="#ff0000">3レーン</font></h2>
-    <h2>坂本:　<font color="#ff0000">12レーン</font></h2>
-    <h2>加藤:　<font color="#ff0000">10レーン</font></h2>
-    <h2>西川:　<font color="#ff0000">10レーン</font></h2>
-
 <?php
+try{
+    $stmh=$pdo->query("SELECT * FROM sample_member");
+    $stmh->execute();
+    }catch(PDOException $Exception){
+        print "エラー:".$Exception->getMessage();
+    }
 
-$testa="test";
-$testb="TEST".$testa;
-print $testb;
+$rs = $stmh->fetchall ();
+foreach ( $rs as $row ) {
+    if($row['rane'] == "0"){
+        $row['rane']="－";
+    }
 
+?>
+    <h3><?=$row['last_name']?>:　<font color="#ff0000"><?=$row['rane']?>レーン</font></h3>
+<?php
+}
 ?>
 </body>
 </html>
