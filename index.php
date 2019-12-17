@@ -54,7 +54,7 @@ $count = 0;
 foreach ( $rs as $row ) {
     if($row['rane'] != "0"){
 ?>
-    <h3><?=$row['last_name']?>:　<font color="#ff0000"><?=$row['rane']?>レーン</font></h3>
+    <h3><?=$row['last_name']?>:　<font color="#ff0000"><?=$row['rane']?></font>レーン</h3>
 <?php
     $count += 1;
     }
