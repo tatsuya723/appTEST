@@ -1,6 +1,7 @@
 <html>
 <head>
     <title>カード登録情報編集</title>
+    <meta charset="utf-8">
 </head>
 <body>
 <hr size="1" noshade>
