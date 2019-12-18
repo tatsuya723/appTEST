@@ -4,9 +4,9 @@
     <meta charset="utf-8">
 </head>
 <body>
-<hr size="1" noshade>
-<h3>データ更新画面</h3>
-<hr size="1" noshade>
+<hr size="9" noshade>
+<h1>#データ更新ページ</h1>
+<hr size="4" noshade>
 [<a href="カード管理.php">戻る</a>]
 <br>
 

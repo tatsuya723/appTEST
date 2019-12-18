@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <link rel="stylesheet" type="text/css" href="tes1.css">
     </head>
-    <body bgcolor="#e0ffff" text="#000000">
+    <body text="#000000">
     <hr size="9" noshade>
     <h1>#カード管理ページ</h1>
     <hr size="4" noshade>
