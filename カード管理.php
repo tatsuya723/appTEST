@@ -1,14 +1,14 @@
 <html>
     <head>
-        <title>カード情報管理</title>
+        <title>カード管理ページ</title>
         <meta charset="utf-8">
         <link rel="stylesheet" type="text/css" href="tes1.css">
     </head>
     <body bgcolor="#e0ffff" text="#000000">
+    <hr size="9" noshade>
+    <h1>#カード管理ページ</h1>
+    <hr size="4" noshade>
     <a href="index.php">ホームページへ</a><br>
-    <hr size="2" noshade>
-    <h2>カード情報管理</h2>
-    <hr size="2" noshade>
     <!--[<a href="form.html">新規登録</a>]<br>
     
     <form name="form1" method="post" action="list.php">
