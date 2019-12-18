@@ -1,11 +1,13 @@
-<html> 
+<html>
 <head>
-    <title>ホームページ</title>
-    <meta charset=utf-8>
-    <link rel="stylesheet" type="text/css" href="tes1.css">
+    <title>カード登録情報編集</title>
 </head>
-
-<body bgcolor="#e0ffff" text="#000000">
+<body>
+<hr size="1" noshade>
+<h3>データ更新画面</h3>
+<hr size="1" noshade>
+[<a href="カード管理.php">戻る</a>]
+<br>
 
 <?php
 /*▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲
@@ -26,39 +28,44 @@ try{
     die('エラー:'.$Exception->getMessage());}
 /*▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲
 ▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲*/
-?>
 
-    <hr size="9" noshade>
-    <h1>#ホーム画面</h1>
-    <hr size="4" noshade>
-    <br>
-    <font >
-    <a href="作業記録.php">作業記録管理ページ</a><br>
-    <a href="カード管理.php"><font size="5">カード管理ページ</font></a><br>
-    <br><br>
-    <hr size="4" noshade>
-    <h2>作業の状況</h2>
-    <hr size="4" noshade>
+if(isset($_GET['id'])){
 
-<?php
+
+$tabsel = "SELECT * FROM sample_member";
 try{
-    $stmh=$pdo->query("SELECT * FROM sample_member");
+    $stmh=$pdo->query($tabsel);
     $stmh->execute();
-    }catch(PDOException $Exception){
-        print "エラー:".$Exception->getMessage();
-    }
+}catch(PDOException $Exception){
+    print "エラー:".$Exception->getMessage();
+}
+
 
 $rs = $stmh->fetchall ();
-$count = 0;
 foreach ( $rs as $row ) {
-    if($row['rane'] != "0"){
-?>
-    <h3><?=$row['last_name']?>:　<font color="#ff0000"><?=$row['rane']?></font>レーン</h3>
-<?php
-    $count += 1;
+    if($row['card_id']==$_GET['id']){
+    ?>
+    <form name="form1" method="post" action="カード管理.php">
+    カードID:<?=htmlspecialchars($GET['id'])?><br>
+    姓   ：     <input type="text" name="last_name" value="<?=htmlspecialchars($row['last_name'])?>"><br>
+    名   ：     <input type="text" name="first_name" value="<?=htmlspecialchars($row['first_name'])?>"><br>
+    作業内容：   <input type="text" name="work" value="<?=htmlspecialchars($row['work'])?>"><br>
+                <input type="hidden" name="caad_id" value="<?=$row['card_id']?>">
+                <input type="hidden" name="action" value="update">
+                <input type="submit" value="更新">
+    </form> 
+    
+    <?php    
     }
+}//foreachの括弧
+
+?>
+
+  
+
+<?php
 }
 ?>
-<h4>作業中の人数：<?=$count?>人</h4>
+
 </body>
 </html>
