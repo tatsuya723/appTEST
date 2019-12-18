@@ -46,8 +46,15 @@ $rs = $stmh->fetchall ();
 foreach ( $rs as $row ) {
     if($row['card_id']==$_GET['id']){
     ?>
+    <table width="1100" border="1" cellspacing="2" cellpadding="18">
+        <tbody>
+        <tr><th>カードID</th></tr>
+        <tr>
+        <td align="center"><?=htmlspecialchars($row['card_id'])?></td>
+        </tr>
+        </tbody>
+    </table>
     <form name="form1" method="post" action="カード管理.php">
-    <p>カードID:<?=htmlspecialchars($GET['id'])?></p><br>
     姓   ：     <input type="text" name="last_name" value="<?=htmlspecialchars($row['last_name'])?>"><br>
     名   ：     <input type="text" name="first_name" value="<?=htmlspecialchars($row['first_name'])?>"><br>
     作業内容：   <input type="text" name="work" value="<?=htmlspecialchars($row['work'])?>"><br>
