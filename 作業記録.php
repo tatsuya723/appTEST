@@ -5,7 +5,7 @@
 </head>
 <body>
 
-<form name="form1" method="post" action="select文のテスト.php">
+<form name="form1" method="post" action="作業記録.php">
        
         <font size="4" color="#000000">名前で検索:</font><br>
         <input type="text" name="search_key"><br>       
