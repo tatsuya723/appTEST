@@ -36,13 +36,14 @@
     }
     /*▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲
     ▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲*/
-    
+    ?>
+    <?php
     //更新処理
     if(isset($_POST['action']) && $_POST['action']=='update'){
         try{
             $stmh=$pdo->query("UPDATE sample_member SET work = '". $_POST['work'] . "' last_name = '" . $_POST['last_name'] . "' first_name = '" . $_POST['first_name'] . "' WHERE card_id = '" . $_POST['card_id'] . "'");
             $stmh->execute();
-            print "データを更新しました。"
+            print "データを更新しました。";
         }catch(PDOException $Exception){
             print "エラー:".$Exception->getMessage();
         } 
