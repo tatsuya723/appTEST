@@ -32,13 +32,11 @@
         $pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES,false);
         //print"接続しました<br>";
     }catch(PDOException $Exception){
-        die('エラー:'.$Exception->getMessage());}
+        die('エラー:'.$Exception->getMessage());
+    }
     /*▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲
     ▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲*/
-    ?>
-
-
-    <?php
+    
     //更新処理
     if(isset($_POST['action']) && $_POST['action']=='update'){
         try{
@@ -50,9 +48,7 @@
         } 
 
 
-    }else{
-
-        //全データを表示する。
+    }else{//全データを表示する。
         $tabsel = "SELECT * FROM sample_member";
         try{
             $stmh=$pdo->query($tabsel);
@@ -64,7 +60,7 @@
                 
         <table width="1100" border="1" cellspacing="2" cellpadding="18">
         <tbody>
-        <tr><th>カードID</th><th>名前</th><th>作業内容</th></tr>
+        <tr><th>カードID</th><th>姓</th><th>名</th><th>作業内容</th></tr>
         
         <?php
         $rs = $stmh->fetchall ();
@@ -72,7 +68,8 @@
         ?> 
             <tr>
             <td align="center"><?=htmlspecialchars($row['card_id'])?></td>
-            <td align="center"><?=htmlspecialchars($row['last_name']).htmlspecialchars($row['first_name'])?></td>
+            <td align="center"><?=htmlspecialchars($row['last_name'])?></td>
+            <td align="center"><?=htmlspecialchars($row['first_name'])?></td>
             <td align="center"><?=htmlspecialchars($row['work'])?></td>
             <td align="center"><a href=updateform.php?id=<?=htmlspecialchars($row['card_id'])?>>編集</td>
             </tr>

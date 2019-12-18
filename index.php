@@ -33,7 +33,7 @@ try{
     <hr size="4" noshade>
     <br>
     <font >
-    <a href="作業記録.php">作業記録管理ページ</a><br>
+    <a href="作業記録.php"><font size="5">作業記録管理ページ</font></a><br>
     <a href="カード管理.php"><font size="5">カード管理ページ</font></a><br>
     <br><br>
     <hr size="4" noshade>
