@@ -536,8 +536,8 @@ if($_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]!="" && $DAY
     <form name="formcsv" method="post" action="記録CSV処理.php">
         <input type="hidden" name="key1" value="<?=$KEY1?>">
         <input type="hidden" name="key21" value="<?=$KEY21?>">
-        <input type="hidden" name="key31" value="<?=$KEY31?>">
-        <input type="hidden" name="key32" value="<?=$KEY32?>">
+        <input type="hidden" name="key31" value="<?=$Y?>">
+        <input type="hidden" name="key32" value="<?=$M?>">
         <input type="hidden" name="key33" value="<?=$KEY33?>">
         <input type="submit" value="CSVファイルを保存">
     </form>
