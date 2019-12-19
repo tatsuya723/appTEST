@@ -189,7 +189,7 @@ if($_POST['key1']=="11"){
 /*▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲
     //CSVファイル出力
 ▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲*/
-for($i=0;$i<count($rs);$i++){
+/*for($i=0;$i<count($rs);$i++){
 	mb_convert_variables("UTF-8", "SJIS", $csv[$i]['card_id']);
 	mb_convert_variables("UTF-8", "SJIS", $csv[$i]['member']);
 	mb_convert_variables("UTF-8", "SJIS", $csv[$i]['work_time']);
@@ -197,8 +197,8 @@ for($i=0;$i<count($rs);$i++){
 	mb_convert_variables("UTF-8", "SJIS", $csv[$i]['rane']);
 	mb_convert_variables("UTF-8", "SJIS", $csv[$i]['d_ymd']);
 	mb_convert_variables("UTF-8", "SJIS", $csv[$i]['dt']);
-}
-//mb_convert_encoding('Shift_JIS' , 'UTF-8' , $csv );
+*/}
+mb_convert_encoding('ANSI' , 'UTF-8' , $csv );
 echo $csv;
 return;
 
