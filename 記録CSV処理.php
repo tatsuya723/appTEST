@@ -1,7 +1,7 @@
 <?php
 header("Content-Type: application/octet-stream");
 header("Content-Disposition: attachment; filename=GRAYCODE.csv");
-header("Content-Transfer-Encoding: binary");
+//header("Content-Transfer-Encoding: binary");
 
 //require_once("DB接続処理.php");
 //$pdo = db_connect();
