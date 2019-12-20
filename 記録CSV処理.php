@@ -198,7 +198,7 @@ if($_POST['key1']=="11"){
 	mb_convert_variables("UTF-8", "SJIS", $csv[$i]['d_ymd']);
 	mb_convert_variables("UTF-8", "SJIS", $csv[$i]['dt']);
 */
-mb_convert_encoding("UTF-8","Shift_JIS",$csv);
+mb_convert_encoding("UTF-8","SJIS",$csv);
 echo $csv;
 return;
 
