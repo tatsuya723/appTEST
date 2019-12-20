@@ -100,7 +100,9 @@ try{
     $pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES,false);
     //print"接続しました<br>";
 }catch(PDOException $Exception){
-    die('エラー:'.$Exception->getMessage());}
+    die('エラー:'.$Exception->getMessage());
+    print "データベース接続失敗<br>":
+}
 /*▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲
 ▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲*/
 ?>
@@ -134,7 +136,7 @@ if($_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]!="" && $DAY
     $stmh=$pdo->query($tabsel);
     $stmh->execute();
     }catch(PDOException $Exception){
-        print "エラー:".$Exception->getMessage();
+        print "エラー:"."データテーブルが見つかりません。<br>";
     }
     ?>
     <font size="3" color="#000000">検索ワード：</font>
@@ -195,7 +197,7 @@ if($_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]!="" && $DAY
     $stmh=$pdo->query($tabsel);
     $stmh->execute();
     }catch(PDOException $Exception){
-        print "エラー:".$Exception->getMessage();
+        print "エラー:"."データテーブルが見つかりません。<br>";
     }
     ?>
     <font size="3" color="#000000">検索ワード：</font>
@@ -275,7 +277,7 @@ if($_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]!="" && $DAY
             $stmh=$pdo->query($tabsel);
             $stmh->execute();
         }catch(PDOException $Exception){
-            print "エラー:".$Exception->getMessage();
+            print "エラー:"."データテーブルが見つかりません。<br>";
         }
  
         $rs = $stmh->fetchall ();
@@ -319,7 +321,7 @@ if($_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]!="" && $DAY
     $stmh=$pdo->query($tabsel);
     $stmh->execute();
     }catch(PDOException $Exception){
-        print "エラー:".$Exception->getMessage();
+        print "エラー:"."データテーブルが見つかりません。<br>";
     }
     ?>
     <font size="3" color="#000000">検索ワード：</font>
@@ -380,7 +382,7 @@ if($_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]!="" && $DAY
     $stmh=$pdo->query($tabsel);
     $stmh->execute();
     }catch(PDOException $Exception){
-        print "エラー:".$Exception->getMessage();
+        print "エラー:"."データテーブルが見つかりません。<br>";
     }
     ?>
     <font size="3" color="#000000">検索ワード：</font>
@@ -460,7 +462,7 @@ if($_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]!="" && $DAY
             $stmh=$pdo->query($tabsel);
             $stmh->execute();
         }catch(PDOException $Exception){
-            print "エラー:".$Exception->getMessage();
+            print "エラー:"."データテーブルが見つかりません。<br>";
         }
  
         $rs = $stmh->fetchall ();
@@ -506,7 +508,7 @@ if($_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]!="" && $DAY
             $stmh=$pdo->query($tabsel);
             $stmh->execute();
         }catch(PDOException $Exception){
-            print "エラー:".$Exception->getMessage();
+        print "エラー:"."データテーブルが見つかりません。<br>";
         }
  
         $rs = $stmh->fetchall ();
@@ -550,7 +552,7 @@ if($_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]!="" && $DAY
     $stmh=$pdo->query($tabsel);
     $stmh->execute();
     }catch(PDOException $Exception){
-        print "エラー:".$Exception->getMessage();
+        print "エラー:"."データテーブルが見つかりません。<br>";       
     }
     ?>
     
