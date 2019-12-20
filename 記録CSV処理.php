@@ -57,6 +57,8 @@ if($_POST['key1']=="11"){
 		$csv .= "".",". $rs[$i]['card_id']  .",".  $rs[$i]['member'] .",".  $rs[$i]['work_time'] .",". $rs[$i]['work'] .",". $rs[$i]['rane'].",". $rs[$i]['d_ymd'].",".$rs[$i]['dt']. "\n";	
 		}
 	}
+	mb_convert_encoding("SJIS","UTF-8",$csv);
+	echo $csv;
 
 //ーーーーーーーーーーーーーーーーーーーーーーーーーーーーー指定：[名前、年、月]ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 }elseif($_POST['key1']=="12"){
@@ -77,6 +79,8 @@ if($_POST['key1']=="11"){
 			$csv .= "".",". $rs[$i]['card_id']  .",".  $rs[$i]['member'] .",".  $rs[$i]['work_time'] .",". $rs[$i]['work'] .",". $rs[$i]['rane'].",". $rs[$i]['d_ymd'].",".$rs[$i]['dt']. "\n";	
 		}
 	}
+	mb_convert_encoding("SJIS","UTF-8",$csv);
+	echo $csv;
 
 
 //ーーーーーーーーーーーーーーーーーーーーーーーーーーーーー指定:[名前、年]ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
@@ -99,6 +103,8 @@ if($_POST['key1']=="11"){
 			$csv .= "".",". $rs[$i]['card_id']  .",".  $rs[$i]['member'] .",".  $rs[$i]['work_time'] .",". $rs[$i]['work'] .",". $rs[$i]['rane'].",". $rs[$i]['d_ymd'].",".$rs[$i]['dt']. "\n";	
 		}
 	}
+	mb_convert_encoding("SJIS","UTF-8",$csv);
+	echo $csv;
 
 
 //ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー指定：[年、月、日]ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
@@ -120,6 +126,8 @@ if($_POST['key1']=="11"){
 			$csv .= "".",". $rs[$i]['card_id']  .",".  $rs[$i]['member'] .",".  $rs[$i]['work_time'] .",". $rs[$i]['work'] .",". $rs[$i]['rane'].",". $rs[$i]['d_ymd'].",".$rs[$i]['dt']. "\n";	
 		}
 	}
+	mb_convert_encoding("SJIS","UTF-8",$csv);
+	echo $csv;
 
 
 
@@ -140,6 +148,8 @@ if($_POST['key1']=="11"){
 	for($i=0;$i<count($rs);$i++){
 		$csv .= "".",". $rs[$i]['card_id']  .",".  $rs[$i]['member'] .",".  $rs[$i]['work_time'] .",". $rs[$i]['work'] .",". $rs[$i]['rane'].",". $rs[$i]['d_ymd'].",".$rs[$i]['dt']. "\n";	
 	}
+	mb_convert_encoding("SJIS","UTF-8",$csv);
+	echo $csv;
 
 	
 //ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー年のみ指定ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
@@ -160,6 +170,8 @@ if($_POST['key1']=="11"){
 	for($i=0;$i<count($rs);$i++){
 			$csv .= "".",". $rs[$i]['card_id']  .",".  $rs[$i]['member'] .",".  $rs[$i]['work_time'] .",". $rs[$i]['work'] .",". $rs[$i]['rane'].",". $rs[$i]['d_ymd'].",".$rs[$i]['dt']. "\n";	
 	}
+	mb_convert_encoding("SJIS","UTF-8",$csv);
+	echo $csv;	
 
 
 //ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー指定なしーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
@@ -178,7 +190,10 @@ if($_POST['key1']=="11"){
 	
 	for($i=0;$i<count($rs);$i++){
 		$csv .= "".",". $rs[$i]['card_id']  .",".  $rs[$i]['member'] .",".  $rs[$i]['work_time'] .",". $rs[$i]['work'] .",". $rs[$i]['rane'].",". $rs[$i]['d_ymd'].",".$rs[$i]['dt']. "\n";	
-	}	
+	}
+	
+	mb_convert_encoding("SJIS","UTF-8",$csv);
+	echo $csv;
 
 }
 	
@@ -198,8 +213,8 @@ if($_POST['key1']=="11"){
 	mb_convert_variables("UTF-8", "SJIS", $csv[$i]['d_ymd']);
 	mb_convert_variables("UTF-8", "SJIS", $csv[$i]['dt']);
 */
-mb_convert_encoding("SJIS","UTF-8",$csv);
-echo $csv;
+//mb_convert_encoding("SJIS","UTF-8",$csv);
+//echo $csv;
 return;
 
 ?>
