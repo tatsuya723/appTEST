@@ -172,6 +172,9 @@ if($_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]!="" && $DAY
     <?php
         }
     }//foreachの括弧
+    if(count($rs) == 0){
+        print "検索結果がありません。";
+    }
 
 /*■■■■■■■■■■■■■■■■■■■
 (2)名前、年、月
@@ -230,6 +233,9 @@ if($_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]!="" && $DAY
     <?php
         }
     }//foreachの括弧
+    if(count($rs) == 0){
+        print "検索結果がありません。";
+    }
 /*■■■■■■■■■■■■■■■■■■■
 (3)名前、年
 パターン番号＝13
@@ -240,6 +246,7 @@ if($_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]!="" && $DAY
     $KEY31=$_POST["year"];
     $KEY32=$_POST["month"];
     $KEY33=$DAY;
+    $GYOU = 0;
     ?>
     <font size="3" color="#000000">検索ワード：</font>
     <font size="4" color="#ff0000"><?=$_POST["search_key"]?></font><br>
@@ -274,6 +281,7 @@ if($_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]!="" && $DAY
         $rs = $stmh->fetchall ();
         foreach ( $rs as $row ) {
             if($row['member']==$search_key){
+                $GYOU += 1;
     ?> 
                 <tr>
                 <td align="center"><?=htmlspecialchars($row['member'])?></td>
@@ -288,6 +296,9 @@ if($_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]!="" && $DAY
             }
         }//foreachの括弧
     
+    }
+    if($GYOU == 0){
+        print "検索結果がありません。";
     }
 /*■■■■■■■■■■■■■■■■■■■
 (4)年、月、日
@@ -346,6 +357,10 @@ if($_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]!="" && $DAY
     <?php
         }
     }//foreachの括弧
+    if(count($rs) == 0){
+        print "検索結果がありません。";
+    }
+
 /*■■■■■■■■■■■■■■■■■■■
 (5)年、月
 パターン番号＝22
@@ -403,6 +418,9 @@ if($_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]!="" && $DAY
     <?php
         
     }//foreachの括弧
+    if(count($rs) == 0){
+        print "検索結果がありません。";
+    }
 /*■■■■■■■■■■■■■■■■■■■
 (6)年
 パターン番号＝23
@@ -413,6 +431,7 @@ if($_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]!="" && $DAY
     $KEY31=$_POST["year"];
     $KEY32=$_POST["month"];
     $KEY33=$DAY;
+    $GYOU = 0;
     ?>
     <font size="3" color="#000000">検索ワード：</font>
     <font size="4" color="#ff0000">なし</font><br>
@@ -446,21 +465,25 @@ if($_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]!="" && $DAY
  
         $rs = $stmh->fetchall ();
         foreach ( $rs as $row ) {
-            
+            $GYOU += 1;
     ?> 
-                <tr>
-                <td align="center"><?=htmlspecialchars($row['member'])?></td>
-                <td align="center"><?=htmlspecialchars($row['work_time'])?></td>
-                <td align="center"><?=htmlspecialchars($row['work'])?></td>
-                <td align="center"><?=htmlspecialchars($row['rane'])?></td>
-                <td align="center"><?=htmlspecialchars($row['d_ymd'])?></td>
-                <td align="center"><?=htmlspecialchars($row['dt'])?></td>
-                </tr>
+            <tr>
+            <td align="center"><?=htmlspecialchars($row['member'])?></td>
+            <td align="center"><?=htmlspecialchars($row['work_time'])?></td>
+            <td align="center"><?=htmlspecialchars($row['work'])?></td>
+            <td align="center"><?=htmlspecialchars($row['rane'])?></td>
+            <td align="center"><?=htmlspecialchars($row['d_ymd'])?></td>
+            <td align="center"><?=htmlspecialchars($row['dt'])?></td>
+            </tr>
 
     <?php
             
         }//foreachの括弧
     
+    }
+
+    if($GYOU == 0){
+        print "検索結果がありません。";
     }
 /*■■■■■■■■■■■■■■■■■■■
 (7)名前(無効)
@@ -563,6 +586,9 @@ if($_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]!="" && $DAY
     <?php
         
     }//foreachの括弧
+    if(count($rs) == 0){
+        print "検索結果がありません。";
+    }
 }
 ?>
 
