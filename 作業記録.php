@@ -277,7 +277,7 @@ if($_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]!="" && $DAY
             $stmh=$pdo->query($tabsel);
             $stmh->execute();
         }catch(PDOException $Exception){
-            print "検索結果がありません。";
+            print "エラー:"."データテーブルが見つかりません。<br>";
         }
  
         $rs = $stmh->fetchall ();
