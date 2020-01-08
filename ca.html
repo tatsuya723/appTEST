@@ -11,28 +11,22 @@
     <canvas id="myChart"></canvas>
 
     <script>
-    var data = [
-    　　{
-    　　　　value: 300,
-    　　　　color:"#F7464A",
-    　　　　highlight: "#FF5A5E",
-    　　　　label: "Red"
-    　　},
-    　　{
-    　　　　value: 50,
-    　　　　color: "#46BFBD",
-    　　　　highlight: "#5AD3D1",
-    　　　　label: "Green"
-    　　},
-    　　{
-    　　　　value: 100,
-    　　　　color: "#FDB45C",
-    　　　　highlight: "#FFC870",
-    　　　　label: "Yellow"
-    　　}
-    ];
-
-    var myChart = new Chart(document.getElementById("myChart").getContext("2d")).Doughnut(data);
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
+      datasets: [{
+          label: 'apples',
+          data: [12, 19, 3, 17, 6, 3, 7],
+          backgroundColor: "rgba(153,255,51,0.4)"
+        }, {
+          label: 'oranges',
+          data: [2, 29, 5, 5, 2, 3, 10],
+          backgroundColor: "rgba(255,153,0,0.4)"
+        }]
+      }
+    });
     </script>
 
 </body>
