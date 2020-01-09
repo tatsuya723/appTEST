@@ -113,6 +113,7 @@ try{
 ?>
 
 <?php
+$i=0;
 
 if($_POST["year"]!="" && $_POST["month"]!="" ){
 
@@ -157,12 +158,11 @@ if($_POST["year"]!="" && $_POST["month"]!="" ){
         }
         
         $eff = ($eff_sum/$eff_count);           //効率の平均値計算
-        $graph['member'] = $row1['member'];     //名前保存
-        $graph['work_time'] = $worktime_sum;    //作業時間の合計を保存
-        $graph['eff'] = $eff;                   //効率の平均値を保存
+        $graph[$i]["member"=>$row1['member'] , "work_time"=>$worktime_sum , "eff"=>$eff];     //配列に保存
+        $i++;
 
         //これで1ループの処理は終了。次の作業員の処理へ。
-
+-
     }
 
 //JavaScriptへphp変数をJSONで渡すための処理
