@@ -292,6 +292,25 @@ if($_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]!="" && $DAY
                 <td align="center"><?=htmlspecialchars($row['rane'])?></td>
                 <td align="center"><?=htmlspecialchars($row['d_ymd'])?></td>
                 <td align="center"><?=htmlspecialchars($row['dt'])?></td>
+                <td align="center"><?=htmlspecialchars($row['bx'])?></td>
+                <?php
+                if($row['eff']>0.06){?>
+                    <td align="center" bgcolor="#7cfc00"><?=htmlspecialchars($row['eff'])?></td>
+                <?php
+                }elseif($row['eff']>0.0333){
+                ?>
+                    <td align="center" bgcolor="#00bfff"><?=htmlspecialchars($row['eff'])?></td>
+                <?php
+                }elseif($row['eff']>0.0166){
+                ?>
+                    <td align="center" bgcolor="#ffd700"><?=htmlspecialchars($row['eff'])?></td>
+                <?php
+                }else{
+                ?>
+                    <td align="center" bgcolor="#ff4500"><?=htmlspecialchars($row['eff'])?></td>
+                <?php
+                }
+                ?>
                 </tr>
 
     <?php

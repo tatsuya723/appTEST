@@ -68,11 +68,11 @@
         foreach ( $rs as $row ) {  
         ?> 
             <tr>
-            <td align="center"><?=htmlspecialchars($row['card_id'])?></td>
-            <td align="center"><?=htmlspecialchars($row['last_name'])?></td>
-            <td align="center"><?=htmlspecialchars($row['first_name'])?></td>
-            <td align="center"><?=htmlspecialchars($row['work'])?></td>
-            <td align="center"><a href="updateform.php?id=<?=htmlspecialchars($row['card_id'])?>">編集</td>
+            <td align="center" bgcolor="#ffd700"><?=htmlspecialchars($row['card_id'])?></td>
+            <td align="center" bgcolor="#ffd700"><?=htmlspecialchars($row['last_name'])?></td>
+            <td align="center" bgcolor="#ffd700"><?=htmlspecialchars($row['first_name'])?></td>
+            <td align="center" bgcolor="#ffd700"><?=htmlspecialchars($row['work'])?></td>
+            <td align="center" bgcolor="#ffd700"><a href="updateform.php?id=<?=htmlspecialchars($row['card_id'])?>">編集</td>
             </tr>
         <?php
         }//foreachの括弧
