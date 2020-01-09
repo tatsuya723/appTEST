@@ -169,8 +169,30 @@ if($_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]!="" && $DAY
             <td align="center"><?=htmlspecialchars($row['rane'])?></td>
             <td align="center"><?=htmlspecialchars($row['d_ymd'])?></td>
             <td align="center"><?=htmlspecialchars($row['dt'])?></td>
+            <td align="center"><?=htmlspecialchars($row['bx'])?></td>
+            <?php
+            if($row['eff']>0.06 && $row['work']=="収穫"){?>
+                <td align="center" bgcolor="#7cfc00"><b><?=htmlspecialchars($row['eff'])?></b></td>
+            <?php
+            }elseif($row['eff']>0.0333 && $row['work']=="収穫"){
+            ?>
+                <td align="center" bgcolor="#00bfff"><b><?=htmlspecialchars($row['eff'])?></b></td>
+            <?php
+            }elseif($row['eff']>0.0166 && $row['work']=="収穫"){
+            ?>
+                <td align="center" bgcolor="#ffd700"><b><?=htmlspecialchars($row['eff'])?></b></td>
+            <?php
+            }elseif($row['eff']<0.0165 && $row['work']=="収穫"){
+            ?>
+                <td align="center" bgcolor="#ff4500"><b><?=htmlspecialchars($row['eff'])?></b></td>
+            <?php
+            }else{
+            ?>
+                <td align="center"><?=htmlspecialchars($row['eff'])?></td>
+            <?php
+            }
+            ?>
             </tr>
-
     <?php
         }
     }//foreachの括弧
@@ -230,8 +252,30 @@ if($_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]!="" && $DAY
             <td align="center"><?=htmlspecialchars($row['rane'])?></td>
             <td align="center"><?=htmlspecialchars($row['d_ymd'])?></td>
             <td align="center"><?=htmlspecialchars($row['dt'])?></td>
+            <td align="center"><?=htmlspecialchars($row['bx'])?></td>
+            <?php
+            if($row['eff']>0.06 && $row['work']=="収穫"){?>
+                <td align="center" bgcolor="#7cfc00"><b><?=htmlspecialchars($row['eff'])?></b></td>
+            <?php
+            }elseif($row['eff']>0.0333 && $row['work']=="収穫"){
+            ?>
+                <td align="center" bgcolor="#00bfff"><b><?=htmlspecialchars($row['eff'])?></b></td>
+            <?php
+            }elseif($row['eff']>0.0166 && $row['work']=="収穫"){
+            ?>
+                <td align="center" bgcolor="#ffd700"><b><?=htmlspecialchars($row['eff'])?></b></td>
+            <?php
+            }elseif($row['eff']<0.0165 && $row['work']=="収穫"){
+            ?>
+                <td align="center" bgcolor="#ff4500"><b><?=htmlspecialchars($row['eff'])?></b></td>
+            <?php
+            }else{
+            ?>
+                <td align="center"><?=htmlspecialchars($row['eff'])?></td>
+            <?php
+            }
+            ?>
             </tr>
-
     <?php
         }
     }//foreachの括弧
@@ -294,20 +338,24 @@ if($_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]!="" && $DAY
                 <td align="center"><?=htmlspecialchars($row['dt'])?></td>
                 <td align="center"><?=htmlspecialchars($row['bx'])?></td>
                 <?php
-                if($row['eff']>0.06){?>
-                    <td align="center" bgcolor="#7cfc00"><?=htmlspecialchars($row['eff'])?></td>
+                if($row['eff']>0.06 && $row['work']=="収穫"){?>
+                    <td align="center" bgcolor="#7cfc00"><b><?=htmlspecialchars($row['eff'])?></b></td>
                 <?php
-                }elseif($row['eff']>0.0333){
+                }elseif($row['eff']>0.0333 && $row['work']=="収穫"){
                 ?>
-                    <td align="center" bgcolor="#00bfff"><?=htmlspecialchars($row['eff'])?></td>
+                    <td align="center" bgcolor="#00bfff"><b><?=htmlspecialchars($row['eff'])?></b></td>
                 <?php
-                }elseif($row['eff']>0.0166){
+                }elseif($row['eff']>0.0166 && $row['work']=="収穫"){
                 ?>
-                    <td align="center" bgcolor="#ffd700"><?=htmlspecialchars($row['eff'])?></td>
+                    <td align="center" bgcolor="#ffd700"><b><?=htmlspecialchars($row['eff'])?></b></td>
+                <?php
+                }elseif($row['eff']<0.0165 && $row['work']=="収穫"){
+                ?>
+                    <td align="center" bgcolor="#ff4500"><b><?=htmlspecialchars($row['eff'])?></b></td>
                 <?php
                 }else{
                 ?>
-                    <td align="center" bgcolor="#ff4500"><?=htmlspecialchars($row['eff'])?></td>
+                    <td align="center"><?=htmlspecialchars($row['eff'])?></td>
                 <?php
                 }
                 ?>
@@ -366,15 +414,37 @@ if($_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]!="" && $DAY
     foreach ( $rs as $row ) {
         if($row['dd']==$DAY){
     ?> 
-            <tr>
-            <td align="center"><?=htmlspecialchars($row['member'])?></td>
-            <td align="center"><?=htmlspecialchars($row['work_time'])?></td>
-            <td align="center"><?=htmlspecialchars($row['work'])?></td>
-            <td align="center"><?=htmlspecialchars($row['rane'])?></td>
-            <td align="center"><?=htmlspecialchars($row['d_ymd'])?></td>
-            <td align="center"><?=htmlspecialchars($row['dt'])?></td>
-            </tr>
-
+                <tr>
+                <td align="center"><?=htmlspecialchars($row['member'])?></td>
+                <td align="center"><?=htmlspecialchars($row['work_time'])?></td>
+                <td align="center"><?=htmlspecialchars($row['work'])?></td>
+                <td align="center"><?=htmlspecialchars($row['rane'])?></td>
+                <td align="center"><?=htmlspecialchars($row['d_ymd'])?></td>
+                <td align="center"><?=htmlspecialchars($row['dt'])?></td>
+                <td align="center"><?=htmlspecialchars($row['bx'])?></td>
+                <?php
+                if($row['eff']>0.06 && $row['work']=="収穫"){?>
+                    <td align="center" bgcolor="#7cfc00"><b><?=htmlspecialchars($row['eff'])?></b></td>
+                <?php
+                }elseif($row['eff']>0.0333 && $row['work']=="収穫"){
+                ?>
+                    <td align="center" bgcolor="#00bfff"><b><?=htmlspecialchars($row['eff'])?></b></td>
+                <?php
+                }elseif($row['eff']>0.0166 && $row['work']=="収穫"){
+                ?>
+                    <td align="center" bgcolor="#ffd700"><b><?=htmlspecialchars($row['eff'])?></b></td>
+                <?php
+                }elseif($row['eff']<0.0165 && $row['work']=="収穫"){
+                ?>
+                    <td align="center" bgcolor="#ff4500"><b><?=htmlspecialchars($row['eff'])?></b></td>
+                <?php
+                }else{
+                ?>
+                    <td align="center"><?=htmlspecialchars($row['eff'])?></td>
+                <?php
+                }
+                ?>
+                </tr>
     <?php
         }
     }//foreachの括弧
@@ -427,15 +497,37 @@ if($_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]!="" && $DAY
     foreach ( $rs as $row ) {
     
     ?> 
-            <tr>
-            <td align="center"><?=htmlspecialchars($row['member'])?></td>
-            <td align="center"><?=htmlspecialchars($row['work_time'])?></td>
-            <td align="center"><?=htmlspecialchars($row['work'])?></td>
-            <td align="center"><?=htmlspecialchars($row['rane'])?></td>
-            <td align="center"><?=htmlspecialchars($row['d_ymd'])?></td>
-            <td align="center"><?=htmlspecialchars($row['dt'])?></td>
-            </tr>
-
+        <tr>
+        <td align="center"><?=htmlspecialchars($row['member'])?></td>
+        <td align="center"><?=htmlspecialchars($row['work_time'])?></td>
+        <td align="center"><?=htmlspecialchars($row['work'])?></td>
+        <td align="center"><?=htmlspecialchars($row['rane'])?></td>
+        <td align="center"><?=htmlspecialchars($row['d_ymd'])?></td>
+        <td align="center"><?=htmlspecialchars($row['dt'])?></td>
+        <td align="center"><?=htmlspecialchars($row['bx'])?></td>
+        <?php
+        if($row['eff']>0.06 && $row['work']=="収穫"){?>
+            <td align="center" bgcolor="#7cfc00"><b><?=htmlspecialchars($row['eff'])?></b></td>
+        <?php
+        }elseif($row['eff']>0.0333 && $row['work']=="収穫"){
+        ?>
+            <td align="center" bgcolor="#00bfff"><b><?=htmlspecialchars($row['eff'])?></b></td>
+        <?php
+        }elseif($row['eff']>0.0166 && $row['work']=="収穫"){
+        ?>
+            <td align="center" bgcolor="#ffd700"><b><?=htmlspecialchars($row['eff'])?></b></td>
+        <?php
+        }elseif($row['eff']<0.0165 && $row['work']=="収穫"){
+        ?>
+            <td align="center" bgcolor="#ff4500"><b><?=htmlspecialchars($row['eff'])?></b></td>
+        <?php
+        }else{
+        ?>
+            <td align="center"><?=htmlspecialchars($row['eff'])?></td>
+        <?php
+        }
+        ?>
+        </tr>
     <?php
         
     }//foreachの括弧
@@ -495,8 +587,30 @@ if($_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]!="" && $DAY
             <td align="center"><?=htmlspecialchars($row['rane'])?></td>
             <td align="center"><?=htmlspecialchars($row['d_ymd'])?></td>
             <td align="center"><?=htmlspecialchars($row['dt'])?></td>
+            <td align="center"><?=htmlspecialchars($row['bx'])?></td>
+            <?php
+            if($row['eff']>0.06 && $row['work']=="収穫"){?>
+                <td align="center" bgcolor="#7cfc00"><b><?=htmlspecialchars($row['eff'])?></b></td>
+            <?php
+            }elseif($row['eff']>0.0333 && $row['work']=="収穫"){
+            ?>
+                <td align="center" bgcolor="#00bfff"><b><?=htmlspecialchars($row['eff'])?></b></td>
+            <?php
+            }elseif($row['eff']>0.0166 && $row['work']=="収穫"){
+            ?>
+                <td align="center" bgcolor="#ffd700"><b><?=htmlspecialchars($row['eff'])?></b></td>
+            <?php
+            }elseif($row['eff']<0.0165 && $row['work']=="収穫"){
+            ?>
+                <td align="center" bgcolor="#ff4500"><b><?=htmlspecialchars($row['eff'])?></b></td>
+            <?php
+            }else{
+            ?>
+                <td align="center"><?=htmlspecialchars($row['eff'])?></td>
+            <?php
+            }
+            ?>
             </tr>
-
     <?php
             
         }//foreachの括弧
@@ -535,15 +649,36 @@ if($_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]!="" && $DAY
             if($row['member']==$search_key){
     ?> 
                 <tr>
-                <td align="center"><?=htmlspecialchars($row['card_id'])?></td>
                 <td align="center"><?=htmlspecialchars($row['member'])?></td>
                 <td align="center"><?=htmlspecialchars($row['work_time'])?></td>
                 <td align="center"><?=htmlspecialchars($row['work'])?></td>
                 <td align="center"><?=htmlspecialchars($row['rane'])?></td>
                 <td align="center"><?=htmlspecialchars($row['d_ymd'])?></td>
                 <td align="center"><?=htmlspecialchars($row['dt'])?></td>
-                </tr>
-            
+                <td align="center"><?=htmlspecialchars($row['bx'])?></td>
+                <?php
+                if($row['eff']>0.06 && $row['work']=="収穫"){?>
+                    <td align="center" bgcolor="#7cfc00"><b><?=htmlspecialchars($row['eff'])?></b></td>
+                <?php
+                }elseif($row['eff']>0.0333 && $row['work']=="収穫"){
+                ?>
+                    <td align="center" bgcolor="#00bfff"><b><?=htmlspecialchars($row['eff'])?></b></td>
+                <?php
+                }elseif($row['eff']>0.0166 && $row['work']=="収穫"){
+                ?>
+                    <td align="center" bgcolor="#ffd700"><b><?=htmlspecialchars($row['eff'])?></b></td>
+                <?php
+                }elseif($row['eff']<0.0165 && $row['work']=="収穫"){
+                ?>
+                    <td align="center" bgcolor="#ff4500"><b><?=htmlspecialchars($row['eff'])?></b></td>
+                <?php
+                }else{
+                ?>
+                    <td align="center"><?=htmlspecialchars($row['eff'])?></td>
+                <?php
+                }
+                ?>
+                </tr>      
     <?php
             
             }
@@ -595,15 +730,38 @@ if($_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]!="" && $DAY
     foreach ( $rs as $row ) {
     
     ?> 
-            <tr>
-            <td align="center"><?=htmlspecialchars($row['member'])?></td>
-            <td align="center"><?=htmlspecialchars($row['work_time'])?></td>
-            <td align="center"><?=htmlspecialchars($row['work'])?></td>
-            <td align="center"><?=htmlspecialchars($row['rane'])?></td>
-            <td align="center"><?=htmlspecialchars($row['d_ymd'])?></td>
-            <td align="center"><?=htmlspecialchars($row['dt'])?></td>
-            </tr>
-
+        <tr>
+        <td align="center"><?=htmlspecialchars($row['member'])?></td>
+        <td align="center"><?=htmlspecialchars($row['work_time'])?></td>
+        <td align="center"><?=htmlspecialchars($row['work'])?></td>
+        <td align="center"><?=htmlspecialchars($row['rane'])?></td>
+        <td align="center"><?=htmlspecialchars($row['d_ymd'])?></td>
+        <td align="center"><?=htmlspecialchars($row['dt'])?></td>
+        <td align="center"><?=htmlspecialchars($row['bx'])?></td>
+        <?php
+        if($row['eff']>0.06 && $row['work']=="収穫"){?>
+            <td align="center" bgcolor="#7cfc00"><b><?=htmlspecialchars($row['eff'])?></b></td>
+        <?php
+        }elseif($row['eff']>0.0333 && $row['work']=="収穫"){
+        ?>
+            <td align="center" bgcolor="#00bfff"><b><?=htmlspecialchars($row['eff'])?></b></td>
+        <?php
+        }elseif($row['eff']>0.0166 && $row['work']=="収穫"){
+        ?>
+            <td align="center" bgcolor="#ffd700"><b><?=htmlspecialchars($row['eff'])?></b></td>
+        <?php
+        }elseif($row['eff']<0.0165 && $row['work']=="収穫"){
+        ?>
+            <td align="center" bgcolor="#ff4500"><b><?=htmlspecialchars($row['eff'])?></b></td>
+        <?php
+        }else{
+        ?>
+            <td align="center"><?=htmlspecialchars($row['eff'])?></td>
+        <?php
+        }
+        ?>
+        </tr>
+    
     <?php
         
     }//foreachの括弧
