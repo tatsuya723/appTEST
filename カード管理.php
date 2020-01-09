@@ -71,7 +71,17 @@
             <td align="center"><?=htmlspecialchars($row['card_id'])?></td>
             <td align="center"><?=htmlspecialchars($row['last_name'])?></td>
             <td align="center"><?=htmlspecialchars($row['first_name'])?></td>
-            <td align="center" bgcolor="#ffd700"><?=htmlspecialchars($row['work'])?></td>
+            <?php
+            if($row['work']=="収穫"){
+            ?>
+                <td align="center" bgcolor="#ffd700"><?=htmlspecialchars($row['work'])?></td>
+            <?php
+            }else{
+            ?>
+                <td align="center" bgcolor="#008000"><?=htmlspecialchars($row['work'])?></td>
+            <?php
+            }
+            ?>
             <td align="center"><a href="updateform.php?id=<?=htmlspecialchars($row['card_id'])?>">編集</td>
             </tr>
         <?php
