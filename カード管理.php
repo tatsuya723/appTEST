@@ -74,11 +74,11 @@
             <?php
             if($row['work']=="収穫"){
             ?>
-                <td align="center" bgcolor="#ffd700"><?=htmlspecialchars($row['work'])?></td>
+                <td align="center" bgcolor="#ffd700"><b><?=htmlspecialchars($row['work'])?></b></td>
             <?php
             }else{
             ?>
-                <td align="center" bgcolor="#008000"><?=htmlspecialchars($row['work'])?></td>
+                <td align="center" bgcolor="#008000"><b><?=htmlspecialchars($row['work'])?></b></td>
             <?php
             }
             ?>
