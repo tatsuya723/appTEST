@@ -167,8 +167,7 @@ if($_POST["year"]!="" && $_POST["month"]!="" ){
 
 //JavaScriptへphp変数をJSONで渡すための処理
 $php_json = json_encode( $graph );
-
-
+print $graph['eff']."<br>";
 ?>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.min.js"></script>
@@ -177,13 +176,14 @@ $php_json = json_encode( $graph );
 <script type="text/javascript">
 //phpから変数を受け取る。
 var graph = JSON.parse('<?php echo $php_json; ?>');
+
 var ctx = document.getElementById('myChart').getContext('2d');
 var myChart = new Chart(ctx, {
 type: 'bar',
 data: {
     labels: graph['member'],
     datasets: [{
-        label: 'apples',
+        label: '作業効率',
         data: graph['eff'],
         backgroundColor: "rgba(153,255,51,0.4)"
     }
