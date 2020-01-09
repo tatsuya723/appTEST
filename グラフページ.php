@@ -12,7 +12,7 @@
 
 <body>
 
-<form name="form1" method="post" action="作業記録.php">
+<form name="form1" method="post" action="グラフページ.php">
        
         <!--<font size="4" color="#000000">名前を指定:</font><br>
         <input type="text" name="search_key"><br>       
