@@ -155,7 +155,7 @@ if($_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]!="" && $DAY
 
     <table width="1100" border="1" cellspacing="2" cellpadding="18">
     <tbody>
-    <tr><th>名前</th><th>作業時間[分]</th><th>作業内容</th><th>レーン</th><th>年月日</th><th>時刻</th></tr>
+    <tr><th>名前</th><th>作業時間[分]</th><th>作業内容</th><th>レーン</th><th>年月日</th><th>時刻</th><th>収穫ケース個数</th><th>作業効率</th></tr>
 
     <?php
     $rs = $stmh->fetchall ();
@@ -182,7 +182,7 @@ if($_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]!="" && $DAY
             ?>
                 <td align="center" bgcolor="#ffd700"><b><?=htmlspecialchars($row['eff'])?></b></td>
             <?php
-            }elseif($row['eff']<0.0165 && $row['work']=="収穫"){
+            }elseif($row['eff']<0.0165 && $row['work']=="収穫" && $row['eff']!=""){
             ?>
                 <td align="center" bgcolor="#ff4500"><b><?=htmlspecialchars($row['eff'])?></b></td>
             <?php
@@ -238,7 +238,7 @@ if($_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]!="" && $DAY
 
     <table width="1100" border="1" cellspacing="2" cellpadding="18">
     <tbody>
-    <tr><th>名前</th><th>作業時間[分]</th><th>作業内容</th><th>レーン</th><th>年月日</th><th>時刻</th></tr>
+    <tr><th>名前</th><th>作業時間[分]</th><th>作業内容</th><th>レーン</th><th>年月日</th><th>時刻</th><th>収穫ケース個数</th><th>作業効率</th></tr>
 
     <?php
     $rs = $stmh->fetchall ();
@@ -265,7 +265,7 @@ if($_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]!="" && $DAY
             ?>
                 <td align="center" bgcolor="#ffd700"><b><?=htmlspecialchars($row['eff'])?></b></td>
             <?php
-            }elseif($row['eff']<0.0165 && $row['work']=="収穫"){
+            }elseif($row['eff']<0.0165 && $row['work']=="収穫" && $row['eff']!=""){
             ?>
                 <td align="center" bgcolor="#ff4500"><b><?=htmlspecialchars($row['eff'])?></b></td>
             <?php
@@ -310,7 +310,7 @@ if($_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]!="" && $DAY
     
     <table width="1100" border="1" cellspacing="2" cellpadding="18">
     <tbody>
-    <tr><th>名前</th><th>作業時間[分]</th><th>作業内容</th><th>レーン</th><th>年月日</th><th>時刻</th></tr>
+    <tr><th>名前</th><th>作業時間[分]</th><th>作業内容</th><th>レーン</th><th>年月日</th><th>時刻</th><th>収穫ケース個数</th><th>作業効率</th></tr>
     <?php
     for($mm=1;$mm<13;$mm++){                //ループで、1月～12月のテーブルを全て取得
         $tabname="b_".$_POST["year"]."_".$mm;   //テーブル名を作成
@@ -349,7 +349,7 @@ if($_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]!="" && $DAY
                 ?>
                     <td align="center" bgcolor="#ffd700"><b><?=htmlspecialchars($row['eff'])?></b></td>
                 <?php
-                }elseif($row['eff']<0.0165 && $row['work']=="収穫"){
+                }elseif($row['eff']<0.0165 && $row['work']=="収穫" && $row['eff']!=""){
                 ?>
                     <td align="center" bgcolor="#ff4500"><b><?=htmlspecialchars($row['eff'])?></b></td>
                 <?php
@@ -407,7 +407,7 @@ if($_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]!="" && $DAY
     
     <table width="1100" border="1" cellspacing="2" cellpadding="18">
     <tbody>
-    <tr><th>名前</th><th>作業時間[分]</th><th>作業内容</th><th>レーン</th><th>年月日</th><th>時刻</th></tr>
+    <tr><th>名前</th><th>作業時間[分]</th><th>作業内容</th><th>レーン</th><th>年月日</th><th>時刻</th><th>収穫ケース個数</th><th>作業効率</th>/tr>
 
     <?php
     $rs = $stmh->fetchall ();
@@ -434,7 +434,7 @@ if($_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]!="" && $DAY
                 ?>
                     <td align="center" bgcolor="#ffd700"><b><?=htmlspecialchars($row['eff'])?></b></td>
                 <?php
-                }elseif($row['eff']<0.0165 && $row['work']=="収穫"){
+                }elseif($row['eff']<0.0165 && $row['work']=="収穫" && $row['eff']!=""){
                 ?>
                     <td align="center" bgcolor="#ff4500"><b><?=htmlspecialchars($row['eff'])?></b></td>
                 <?php
@@ -490,7 +490,7 @@ if($_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]!="" && $DAY
     
     <table width="1100" border="1" cellspacing="2" cellpadding="18">
     <tbody>
-    <tr><th>名前</th><th>作業時間[分]</th><th>作業内容</th><th>レーン</th><th>年月日</th><th>時刻</th></tr>
+    <tr><th>名前</th><th>作業時間[分]</th><th>作業内容</th><th>レーン</th><th>年月日</th><th>時刻</th><th>収穫ケース個数</th><th>作業効率</th></tr>
 
     <?php
     $rs = $stmh->fetchall ();
@@ -517,7 +517,7 @@ if($_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]!="" && $DAY
         ?>
             <td align="center" bgcolor="#ffd700"><b><?=htmlspecialchars($row['eff'])?></b></td>
         <?php
-        }elseif($row['eff']<0.0165 && $row['work']=="収穫"){
+        }elseif($row['eff']<0.0165 && $row['work']=="収穫" && $row['eff']!=""){
         ?>
             <td align="center" bgcolor="#ff4500"><b><?=htmlspecialchars($row['eff'])?></b></td>
         <?php
@@ -562,7 +562,7 @@ if($_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]!="" && $DAY
     
     <table width="1100" border="1" cellspacing="2" cellpadding="18">
     <tbody>
-    <tr><th>名前</th><th>作業時間[分]</th><th>作業内容</th><th>レーン</th><th>年月日</th><th>時刻</th></tr>
+    <tr><th>名前</th><th>作業時間[分]</th><th>作業内容</th><th>レーン</th><th>年月日</th><th>時刻</th><th>収穫ケース個数</th><th>作業効率</th></tr>
     <?php
     for($mm=1;$mm<13;$mm++){                //ループで、1月～12月のテーブルを全て取得
         $tabname="b_".$_POST["year"]."_".$mm;   //テーブル名を作成
@@ -600,7 +600,7 @@ if($_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]!="" && $DAY
             ?>
                 <td align="center" bgcolor="#ffd700"><b><?=htmlspecialchars($row['eff'])?></b></td>
             <?php
-            }elseif($row['eff']<0.0165 && $row['work']=="収穫"){
+            }elseif($row['eff']<0.0165 && $row['work']=="収穫" && $row['eff']!=""){
             ?>
                 <td align="center" bgcolor="#ff4500"><b><?=htmlspecialchars($row['eff'])?></b></td>
             <?php
@@ -629,7 +629,7 @@ if($_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]!="" && $DAY
     ?>
 <!--    <table width="1100" border="1" cellspacing="2" cellpadding="18">
     <tbody>
-    <tr><th>カードid</th><th>名前</th><th>作業時間[分]</th><th>作業内容</th><th>レーン</th><th>年月日</th><th>時刻</th></tr>-->
+    <tr><th>カードid</th><th>名前</th><th>作業時間[分]</th><th>作業内容</th><th>レーン</th><th>年月日</th><th>時刻</th><th>収穫ケース個数</th><th>作業効率</th></tr>-->
     <?php
     /*for($mm=1;$mm<13;$mm++){   
         $YEA=2019;             //ループで、1月～12月のテーブルを全て取得
@@ -668,7 +668,7 @@ if($_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]!="" && $DAY
                 ?>
                     <td align="center" bgcolor="#ffd700"><b><?=htmlspecialchars($row['eff'])?></b></td>
                 <?php
-                }elseif($row['eff']<0.0165 && $row['work']=="収穫"){
+                }elseif($row['eff']<0.0165 && $row['work']=="収穫" && $row['eff']!=""){
                 ?>
                     <td align="center" bgcolor="#ff4500"><b><?=htmlspecialchars($row['eff'])?></b></td>
                 <?php
@@ -723,7 +723,7 @@ if($_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]!="" && $DAY
     
     <table width="1100" border="1" cellspacing="2" cellpadding="18">
     <tbody>
-    <tr><th>名前</th><th>作業時間[分]</th><th>作業内容</th><th>レーン</th><th>年月日</th><th>時刻</th></tr>
+    <tr><th>名前</th><th>作業時間[分]</th><th>作業内容</th><th>レーン</th><th>年月日</th><th>時刻</th><th>収穫ケース個数</th><th>作業効率</th></tr>
 
     <?php
     $rs = $stmh->fetchall ();
@@ -750,7 +750,7 @@ if($_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]!="" && $DAY
         ?>
             <td align="center" bgcolor="#ffd700"><b><?=htmlspecialchars($row['eff'])?></b></td>
         <?php
-        }elseif($row['eff']<0.0165 && $row['work']=="収穫"){
+        }elseif($row['eff']<0.0165 && $row['work']=="収穫" && $row['eff']!=""){
         ?>
             <td align="center" bgcolor="#ff4500"><b><?=htmlspecialchars($row['eff'])?></b></td>
         <?php
