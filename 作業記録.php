@@ -488,7 +488,7 @@ if($_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]!="" && $DAY
         <input type="submit" value="CSVファイルを保存">
     </form>
     
-    <table width="1600" border="1" cellspacing="2" cellpadding="18">
+    <table width="1300" border="1" cellspacing="2" cellpadding="18">
     <tbody>
     <tr><th>名前</th><th>作業時間[分]</th><th>作業内容</th><th>レーン</th><th>年月日</th><th>時刻</th><th>収穫ケース個数</th><th>作業効率</th></tr>
 
