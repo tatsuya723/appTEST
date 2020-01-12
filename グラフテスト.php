@@ -13,7 +13,7 @@ $hoge[$aa] = $aa;
 }
 
 ?>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.min.js"></script>
 <canvas id="myChart" width="20" height="5"></canvas>
 
 <script type="text/javascript">
