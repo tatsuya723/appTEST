@@ -8,7 +8,7 @@
 <body bgcolor="#e0ffff" text="#000000">
 
 <?php 
-for($aa=1;$aa<5;$aa++){
+for($aa=0;$aa<5;$aa++){
 $hoge[$aa] = $aa;
 
 }
