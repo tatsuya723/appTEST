@@ -171,9 +171,9 @@ if($_POST["year"]!="" && $_POST["month"]!=""){
         $eff_count = 0;
         foreach($rs2 as $row2){
             if($row2["member"] == $label[$aa]){
-                $time = (int) $row["work_time"];
+                $time = (int) $row2["work_time"];
                 $time_sum += $time;//作業時間の合計
-                $eff = (float) $row["eff"];
+                $eff = (float) $row2["eff"];
                 $eff_sum += $eff;//作業効率の合計
                 $eff_count += 1;
             }
