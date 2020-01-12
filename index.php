@@ -45,13 +45,11 @@ try{
 try{
     $stmh=$pdo->query("SELECT * FROM sample_member");
     $stmh->execute();
-    }catch(PDOException $Exception){
-        print "エラー:".$Exception->getMessage();
-    }
+}catch(PDOException $Exception){
+    print "エラー:".$Exception->getMessage();
+}
 
-$rs = $stmh->fetchall ();
-$count = 0;
-foreach ( $rs as $row ) {
+
     if($row['rane'] != "0"){
 ?>
     <h3><?=$row['last_name']?>:　<font color="#ff0000"><?=$row['rane']?></font>レーン [<?=$row['work']?>]</h3>
