@@ -178,8 +178,11 @@ if($_POST["year"]!="" && $_POST["month"]!=""){
                 $eff_count += 1.0;
             }
         }
-        $eff_ave = ($eff/$eff_count); //作業効率の平均
-        
+        if($eff_sum == 0 || $eff_count == 0){
+            $eff_ave = 0;
+        }else{
+            $eff_ave = ($eff_sum/$eff_count); //作業効率の平均
+        }
         $time_arr[$aa] = $time_sum; //scriptに送る作業時間の合計
         $eff_arr[$aa] = $eff_ave;   //scriptに送る作業効率の平均
     }
