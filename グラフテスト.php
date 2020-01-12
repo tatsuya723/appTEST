@@ -7,7 +7,7 @@
 <body bgcolor="#e0ffff" text="#000000">
 
 <!--検索ボックス-->
-<form name="form1" method="post" action="作業記録.php">
+<form name="form1" method="post" action="グラフテスト.php">
        
         <font size="4" color="#000000">名前で検索:</font><br>
         <input type="text" name="search_key"><br> 
@@ -152,7 +152,7 @@ foreach ( $rs as $row ) {
 パターン番号＝11
 ■■■■■■■■■■■■■■■■■■■■■*/
 if($_POST["year"]!="" && $_POST["month"]!=""){
-    
+
     $tabname="b_".$_POST["year"]."_".$_POST["month"];//テーブル名作成
     $tabsel="SELECT * FROM ".$tabname;//セレクト文作成
     $search_key=$_POST["search_key"];
