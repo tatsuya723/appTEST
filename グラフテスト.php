@@ -132,7 +132,7 @@ try{
 }
 
 $cc = 0;
-$rs = $stmh->fetchall ();
+$rs = $stmh->fetchall();
 //$count = 0;
 //$labelに作業員の名前を入れる。
 foreach ( $rs as $row ) {
@@ -163,7 +163,7 @@ if($_POST["year"]!="" && $_POST["month"]!=""){
     }catch(PDOException $Exception){
         print "エラー:"."データテーブルが見つかりません。<br>";
     }
-    $rs2 = $stmh->fetchall ();
+    $rs2 = $stmh->fetchall();
     
     for($aa=0;$aa<count($label);$aa+){
         $time_sum = 0;
@@ -185,17 +185,20 @@ if($_POST["year"]!="" && $_POST["month"]!=""){
         }
         $time_arr[$aa] = $time_sum; //scriptに送る作業時間の合計
         $eff_arr[$aa] = $eff_ave;   //scriptに送る作業効率の平均
+        print $time_arr[$aa];
+        print "<br>";
+        print $eff_arr[$aa];
+        print "<br>";
     }
-?>
 
+?>
+<!--
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.min.js"></script>
 <canvas id="time" width="20" height="5"></canvas><br><br>
 <canvas id="eff" width="20" height="5"></canvas><br><br>
 
 <script type="text/javascript">
-var label_member = <?php echo json_encode($label); ?>;
-var time_arr = <?php echo json_encode($time_arr); ?>;
-var eff_arr = <?php echo json_encode($eff_arr); ?>;
+\
 
 
 var work_time = document.getElementById('time').getContext('2d');
@@ -223,9 +226,8 @@ var myChart2 = new Chart(eff_ave, {
     }]
   }
 });
-
-
 </script>
+-->
 <?php
 }
 ?>
