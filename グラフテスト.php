@@ -9,7 +9,7 @@
 
 <?php 
 for($aa=1;$aa<5;$aa++){
-$hoge[$aa] = $aa
+$hoge[$aa] = $aa;
 
 }
 
