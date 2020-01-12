@@ -122,26 +122,7 @@ try{
 
 
 
-<?php
-/*ラベル用に作業員の名前を取得 */
-try{
-    $stmh=$pdo->query("SELECT * FROM sample_member");
-    $stmh->execute();
-}catch(PDOException $Exception){
-    print "エラー:".$Exception->getMessage();
-}
 
-$cc = 0;
-$rs = $stmh->fetchall();
-//$count = 0;
-//$labelに作業員の名前を入れる。
-foreach ( $rs as $row ) {
-    if($row["work"] == "収穫"){
-        $label[$cc] = $row["last_name"];
-        $cc += 1;
-    }
-}
-?>
 
 
 
@@ -164,13 +145,15 @@ if($_POST["year"]!="" && $_POST["month"]!=""){
         print "エラー:"."データテーブルが見つかりません。<br>";
     }
     $rs2 = $stmh->fetchall();
-    
+    $label[]="島井";
+    $label[]="都築";
+
     for($aa=0;$aa<count($label);$aa+){
         $time_sum = 0;
         $eff_sum = 0;
         $eff_count = 0;
         foreach($rs2 as $row2){
-            if($row2["member"] == $label[$aa]){
+            if(($row2["member"] == $label[$aa]) && ()){
                 $time = (float) $row2["work_time"];
                 $time_sum += $time;//作業時間の合計
                 $eff = (float) $row2["eff"];
