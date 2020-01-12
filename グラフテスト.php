@@ -7,16 +7,11 @@
 
 <body bgcolor="#e0ffff" text="#000000">
 
-<?php
-$hoge[0] = "name";
-$hoge[1] = "aaa";
-
-?>
+<?php $hoge[0] = ["name" => "テスト", "age" => "21"] ?>
 
 <script type="text/javascript">
     var hoge = <?php echo json_encode($hoge); ?>;
-    console.log(hoge); 
-    console.log(hoge[1]);
+    console.log(hoge[0]); // はろー
 </script>
 
 </body>
