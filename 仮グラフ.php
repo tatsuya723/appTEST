@@ -24,7 +24,7 @@ $MEMBER[7]="山中";
 <canvas id="作業時間合計" width="20" height="5"></canvas><br><br>
 
 <script type="text/javascript">
-var member = <?php echo json_encode($hoge); ?>;
+var member = <?php echo json_encode($MEMBER); ?>;
 var work_time = document.getElementById('作業時間合計').getContext('2d');
 var myChart1 = new Chart(work_time, {
   type: 'bar',
