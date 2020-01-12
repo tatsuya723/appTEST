@@ -11,7 +11,16 @@
 <form name="form1" method="post" action="作業記録.php">
        
         <font size="4" color="#000000">名前で検索:</font><br>
-        <input type="text" name="search_key"><br>       
+        <input type="text" name="search_key"><br> 
+        
+        <font size="4" color="#000000">作業内容を指定:</font><br>
+        <select name="work">
+        <option value="" selected>----作業内容を選択してください----</option>
+        <option value="収穫">収穫</option>
+        <option value="芽かき">芽かき</option>
+        <option value="追い巻き">追い巻き</option>
+        </select>
+        <br>      
 
         <font size="4" color="#000000">日付で検索:</font><br>
         <select name="year">
@@ -113,11 +122,12 @@ try{
 
 <?php
 $DAY = (string) $_POST["day"];
+$work = $_POST["work"];
 /*▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲
     //SELECT処理
 ▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲*/
 /*■■■■■■■■■■■■■■■■■■■
-(1)名前、年、月、日
+(1)名前(作業名)、年、月、日
 パターン番号＝11
 ■■■■■■■■■■■■■■■■■■■■■*/
 if($_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]!="" && $DAY!=""){
@@ -159,42 +169,81 @@ if($_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]!="" && $DAY
 
     <?php
     $rs = $stmh->fetchall ();
+    
     foreach ( $rs as $row ) {
-        if(($row['member']==$search_key) && ($row['dd']==$DAY)){
+        if($work == ""){
+            if(($row['member']==$search_key) && ($row['dd']==$DAY)){
     ?> 
-            <tr>
-            <td align="center"><?=htmlspecialchars($row['member'])?></td>
-            <td align="center"><?=htmlspecialchars($row['work_time'])?></td>
-            <td align="center"><?=htmlspecialchars($row['work'])?></td>
-            <?php
-            if($row['eff']>80 && $row['work']=="収穫"){?>
-                <td align="center" bgcolor="#7cfc00"><b><?=htmlspecialchars($row['eff'])?></b></td>
-            <?php
-            }elseif($row['eff']>50 && $row['work']=="収穫"){
-            ?>
-                <td align="center" bgcolor="#00bfff"><b><?=htmlspecialchars($row['eff'])?></b></td>
-            <?php
-            }elseif($row['eff']>30 && $row['work']=="収穫"){
-            ?>
-                <td align="center" bgcolor="#ffd700"><b><?=htmlspecialchars($row['eff'])?></b></td>
-            <?php
-            }elseif($row['eff']<30 && $row['work']=="収穫" && $row['eff']!=""){
-            ?>
-                <td align="center" bgcolor="#ff4500"><b><?=htmlspecialchars($row['eff'])?></b></td>
-            <?php
-            }else{
-            ?>
-                <td align="center"><?=htmlspecialchars($row['eff'])?></td>
-            <?php
-            }
-            ?>
-            <td align="center"><?=htmlspecialchars($row['bx'])?></td>
-            <td align="center"><?=htmlspecialchars($row['rane'])?></td>
-            <td align="center"><?=htmlspecialchars($row['d_ymd'])?></td>
-            <td align="center"><?=htmlspecialchars($row['dt'])?></td>
-            </tr>
+                <tr>
+                <td align="center"><?=htmlspecialchars($row['member'])?></td>
+                <td align="center"><?=htmlspecialchars($row['work_time'])?></td>
+                <td align="center"><?=htmlspecialchars($row['work'])?></td>
+                <?php
+                if($row['eff']>80 && $row['work']=="収穫"){?>
+                    <td align="center" bgcolor="#7cfc00"><b><?=htmlspecialchars($row['eff'])?></b></td>
+                <?php
+                }elseif($row['eff']>50 && $row['work']=="収穫"){
+                ?>
+                    <td align="center" bgcolor="#00bfff"><b><?=htmlspecialchars($row['eff'])?></b></td>
+                <?php
+                }elseif($row['eff']>30 && $row['work']=="収穫"){
+                ?>
+                    <td align="center" bgcolor="#ffd700"><b><?=htmlspecialchars($row['eff'])?></b></td>
+                <?php
+                }elseif($row['eff']<30 && $row['work']=="収穫" && $row['eff']!=""){
+                ?>
+                    <td align="center" bgcolor="#ff4500"><b><?=htmlspecialchars($row['eff'])?></b></td>
+                <?php
+                }else{
+                ?>
+                    <td align="center"><?=htmlspecialchars($row['eff'])?></td>
+                <?php
+                }
+                ?>
+                <td align="center"><?=htmlspecialchars($row['bx'])?></td>
+                <td align="center"><?=htmlspecialchars($row['rane'])?></td>
+                <td align="center"><?=htmlspecialchars($row['d_ymd'])?></td>
+                <td align="center"><?=htmlspecialchars($row['dt'])?></td>
+                </tr>
     
     <?php
+            }
+        }else{
+            if(($row['member']==$search_key) && ($row['work']==$work) && ($row['dd']==$DAY)){
+            ?>
+                <tr>
+                <td align="center"><?=htmlspecialchars($row['member'])?></td>
+                <td align="center"><?=htmlspecialchars($row['work_time'])?></td>
+                <td align="center"><?=htmlspecialchars($row['work'])?></td>
+                <?php
+                if($row['eff']>80 && $row['work']=="収穫"){?>
+                    <td align="center" bgcolor="#7cfc00"><b><?=htmlspecialchars($row['eff'])?></b></td>
+                <?php
+                }elseif($row['eff']>50 && $row['work']=="収穫"){
+                ?>
+                    <td align="center" bgcolor="#00bfff"><b><?=htmlspecialchars($row['eff'])?></b></td>
+                <?php
+                }elseif($row['eff']>30 && $row['work']=="収穫"){
+                ?>
+                    <td align="center" bgcolor="#ffd700"><b><?=htmlspecialchars($row['eff'])?></b></td>
+                <?php
+                }elseif($row['eff']<30 && $row['work']=="収穫" && $row['eff']!=""){
+                ?>
+                    <td align="center" bgcolor="#ff4500"><b><?=htmlspecialchars($row['eff'])?></b></td>
+                <?php
+                }else{
+                ?>
+                    <td align="center"><?=htmlspecialchars($row['eff'])?></td>
+                <?php
+                }
+                ?>
+                <td align="center"><?=htmlspecialchars($row['bx'])?></td>
+                <td align="center"><?=htmlspecialchars($row['rane'])?></td>
+                <td align="center"><?=htmlspecialchars($row['d_ymd'])?></td>
+                <td align="center"><?=htmlspecialchars($row['dt'])?></td>
+                </tr>                
+            <?php
+            }
         }
     }//foreachの括弧
     if(count($rs) == 0){
@@ -244,41 +293,79 @@ if($_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]!="" && $DAY
     <?php
     $rs = $stmh->fetchall ();
     foreach ( $rs as $row ) {
-        if($row['member']==$search_key){
+        if($work == ""){
+            if($row['member']==$search_key){
     ?> 
-            <tr>
-            <td align="center"><?=htmlspecialchars($row['member'])?></td>
-            <td align="center"><?=htmlspecialchars($row['work_time'])?></td>
-            <td align="center"><?=htmlspecialchars($row['work'])?></td>
-            <?php
-            if($row['eff']>80 && $row['work']=="収穫"){?>
-                <td align="center" bgcolor="#7cfc00"><b><?=htmlspecialchars($row['eff'])?></b></td>
-            <?php
-            }elseif($row['eff']>50 && $row['work']=="収穫"){
-            ?>
-                <td align="center" bgcolor="#00bfff"><b><?=htmlspecialchars($row['eff'])?></b></td>
-            <?php
-            }elseif($row['eff']>30 && $row['work']=="収穫"){
-            ?>
-                <td align="center" bgcolor="#ffd700"><b><?=htmlspecialchars($row['eff'])?></b></td>
-            <?php
-            }elseif($row['eff']<30 && $row['work']=="収穫" && $row['eff']!=""){
-            ?>
-                <td align="center" bgcolor="#ff4500"><b><?=htmlspecialchars($row['eff'])?></b></td>
-            <?php
-            }else{
-            ?>
-                <td align="center"><?=htmlspecialchars($row['eff'])?></td>
-            <?php
-            }
-            ?>
-            <td align="center"><?=htmlspecialchars($row['bx'])?></td>
-            <td align="center"><?=htmlspecialchars($row['rane'])?></td>
-            <td align="center"><?=htmlspecialchars($row['d_ymd'])?></td>
-            <td align="center"><?=htmlspecialchars($row['dt'])?></td>
-            </tr>
+                    <tr>
+                    <td align="center"><?=htmlspecialchars($row['member'])?></td>
+                    <td align="center"><?=htmlspecialchars($row['work_time'])?></td>
+                    <td align="center"><?=htmlspecialchars($row['work'])?></td>
+                    <?php
+                    if($row['eff']>80 && $row['work']=="収穫"){?>
+                        <td align="center" bgcolor="#7cfc00"><b><?=htmlspecialchars($row['eff'])?></b></td>
+                    <?php
+                    }elseif($row['eff']>50 && $row['work']=="収穫"){
+                    ?>
+                        <td align="center" bgcolor="#00bfff"><b><?=htmlspecialchars($row['eff'])?></b></td>
+                    <?php
+                    }elseif($row['eff']>30 && $row['work']=="収穫"){
+                    ?>
+                        <td align="center" bgcolor="#ffd700"><b><?=htmlspecialchars($row['eff'])?></b></td>
+                    <?php
+                    }elseif($row['eff']<30 && $row['work']=="収穫" && $row['eff']!=""){
+                    ?>
+                        <td align="center" bgcolor="#ff4500"><b><?=htmlspecialchars($row['eff'])?></b></td>
+                    <?php
+                    }else{
+                    ?>
+                        <td align="center"><?=htmlspecialchars($row['eff'])?></td>
+                    <?php
+                    }
+                    ?>
+                    <td align="center"><?=htmlspecialchars($row['bx'])?></td>
+                    <td align="center"><?=htmlspecialchars($row['rane'])?></td>
+                    <td align="center"><?=htmlspecialchars($row['d_ymd'])?></td>
+                    <td align="center"><?=htmlspecialchars($row['dt'])?></td>
+                    </tr>
     
     <?php
+            }    
+        }else{
+            if(($row['member']==$search_key) && ($row['work']==$work)){
+            ?>
+                <tr>
+                <td align="center"><?=htmlspecialchars($row['member'])?></td>
+                <td align="center"><?=htmlspecialchars($row['work_time'])?></td>
+                <td align="center"><?=htmlspecialchars($row['work'])?></td>
+                <?php
+                if($row['eff']>80 && $row['work']=="収穫"){?>
+                    <td align="center" bgcolor="#7cfc00"><b><?=htmlspecialchars($row['eff'])?></b></td>
+                <?php
+                }elseif($row['eff']>50 && $row['work']=="収穫"){
+                ?>
+                    <td align="center" bgcolor="#00bfff"><b><?=htmlspecialchars($row['eff'])?></b></td>
+                <?php
+                }elseif($row['eff']>30 && $row['work']=="収穫"){
+                ?>
+                    <td align="center" bgcolor="#ffd700"><b><?=htmlspecialchars($row['eff'])?></b></td>
+                <?php
+                }elseif($row['eff']<30 && $row['work']=="収穫" && $row['eff']!=""){
+                ?>
+                    <td align="center" bgcolor="#ff4500"><b><?=htmlspecialchars($row['eff'])?></b></td>
+                <?php
+                }else{
+                ?>
+                    <td align="center"><?=htmlspecialchars($row['eff'])?></td>
+                <?php
+                }
+                ?>
+                <td align="center"><?=htmlspecialchars($row['bx'])?></td>
+                <td align="center"><?=htmlspecialchars($row['rane'])?></td>
+                <td align="center"><?=htmlspecialchars($row['d_ymd'])?></td>
+                <td align="center"><?=htmlspecialchars($row['dt'])?></td>
+                </tr>
+            <?php
+            }
         }
     }//foreachの括弧
     if(count($rs) == 0){
@@ -328,43 +415,82 @@ if($_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]!="" && $DAY
  
         $rs = $stmh->fetchall ();
         foreach ( $rs as $row ) {
-            if($row['member']==$search_key){
-                $GYOU += 1;
+            if($work == ""){
+                if($row['member']==$search_key){
+                    $GYOU += 1;
     ?> 
-                <tr>
-                <td align="center"><?=htmlspecialchars($row['member'])?></td>
-                <td align="center"><?=htmlspecialchars($row['work_time'])?></td>
-                <td align="center"><?=htmlspecialchars($row['work'])?></td>
-                <?php
-                if($row['eff']>80 && $row['work']=="収穫"){?>
-                    <td align="center" bgcolor="#7cfc00"><b><?=htmlspecialchars($row['eff'])?></b></td>
-                <?php
-                }elseif($row['eff']>50 && $row['work']=="収穫"){
-                ?>
-                    <td align="center" bgcolor="#00bfff"><b><?=htmlspecialchars($row['eff'])?></b></td>
-                <?php
-                }elseif($row['eff']>30 && $row['work']=="収穫"){
-                ?>
-                    <td align="center" bgcolor="#ffd700"><b><?=htmlspecialchars($row['eff'])?></b></td>
-                <?php
-                }elseif($row['eff']<30 && $row['work']=="収穫" && $row['eff']!=""){
-                ?>
-                    <td align="center" bgcolor="#ff4500"><b><?=htmlspecialchars($row['eff'])?></b></td>
-                <?php
-                }else{
-                ?>
-                    <td align="center"><?=htmlspecialchars($row['eff'])?></td>
-                <?php
-                }
-                ?>
-                <td align="center"><?=htmlspecialchars($row['bx'])?></td>
-                <td align="center"><?=htmlspecialchars($row['rane'])?></td>
-                <td align="center"><?=htmlspecialchars($row['d_ymd'])?></td>
-                <td align="center"><?=htmlspecialchars($row['dt'])?></td>
-                </tr>
+                    <tr>
+                    <td align="center"><?=htmlspecialchars($row['member'])?></td>
+                    <td align="center"><?=htmlspecialchars($row['work_time'])?></td>
+                    <td align="center"><?=htmlspecialchars($row['work'])?></td>
+                    <?php
+                    if($row['eff']>80 && $row['work']=="収穫"){?>
+                        <td align="center" bgcolor="#7cfc00"><b><?=htmlspecialchars($row['eff'])?></b></td>
+                    <?php
+                    }elseif($row['eff']>50 && $row['work']=="収穫"){
+                    ?>
+                        <td align="center" bgcolor="#00bfff"><b><?=htmlspecialchars($row['eff'])?></b></td>
+                    <?php
+                    }elseif($row['eff']>30 && $row['work']=="収穫"){
+                    ?>
+                        <td align="center" bgcolor="#ffd700"><b><?=htmlspecialchars($row['eff'])?></b></td>
+                    <?php
+                    }elseif($row['eff']<30 && $row['work']=="収穫" && $row['eff']!=""){
+                    ?>
+                        <td align="center" bgcolor="#ff4500"><b><?=htmlspecialchars($row['eff'])?></b></td>
+                    <?php
+                    }else{
+                    ?>
+                        <td align="center"><?=htmlspecialchars($row['eff'])?></td>
+                    <?php
+                    }
+                    ?>
+                    <td align="center"><?=htmlspecialchars($row['bx'])?></td>
+                    <td align="center"><?=htmlspecialchars($row['rane'])?></td>
+                    <td align="center"><?=htmlspecialchars($row['d_ymd'])?></td>
+                    <td align="center"><?=htmlspecialchars($row['dt'])?></td>
+                    </tr>
     
 
     <?php
+                }else{
+                    if(($row['member']==$search_key) && ($row['work']==$work)){
+                        $GYOU += 1;
+                    ?>
+                        <tr>
+                        <td align="center"><?=htmlspecialchars($row['member'])?></td>
+                        <td align="center"><?=htmlspecialchars($row['work_time'])?></td>
+                        <td align="center"><?=htmlspecialchars($row['work'])?></td>
+                        <?php
+                        if($row['eff']>80 && $row['work']=="収穫"){?>
+                            <td align="center" bgcolor="#7cfc00"><b><?=htmlspecialchars($row['eff'])?></b></td>
+                        <?php
+                        }elseif($row['eff']>50 && $row['work']=="収穫"){
+                        ?>
+                            <td align="center" bgcolor="#00bfff"><b><?=htmlspecialchars($row['eff'])?></b></td>
+                        <?php
+                        }elseif($row['eff']>30 && $row['work']=="収穫"){
+                        ?>
+                            <td align="center" bgcolor="#ffd700"><b><?=htmlspecialchars($row['eff'])?></b></td>
+                        <?php
+                        }elseif($row['eff']<30 && $row['work']=="収穫" && $row['eff']!=""){
+                        ?>
+                            <td align="center" bgcolor="#ff4500"><b><?=htmlspecialchars($row['eff'])?></b></td>
+                        <?php
+                        }else{
+                        ?>
+                            <td align="center"><?=htmlspecialchars($row['eff'])?></td>
+                        <?php
+                        }
+                        ?>
+                        <td align="center"><?=htmlspecialchars($row['bx'])?></td>
+                        <td align="center"><?=htmlspecialchars($row['rane'])?></td>
+                        <td align="center"><?=htmlspecialchars($row['d_ymd'])?></td>
+                        <td align="center"><?=htmlspecialchars($row['dt'])?></td>
+                        </tr>
+                    <?php
+                    }
+                }
             }
         }//foreachの括弧
     
@@ -415,41 +541,79 @@ if($_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]!="" && $DAY
     <?php
     $rs = $stmh->fetchall ();
     foreach ( $rs as $row ) {
-        if($row['dd']==$DAY){
+        if($work == ""){
+            if($row['dd']==$DAY){
     ?> 
-            <tr>
-            <td align="center"><?=htmlspecialchars($row['member'])?></td>
-            <td align="center"><?=htmlspecialchars($row['work_time'])?></td>
-            <td align="center"><?=htmlspecialchars($row['work'])?></td>
-            <?php
-            if($row['eff']>80 && $row['work']=="収穫"){?>
-                <td align="center" bgcolor="#7cfc00"><b><?=htmlspecialchars($row['eff'])?></b></td>
-            <?php
-            }elseif($row['eff']>50 && $row['work']=="収穫"){
-            ?>
-                <td align="center" bgcolor="#00bfff"><b><?=htmlspecialchars($row['eff'])?></b></td>
-            <?php
-            }elseif($row['eff']>30 && $row['work']=="収穫"){
-            ?>
-                <td align="center" bgcolor="#ffd700"><b><?=htmlspecialchars($row['eff'])?></b></td>
-            <?php
-            }elseif($row['eff']<30 && $row['work']=="収穫" && $row['eff']!=""){
-            ?>
-                <td align="center" bgcolor="#ff4500"><b><?=htmlspecialchars($row['eff'])?></b></td>
-            <?php
-            }else{
-            ?>
-                <td align="center"><?=htmlspecialchars($row['eff'])?></td>
-            <?php
-            }
-            ?>
-            <td align="center"><?=htmlspecialchars($row['bx'])?></td>
-            <td align="center"><?=htmlspecialchars($row['rane'])?></td>
-            <td align="center"><?=htmlspecialchars($row['d_ymd'])?></td>
-            <td align="center"><?=htmlspecialchars($row['dt'])?></td>
-            </tr>
+                <tr>
+                <td align="center"><?=htmlspecialchars($row['member'])?></td>
+                <td align="center"><?=htmlspecialchars($row['work_time'])?></td>
+                <td align="center"><?=htmlspecialchars($row['work'])?></td>
+                <?php
+                if($row['eff']>80 && $row['work']=="収穫"){?>
+                    <td align="center" bgcolor="#7cfc00"><b><?=htmlspecialchars($row['eff'])?></b></td>
+                <?php
+                }elseif($row['eff']>50 && $row['work']=="収穫"){
+                ?>
+                    <td align="center" bgcolor="#00bfff"><b><?=htmlspecialchars($row['eff'])?></b></td>
+                <?php
+                }elseif($row['eff']>30 && $row['work']=="収穫"){
+                ?>
+                    <td align="center" bgcolor="#ffd700"><b><?=htmlspecialchars($row['eff'])?></b></td>
+                <?php
+                }elseif($row['eff']<30 && $row['work']=="収穫" && $row['eff']!=""){
+                ?>
+                    <td align="center" bgcolor="#ff4500"><b><?=htmlspecialchars($row['eff'])?></b></td>
+                <?php
+                }else{
+                ?>
+                    <td align="center"><?=htmlspecialchars($row['eff'])?></td>
+                <?php
+                }
+                ?>
+                <td align="center"><?=htmlspecialchars($row['bx'])?></td>
+                <td align="center"><?=htmlspecialchars($row['rane'])?></td>
+                <td align="center"><?=htmlspecialchars($row['d_ymd'])?></td>
+                <td align="center"><?=htmlspecialchars($row['dt'])?></td>
+                </tr>
     
     <?php
+            }
+        }else{
+            if(($row['dd']==$DAY) && ($row['work']==$work)){
+            ?>
+                <tr>
+                <td align="center"><?=htmlspecialchars($row['member'])?></td>
+                <td align="center"><?=htmlspecialchars($row['work_time'])?></td>
+                <td align="center"><?=htmlspecialchars($row['work'])?></td>
+                <?php
+                if($row['eff']>80 && $row['work']=="収穫"){?>
+                    <td align="center" bgcolor="#7cfc00"><b><?=htmlspecialchars($row['eff'])?></b></td>
+                <?php
+                }elseif($row['eff']>50 && $row['work']=="収穫"){
+                ?>
+                    <td align="center" bgcolor="#00bfff"><b><?=htmlspecialchars($row['eff'])?></b></td>
+                <?php
+                }elseif($row['eff']>30 && $row['work']=="収穫"){
+                ?>
+                    <td align="center" bgcolor="#ffd700"><b><?=htmlspecialchars($row['eff'])?></b></td>
+                <?php
+                }elseif($row['eff']<30 && $row['work']=="収穫" && $row['eff']!=""){
+                ?>
+                    <td align="center" bgcolor="#ff4500"><b><?=htmlspecialchars($row['eff'])?></b></td>
+                <?php
+                }else{
+                ?>
+                    <td align="center"><?=htmlspecialchars($row['eff'])?></td>
+                <?php
+                }
+                ?>
+                <td align="center"><?=htmlspecialchars($row['bx'])?></td>
+                <td align="center"><?=htmlspecialchars($row['rane'])?></td>
+                <td align="center"><?=htmlspecialchars($row['d_ymd'])?></td>
+                <td align="center"><?=htmlspecialchars($row['dt'])?></td>
+                </tr>
+            <?php
+            }
         }
     }//foreachの括弧
     if(count($rs) == 0){
@@ -499,42 +663,78 @@ if($_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]!="" && $DAY
     <?php
     $rs = $stmh->fetchall ();
     foreach ( $rs as $row ) {
-    
+        if($work == ""){
     ?> 
-        <tr>
-        <td align="center"><?=htmlspecialchars($row['member'])?></td>
-        <td align="center"><?=htmlspecialchars($row['work_time'])?></td>
-        <td align="center"><?=htmlspecialchars($row['work'])?></td>
-        <?php
-        if($row['eff']>80 && $row['work']=="収穫"){?>
-            <td align="center" bgcolor="#7cfc00"><b><?=htmlspecialchars($row['eff'])?></b></td>
-        <?php
-        }elseif($row['eff']>50 && $row['work']=="収穫"){
-        ?>
-            <td align="center" bgcolor="#00bfff"><b><?=htmlspecialchars($row['eff'])?></b></td>
-        <?php
-        }elseif($row['eff']>30 && $row['work']=="収穫"){
-        ?>
-            <td align="center" bgcolor="#ffd700"><b><?=htmlspecialchars($row['eff'])?></b></td>
-        <?php
-        }elseif($row['eff']<30 && $row['work']=="収穫" && $row['eff']!=""){
-        ?>
-            <td align="center" bgcolor="#ff4500"><b><?=htmlspecialchars($row['eff'])?></b></td>
-        <?php
-        }else{
-        ?>
-            <td align="center"><?=htmlspecialchars($row['eff'])?></td>
-        <?php
-        }
-        ?>
-        <td align="center"><?=htmlspecialchars($row['bx'])?></td>
-        <td align="center"><?=htmlspecialchars($row['rane'])?></td>
-        <td align="center"><?=htmlspecialchars($row['d_ymd'])?></td>
-        <td align="center"><?=htmlspecialchars($row['dt'])?></td>
-        </tr>
+                <tr>
+                <td align="center"><?=htmlspecialchars($row['member'])?></td>
+                <td align="center"><?=htmlspecialchars($row['work_time'])?></td>
+                <td align="center"><?=htmlspecialchars($row['work'])?></td>
+                <?php
+                if($row['eff']>80 && $row['work']=="収穫"){?>
+                    <td align="center" bgcolor="#7cfc00"><b><?=htmlspecialchars($row['eff'])?></b></td>
+                <?php
+                }elseif($row['eff']>50 && $row['work']=="収穫"){
+                ?>
+                    <td align="center" bgcolor="#00bfff"><b><?=htmlspecialchars($row['eff'])?></b></td>
+                <?php
+                }elseif($row['eff']>30 && $row['work']=="収穫"){
+                ?>
+                    <td align="center" bgcolor="#ffd700"><b><?=htmlspecialchars($row['eff'])?></b></td>
+                <?php
+                }elseif($row['eff']<30 && $row['work']=="収穫" && $row['eff']!=""){
+                ?>
+                    <td align="center" bgcolor="#ff4500"><b><?=htmlspecialchars($row['eff'])?></b></td>
+                <?php
+                }else{
+                ?>
+                    <td align="center"><?=htmlspecialchars($row['eff'])?></td>
+                <?php
+                }
+                ?>
+                <td align="center"><?=htmlspecialchars($row['bx'])?></td>
+                <td align="center"><?=htmlspecialchars($row['rane'])?></td>
+                <td align="center"><?=htmlspecialchars($row['d_ymd'])?></td>
+                <td align="center"><?=htmlspecialchars($row['dt'])?></td>
+                </tr>
     
     <?php
-        
+        }else{
+            if($row['work']==$work){
+            ?>
+                <tr>
+                <td align="center"><?=htmlspecialchars($row['member'])?></td>
+                <td align="center"><?=htmlspecialchars($row['work_time'])?></td>
+                <td align="center"><?=htmlspecialchars($row['work'])?></td>
+                <?php
+                if($row['eff']>80 && $row['work']=="収穫"){?>
+                    <td align="center" bgcolor="#7cfc00"><b><?=htmlspecialchars($row['eff'])?></b></td>
+                <?php
+                }elseif($row['eff']>50 && $row['work']=="収穫"){
+                ?>
+                    <td align="center" bgcolor="#00bfff"><b><?=htmlspecialchars($row['eff'])?></b></td>
+                <?php
+                }elseif($row['eff']>30 && $row['work']=="収穫"){
+                ?>
+                    <td align="center" bgcolor="#ffd700"><b><?=htmlspecialchars($row['eff'])?></b></td>
+                <?php
+                }elseif($row['eff']<30 && $row['work']=="収穫" && $row['eff']!=""){
+                ?>
+                    <td align="center" bgcolor="#ff4500"><b><?=htmlspecialchars($row['eff'])?></b></td>
+                <?php
+                }else{
+                ?>
+                    <td align="center"><?=htmlspecialchars($row['eff'])?></td>
+                <?php
+                }
+                ?>
+                <td align="center"><?=htmlspecialchars($row['bx'])?></td>
+                <td align="center"><?=htmlspecialchars($row['rane'])?></td>
+                <td align="center"><?=htmlspecialchars($row['d_ymd'])?></td>
+                <td align="center"><?=htmlspecialchars($row['dt'])?></td>
+                </tr>
+            <?php
+            }
+        }
     }//foreachの括弧
     if(count($rs) == 0){
         print "検索結果がありません。";
@@ -584,41 +784,78 @@ if($_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]!="" && $DAY
         $rs = $stmh->fetchall ();
         foreach ( $rs as $row ) {
             $GYOU += 1;
+            if($work == ""){
     ?> 
-        <tr>
-        <td align="center"><?=htmlspecialchars($row['member'])?></td>
-        <td align="center"><?=htmlspecialchars($row['work_time'])?></td>
-        <td align="center"><?=htmlspecialchars($row['work'])?></td>
-        <?php
-        if($row['eff']>80 && $row['work']=="収穫"){?>
-            <td align="center" bgcolor="#7cfc00"><b><?=htmlspecialchars($row['eff'])?></b></td>
-        <?php
-        }elseif($row['eff']>50 && $row['work']=="収穫"){
-        ?>
-            <td align="center" bgcolor="#00bfff"><b><?=htmlspecialchars($row['eff'])?></b></td>
-        <?php
-        }elseif($row['eff']>30 && $row['work']=="収穫"){
-        ?>
-            <td align="center" bgcolor="#ffd700"><b><?=htmlspecialchars($row['eff'])?></b></td>
-        <?php
-        }elseif($row['eff']<30 && $row['work']=="収穫" && $row['eff']!=""){
-        ?>
-            <td align="center" bgcolor="#ff4500"><b><?=htmlspecialchars($row['eff'])?></b></td>
-        <?php
-        }else{
-        ?>
-            <td align="center"><?=htmlspecialchars($row['eff'])?></td>
-        <?php
-        }
-        ?>
-        <td align="center"><?=htmlspecialchars($row['bx'])?></td>
-        <td align="center"><?=htmlspecialchars($row['rane'])?></td>
-        <td align="center"><?=htmlspecialchars($row['d_ymd'])?></td>
-        <td align="center"><?=htmlspecialchars($row['dt'])?></td>
-        </tr>
+                <tr>
+                <td align="center"><?=htmlspecialchars($row['member'])?></td>
+                <td align="center"><?=htmlspecialchars($row['work_time'])?></td>
+                <td align="center"><?=htmlspecialchars($row['work'])?></td>
+                <?php
+                if($row['eff']>80 && $row['work']=="収穫"){?>
+                    <td align="center" bgcolor="#7cfc00"><b><?=htmlspecialchars($row['eff'])?></b></td>
+                <?php
+                }elseif($row['eff']>50 && $row['work']=="収穫"){
+                ?>
+                    <td align="center" bgcolor="#00bfff"><b><?=htmlspecialchars($row['eff'])?></b></td>
+                <?php
+                }elseif($row['eff']>30 && $row['work']=="収穫"){
+                ?>
+                    <td align="center" bgcolor="#ffd700"><b><?=htmlspecialchars($row['eff'])?></b></td>
+                <?php
+                }elseif($row['eff']<30 && $row['work']=="収穫" && $row['eff']!=""){
+                ?>
+                    <td align="center" bgcolor="#ff4500"><b><?=htmlspecialchars($row['eff'])?></b></td>
+                <?php
+                }else{
+                ?>
+                    <td align="center"><?=htmlspecialchars($row['eff'])?></td>
+                <?php
+                }
+                ?>
+                <td align="center"><?=htmlspecialchars($row['bx'])?></td>
+                <td align="center"><?=htmlspecialchars($row['rane'])?></td>
+                <td align="center"><?=htmlspecialchars($row['d_ymd'])?></td>
+                <td align="center"><?=htmlspecialchars($row['dt'])?></td>
+                </tr>
     
     <?php
-            
+            }else{
+                if($row['work']==$work){
+                ?>
+                    <tr>
+                    <td align="center"><?=htmlspecialchars($row['member'])?></td>
+                    <td align="center"><?=htmlspecialchars($row['work_time'])?></td>
+                    <td align="center"><?=htmlspecialchars($row['work'])?></td>
+                    <?php
+                    if($row['eff']>80 && $row['work']=="収穫"){?>
+                        <td align="center" bgcolor="#7cfc00"><b><?=htmlspecialchars($row['eff'])?></b></td>
+                    <?php
+                    }elseif($row['eff']>50 && $row['work']=="収穫"){
+                    ?>
+                        <td align="center" bgcolor="#00bfff"><b><?=htmlspecialchars($row['eff'])?></b></td>
+                    <?php
+                    }elseif($row['eff']>30 && $row['work']=="収穫"){
+                    ?>
+                        <td align="center" bgcolor="#ffd700"><b><?=htmlspecialchars($row['eff'])?></b></td>
+                    <?php
+                    }elseif($row['eff']<30 && $row['work']=="収穫" && $row['eff']!=""){
+                    ?>
+                        <td align="center" bgcolor="#ff4500"><b><?=htmlspecialchars($row['eff'])?></b></td>
+                    <?php
+                    }else{
+                    ?>
+                        <td align="center"><?=htmlspecialchars($row['eff'])?></td>
+                    <?php
+                    }
+                    ?>
+                    <td align="center"><?=htmlspecialchars($row['bx'])?></td>
+                    <td align="center"><?=htmlspecialchars($row['rane'])?></td>
+                    <td align="center"><?=htmlspecialchars($row['d_ymd'])?></td>
+                    <td align="center"><?=htmlspecialchars($row['dt'])?></td>
+                    </tr>
+                <?php
+                }
+            }
         }//foreachの括弧
     
     }
@@ -776,6 +1013,23 @@ if($_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]!="" && $DAY
     if(count($rs) == 0){
         print "検索結果がありません。";
     }
+/*■■■■■■■■■■■■■■■■■■■
+(9)作業内容のみ指定
+パターン番号--
+■■■■■■■■■■■■■■■■■■■■■*/
+}elseif(($work!="" && $_POST["search_key"]=="" && $_POST["year"]=="" && $_POST["month"]=="" && $DAY=="")
+        || ($work!="" && $_POST["search_key"]=="" && $_POST["year"]=="" && $_POST["month"]=="")
+        || ($work!="" && $_POST["search_key"]=="" && $_POST["year"]=="")
+        || ($work!="" && $_POST["search_key"]=="" )
+        || ($work!="" && $_POST["search_key"]=="" && $_POST["year"]=="" && $DAY=="")
+        || ($work!="" && $_POST["search_key"]=="" && $_POST["month"]=="" && $DAY=="")
+        || ($work!="" && $_POST["year"]=="" && $_POST["month"]=="" && $DAY=="")
+        || ($work!="" && $_POST["year"]=="" && $_POST["month"]=="")
+        || ($work!="" && $_POST["year"]=="")
+        || ($work!="" && $_POST["year"]=="" && $DAY=="")
+        || ($work!="" && $_POST["month"]=="" && $DAY=="")){
+print "年月または名前を指定してください。<br>";
+
 }
 ?>
 
