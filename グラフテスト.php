@@ -190,6 +190,8 @@ if($_POST["year"]!="" && $_POST["month"]!=""){
         print $eff_arr[$aa];
         print "<br>";
     }
+}else{
+    print "おおん";
 }
 
 ?>
