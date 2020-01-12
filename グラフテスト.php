@@ -96,96 +96,24 @@
 
 
 
-
-<?php
-/*▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲
-    //DB接続処理
-▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲*/
-$dbhost="ec2-174-129-255-46.compute-1.amazonaws.com";
-$dbname="dflv6jh505d9tv";
-$dbuser="qajdgcrnucpdpx";
-$dbpass="d2144f11fa2bc512c9f5f4d65cef0b1f804fabef86759d786bd6ca430eba6fa8";
-$dbtype="pgsql";
-$dsn = "$dbtype:dbname=$dbname host=$dbhost port=5432";
-try{
-    $pdo=new PDO($dsn,$dbuser,$dbpass);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-    $pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES,false);
-    //print"接続しました<br>";
-}catch(PDOException $Exception){
-    die('エラー:'.$Exception->getMessage());
-    print "データベース接続失敗<br>";
-}
-/*▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲
-▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲*/
-?>
-
-
-
-
-
-
-
-
 <?php 
 $DAY = (string) $_POST["day"];
 /*■■■■■■■■■■■■■■■■■■■
 (1)年、月
 パターン番号＝11
 ■■■■■■■■■■■■■■■■■■■■■*/
-if($_POST["year"]!="" && $_POST["month"]!=""){
-
-    $tabname="b_".$_POST["year"]."_".$_POST["month"];//テーブル名作成
-    $tabsel="SELECT * FROM ".$tabname;//セレクト文作成
-    $search_key=$_POST["search_key"];
-    //クエリ実行
-    try{
-    $stmh=$pdo->query($tabsel);
-    $stmh->execute();
-    }catch(PDOException $Exception){
-        print "エラー:"."データテーブルが見つかりません。<br>";
-    }
-    $rs2 = $stmh->fetchall();
-    $label[]="島井";
-    $label[]="都築";
-
-    for($aa=0;$aa<count($label);$aa+){
-        $time_sum = 0;
-        $eff_sum = 0;
-        $eff_count = 0;
-        foreach($rs2 as $row2){
-            if(($row2["member"] == $label[$aa]) && ()){
-                $time = (float) $row2["work_time"];
-                $time_sum += $time;//作業時間の合計
-                $eff = (float) $row2["eff"];
-                $eff_sum += $eff;//作業効率の合計
-                $eff_count += 1.0;
-            }
-        }
-        if($eff_sum == 0 || $eff_count == 0){
-            $eff_ave = 0;
-        }else{
-            $eff_ave = ($eff_sum/$eff_count); //作業効率の平均
-        }
-        $time_arr[$aa] = $time_sum; //scriptに送る作業時間の合計
-        $eff_arr[$aa] = $eff_ave;   //scriptに送る作業効率の平均
-        print $time_arr[$aa];
-        print "<br>";
-        print $eff_arr[$aa];
-        print "<br>";
-    }
-}else{
-    print "おおん";
+for($aa=0;$aa<5;$aa++){
+$ARRtes[$aa]=$aa;
 }
-
 ?>
+
 <!--
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.min.js"></script>
 <canvas id="time" width="20" height="5"></canvas><br><br>
 <canvas id="eff" width="20" height="5"></canvas><br><br>
 
 <script type="text/javascript">
-\
+
 
 
 var work_time = document.getElementById('time').getContext('2d');
