@@ -20,7 +20,7 @@ $hoge[$aa] = $aa;
 var hoge = <?php echo json_encode($hoge); ?>;
 var ctx = document.getElementById('myChart').getContext('2d');
 var myChart = new Chart(ctx, {
-  type: 'line',
+  type: 'bar',
   data: {
     labels: ['A', 'B', 'C', 'D', 'E'],
     datasets: [{
