@@ -58,7 +58,22 @@ var myChart1 = new Chart(work_time, {
       data: [5020,5210,4873,5288,5110,5107,4556,5622],
       backgroundColor: "rgba(20,255,0,0.9)"
     }]
-  }
+    options: {
+     :
+    scales: {
+        yAxes: [           // Ｙ軸 
+            {
+                ticks: {     // 目盛り        
+                    min: 0,      // 最小値
+                      // beginAtZero: true でも同じ
+                    max: 7000,     // 最大値
+                    stepSize: 5  // 間隔
+                }
+            }
+        ]
+    }
+        :
+    }
 });
 
 var work_time2 = document.getElementById('平均作業効率').getContext('2d');
