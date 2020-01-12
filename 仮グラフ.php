@@ -22,11 +22,18 @@ $MEMBER[6]="土居";
 $MEMBER[7]="山中";
 ?>
 
-<h4>今月の記録</h4>
-<h4>2020年1月</h4><br>
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.min.js"></script>
+
+<hr size="4" noshade>
+<h3>合計作業時間</h3>
+<hr size="4" noshade>
+<font size="4" color="#ff0000">2020年1月</font><br>
 <canvas id="作業時間合計" width="20" height="5"></canvas><br><br>
+
+<hr size="4" noshade>
+<h3>平均作業効率</h3>
+<hr size="4" noshade>
+<font size="4" color="#ff0000">2020年1月</font><br>
 <canvas id="平均作業効率" width="20" height="5"></canvas><br><br>
 
 <script type="text/javascript">
