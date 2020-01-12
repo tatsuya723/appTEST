@@ -174,20 +174,18 @@ print $graph['eff']."<br>";
 <canvas id="myChart" width="20" height="5"></canvas>
 
 <script type="text/javascript">
-//phpから変数を受け取る。
-var graph = JSON.parse('<?php echo $php_json; ?>');
-
 var ctx = document.getElementById('myChart').getContext('2d');
 var myChart = new Chart(ctx, {
-type: 'bar',
-data: {
-    labels: graph['member'],
+  type: 'line',
+  data: {
+    labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
     datasets: [{
-        label: '作業効率',
-        data: graph['eff'],
-        backgroundColor: "rgba(153,255,51,0.4)"
-    }
-});
+      label: 'apples',
+      data: [12, 19, 3, 17, 6, 3, 7],
+      backgroundColor: "rgba(153,255,51,0.4)"
+    }]
+  }
+})
 </script>
 
 <?php
