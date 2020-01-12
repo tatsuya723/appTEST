@@ -61,18 +61,16 @@ var myChart1 = new Chart(work_time, {
     options: {
      :
     scales: {
-        yAxes: [           // Ｙ軸 
-            {
+        yAxes: [{           // Ｙ軸 
                 ticks: {     // 目盛り        
                     min: 0,      // 最小値
                       // beginAtZero: true でも同じ
                     max: 7000,     // 最大値
                     stepSize: 5  // 間隔
                 }
-            }
-        ]
+        }]
     }
-        :
+        
     }
 });
 
