@@ -6,9 +6,9 @@
 </head>
 <body bgcolor="#e0ffff" text="#000000">
 
-<hr size="9" noshade>
+<hr size="10" noshade>
 <h1>#作業記録ページ</h1>
-<hr size="4" noshade>
+<hr size="10" noshade>
 <a href="index.php">ホームページへ</a><br>
 
 <?php
@@ -24,15 +24,15 @@ $MEMBER[7]="山中";
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.min.js"></script>
 
-<hr size="4" noshade>
+<hr size="5" noshade>
 <h3>合計作業時間</h3>
-<hr size="4" noshade>
+<hr size="5" noshade>
 <font size="4" color="#ff0000">2020年1月</font><br>
 <canvas id="作業時間合計" width="20" height="5"></canvas><br><br>
-
-<hr size="4" noshade>
+<br><br><br><br><br><br><br><br><br><br><br>
+<hr size="5" noshade>
 <h3>平均作業効率</h3>
-<hr size="4" noshade>
+<hr size="5" noshade>
 <font size="4" color="#ff0000">2020年1月</font><br>
 <canvas id="平均作業効率" width="20" height="5"></canvas><br><br>
 
