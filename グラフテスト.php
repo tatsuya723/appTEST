@@ -2,7 +2,7 @@
 <head>
     <title>うんこ</title>
     <meta charset=utf-8>
-    <link rel="stylesheet" type="text/css" href="tes1.css">
+    
 </head>
 <body bgcolor="#e0ffff" text="#000000">
 
