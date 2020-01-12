@@ -30,7 +30,7 @@ $MEMBER[7]="山中";
 <hr size="5" noshade>
 <hr size="5" noshade>
 <hr size="5" noshade>
-<h3>合計作業時間</h3>
+<h2 color="#ffa500">作業時間の合計</h2>
 <hr size="5" noshade>
 <font size="4" color="#ff0000">2020年1月</font><br>
 <canvas id="作業時間合計" width="20" height="5"></canvas><br><br>
@@ -41,7 +41,7 @@ $MEMBER[7]="山中";
 <hr size="5" noshade>
 <hr size="5" noshade>
 <hr size="5" noshade>
-<h3>平均作業効率</h3>
+<h2 color="#ffa500">平均作業効率</h2>
 <hr size="5" noshade>
 <font size="4" color="#ff0000">2020年1月</font><br>
 <canvas id="平均作業効率" width="20" height="5"></canvas><br><br>
