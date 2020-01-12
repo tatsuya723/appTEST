@@ -59,7 +59,6 @@ var myChart1 = new Chart(work_time, {
       backgroundColor: "rgba(20,255,0,0.9)"
     }]
     options: {
-     :
     scales: {
         yAxes: [{           // Ｙ軸 
                 ticks: {     // 目盛り        
@@ -72,6 +71,7 @@ var myChart1 = new Chart(work_time, {
     }
         
     }
+ }
 });
 
 var work_time2 = document.getElementById('平均作業効率').getContext('2d');
