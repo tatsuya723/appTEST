@@ -1,6 +1,6 @@
 <html> 
 <head>
-    <title>ホームページ</title>
+    <title>うんこ</title>
     <meta charset=utf-8>
     <link rel="stylesheet" type="text/css" href="tes1.css">
 </head>
