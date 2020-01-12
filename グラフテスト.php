@@ -152,12 +152,7 @@ foreach ( $rs as $row ) {
 パターン番号＝11
 ■■■■■■■■■■■■■■■■■■■■■*/
 if($_POST["year"]!="" && $_POST["month"]!=""){
-    $KEY1="11";
-    $KEY21=$_POST["search_key"];
-    $KEY31=$_POST["year"];
-    $KEY32=$_POST["month"];
-    $KEY33=$DAY;
-
+    
     $tabname="b_".$_POST["year"]."_".$_POST["month"];//テーブル名作成
     $tabsel="SELECT * FROM ".$tabname;//セレクト文作成
     $search_key=$_POST["search_key"];
