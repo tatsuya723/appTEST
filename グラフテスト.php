@@ -190,6 +190,7 @@ if($_POST["year"]!="" && $_POST["month"]!=""){
         print $eff_arr[$aa];
         print "<br>";
     }
+}
 
 ?>
 <!--
@@ -228,9 +229,7 @@ var myChart2 = new Chart(eff_ave, {
 });
 </script>
 -->
-<?php
-}
-?>
+
 
 </body>
 </html>
