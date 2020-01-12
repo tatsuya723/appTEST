@@ -37,5 +37,6 @@ var myChart1 = new Chart(work_time, {
     }]
   }
 });
+</script>
 </body>
 </html>
