@@ -209,7 +209,7 @@ var myChart1 = new Chart(work_time, {
       backgroundColor: "rgba(153,255,51,0.4)"
     }]
   }
-})
+});
 
 var eff_ave = document.getElementById('eff').getContext('2d');
 var myChart2 = new Chart(eff_ave, {
@@ -222,7 +222,7 @@ var myChart2 = new Chart(eff_ave, {
       backgroundColor: "rgba(153,255,51,0.4)"
     }]
   }
-})
+});
 
 
 </script>
