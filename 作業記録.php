@@ -1016,7 +1016,7 @@ if($_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]!="" && $DAY
 /*■■■■■■■■■■■■■■■■■■■
 (9)作業内容のみ指定
 パターン番号--
-■■■■■■■■■■■■■■■■■■■■■*/
+■■■■■■■■■■■■■■■■■■■■■
 }elseif(($work!="" && $_POST["search_key"]=="" && $_POST["year"]=="" && $_POST["month"]=="" && $DAY=="")
         || ($work!="" && $_POST["search_key"]=="" && $_POST["year"]=="" && $_POST["month"]=="")
         || ($work!="" && $_POST["search_key"]=="" && $_POST["year"]=="")
@@ -1028,7 +1028,7 @@ if($_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]!="" && $DAY
         || ($work!="" && $_POST["year"]=="")
         || ($work!="" && $_POST["year"]=="" && $DAY=="")
         || ($work!="" && $_POST["month"]=="" && $DAY=="")){
-print "年月または名前を指定してください。<br>";
+print "年月または名前を指定してください。<br>";*/
 
 }
 ?>
