@@ -25,11 +25,21 @@ $MEMBER[7]="山中";
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.min.js"></script>
 
 <hr size="5" noshade>
+<hr size="5" noshade>
+<hr size="5" noshade>
+<hr size="5" noshade>
+<hr size="5" noshade>
+<hr size="5" noshade>
 <h3>合計作業時間</h3>
 <hr size="5" noshade>
 <font size="4" color="#ff0000">2020年1月</font><br>
 <canvas id="作業時間合計" width="20" height="5"></canvas><br><br>
 <br><br><br><br><br><br><br><br><br><br><br>
+<hr size="5" noshade>
+<hr size="5" noshade>
+<hr size="5" noshade>
+<hr size="5" noshade>
+<hr size="5" noshade>
 <hr size="5" noshade>
 <h3>平均作業効率</h3>
 <hr size="5" noshade>
