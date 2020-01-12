@@ -163,13 +163,13 @@ if($_POST["year"]!="" && $_POST["month"]!=""){
     }catch(PDOException $Exception){
         print "エラー:"."データテーブルが見つかりません。<br>";
     }
-    $rs = $stmh->fetchall ();
+    $rs2 = $stmh->fetchall ();
     
     for($aa=0;$aa<count($label);$aa+){
         $time_sum = 0;
         $eff_sum = 0;
         $eff_count = 0;
-        foreach($rs as $row2){
+        foreach($rs2 as $row2){
             if($row2["member"] == $label[$aa]){
                 $time = (int) $row["work_time"];
                 $time_sum += $time;//作業時間の合計
