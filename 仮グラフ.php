@@ -10,7 +10,7 @@
 <h1>#作業記録ページ</h1>
 <hr size="10" noshade>
 <a href="index.php">ホームページへ</a><br>
-
+<a href="作業記録.php"><font size="5">戻る</font></a><br>
 <?php
 $MEMBER[0]="島井";
 $MEMBER[1]="都築";
