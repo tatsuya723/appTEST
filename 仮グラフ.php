@@ -162,7 +162,7 @@ if($Y!="" && $M!=""){
     foreach ( $data as $wtime ) {
       if($wtime["member"]==$member[$a]){ //$member[]の名前と一致したら
         $fl_time=(float)$wtime["work_time"];
-        $sum_time+=$fltime;
+        $sum_time+=$fl_time;
       }      
     }
     $sum_worktime[$a]=$sum_time;  
