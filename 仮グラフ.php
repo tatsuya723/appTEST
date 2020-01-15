@@ -167,7 +167,7 @@ if($Y!="" && $M!=""){
     }
     $sum_worktime[$a]=$sum_time;  
   }
-}
+
 
 /*▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲
 ▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲*/
@@ -199,6 +199,8 @@ if($Y!="" && $M!=""){
 
 <script type="text/javascript">
 var member = <?php echo json_encode($member); ?>;
+var sum_worktime = <?php echo json_encode($sum_worktime); ?>;
+
 var work_time = document.getElementById('作業時間合計').getContext('2d');
 var myChart1 = new Chart(work_time, {
     type: 'bar',
@@ -206,7 +208,7 @@ var myChart1 = new Chart(work_time, {
         labels: member,
         datasets: [{
         label: '作業時間合計',
-        data: [5020,5210,4873,5288,5110,5107,4556,5622],
+        data: sum_worktime,
         backgroundColor: "rgba(20,255,0,0.9)"
         
         }]
@@ -226,7 +228,9 @@ var myChart1 = new Chart(work_time2, {
   }
 });
 
-
+<?php
+}
+?>
 </script>
 </body>
 </html>
