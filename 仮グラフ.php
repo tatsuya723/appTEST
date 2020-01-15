@@ -145,7 +145,7 @@ foreach ( $sample_member as $member_b ) {
 ▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲*/
 $Y=$_POST["year"];
 $M=$_POST["month"];
-$W=$_POST["work"]
+$W=$_POST["work"];
 if($Y!="" && $M!="" && $DAY==""){
   $tabname="b_".$_POST["year"]."_".$_POST["month"];//テーブル名作成
   $tabsel="SELECT * FROM ".$tabname;//セレクト文作成
