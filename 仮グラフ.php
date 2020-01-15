@@ -140,7 +140,6 @@ $M=$_POST["month"];
 if($Y!="" && $M!="" && $DAY==""){
   $tabname="b_".$_POST["year"]."_".$_POST["month"];//テーブル名作成
   $tabsel="SELECT * FROM ".$tabname;//セレクト文作成
-  //クエリ実行
   try{
   $stmh=$pdo->query($tabsel);
   $stmh->execute();
@@ -174,7 +173,6 @@ if($Y!="" && $M!="" && $DAY==""){
 }elseif($Y!="" && $M!="" && $DAY!=""){
   $tabname="b_".$_POST["year"]."_".$_POST["month"];//テーブル名作成
   $tabsel="SELECT * FROM ".$tabname;//セレクト文作成
-  //クエリ実行
   try{
   $stmh=$pdo->query($tabsel);
   $stmh->execute();
@@ -210,12 +208,12 @@ if($Y!="" && $M!="" && $DAY==""){
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.min.js"></script>
 
 <h2 color="#ffa500">作業時間の合計</h2>
-<font size="4" color="#ff0000"><?=$Y?>年<?=$M?>月</font><br>
+<font size="4" color="#ff0000"><?=$Y?>年 <?=$M?>月 <?=$DAY?>日</font><br>
 <canvas id="作業時間合計" width="20" height="5"></canvas><br><br>
 <br><br><br><br><br><br><br>
 
 <h2 color="#ffa500">平均作業効率</h2>
-<font size="4" color="#ff0000">2020年1月</font><br>
+<font size="4" color="#ff0000"><?=$Y?>年 <?=$M?>月 <?=$DAY?>日</font><br>
 <canvas id="平均作業効率" width="20" height="5"></canvas><br><br>
 
 <script type="text/javascript">
