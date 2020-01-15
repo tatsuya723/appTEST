@@ -137,7 +137,7 @@ foreach ( $sample_member as $member_b ) {
 ▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲*/
 $Y=$_POST["year"];
 $M=$_POST["month"];
-if($Y!="" && $M!=""){
+if($Y!="" && $M!="" && $DAY==""){
   $tabname="b_".$_POST["year"]."_".$_POST["month"];//テーブル名作成
   $tabsel="SELECT * FROM ".$tabname;//セレクト文作成
   //クエリ実行
@@ -164,67 +164,132 @@ if($Y!="" && $M!=""){
       }      
     }
     $sum_worktime[$a]=$sum_time;              //作業時間の合計を配列に保存
-    if($count_eff>1){
-      $ave_eff[$a]=($sum_eff/$count_eff);       //効率の平均値を配列に保存
+    if($count_eff>1){                         //効率の平均値を配列に保存
+      $ave_eff[$a]=($sum_eff/$count_eff);       
     }else{
       $ave_eff[$a]=0;
     }
       print $ave_eff[$a];
-  }
-  
+  }  
 ?>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.min.js"></script>
 
-<hr size="5" noshade>
-<hr size="5" noshade>
-<hr size="5" noshade>
-<h2 color="#ffa500">作業時間の合計</h2>
-<hr size="5" noshade>
-<font size="4" color="#ff0000"><?=$Y?>年<?=$M?>月</font><br>
-<canvas id="作業時間合計" width="20" height="5"></canvas><br><br>
-<br><br><br><br><br><br>
+  <h2 color="#ffa500">作業時間の合計</h2>
+  <font size="4" color="#ff0000"><?=$Y?>年<?=$M?>月</font><br>
+  <canvas id="作業時間合計" width="20" height="5"></canvas><br><br>
+  <br><br><br><br><br><br><br>
 
-<hr size="5" noshade>
-<hr size="5" noshade>
-<hr size="5" noshade>
-<h2 color="#ffa500">平均作業効率</h2>
-<hr size="5" noshade>
-<font size="4" color="#ff0000">2020年1月</font><br>
-<canvas id="平均作業効率" width="20" height="5"></canvas><br><br>
+  <h2 color="#ffa500">平均作業効率</h2>
+  <font size="4" color="#ff0000">2020年1月</font><br>
+  <canvas id="平均作業効率" width="20" height="5"></canvas><br><br>
 
-<script type="text/javascript">
-var member = <?php echo json_encode($member); ?>;
-var sum_worktime = <?php echo json_encode($sum_worktime); ?>;
-var ave_eff = <?php echo json_encode($ave_eff); ?>;
-var work_time = document.getElementById('作業時間合計').getContext('2d');
-var myChart1 = new Chart(work_time, {
-  type: 'bar',
-  data: {
-    labels: member,
-    datasets: [{
-      label: '作業時間合計',
-      data: sum_worktime,
-      backgroundColor: "rgba(20,255,0,0.9)"    
-    }]
-  }   
-});
-var work_time2 = document.getElementById('平均作業効率').getContext('2d');
-var myChart2 = new Chart(work_time2, {
-  type: 'bar',
-  data: {
-    labels: member,
-    datasets: [{
-      label: '平均作業効率',
-      data: ave_eff,
-      backgroundColor: "rgba(20,255,0,0.9)"
-    }]
+  <script type="text/javascript">
+  var member = <?php echo json_encode($member); ?>;
+  var sum_worktime = <?php echo json_encode($sum_worktime); ?>;
+  var ave_eff = <?php echo json_encode($ave_eff); ?>;
+  var work_time = document.getElementById('作業時間合計').getContext('2d');
+  var myChart1 = new Chart(work_time, {
+    type: 'bar',
+    data: {
+      labels: member,
+      datasets: [{
+        label: '作業時間合計',
+        data: sum_worktime,
+        backgroundColor: "rgba(20,255,0,0.9)"    
+      }]
+    }   
+  });
+  var work_time2 = document.getElementById('平均作業効率').getContext('2d');
+  var myChart2 = new Chart(work_time2, {
+    type: 'bar',
+    data: {
+      labels: member,
+      datasets: [{
+        label: '平均作業効率',
+        data: ave_eff,
+        backgroundColor: "rgba(20,255,0,0.9)"
+      }]
+    }
+  });
+  </script>
+<?php
+}elseif($Y!="" && $M!="" && $DAY!=""){
+  $tabname="b_".$_POST["year"]."_".$_POST["month"];//テーブル名作成
+  $tabsel="SELECT * FROM ".$tabname;//セレクト文作成
+  //クエリ実行
+  try{
+  $stmh=$pdo->query($tabsel);
+  $stmh->execute();
+  }catch(PDOException $Exception){
+      print "エラー:"."データテーブルが見つかりません。<br>";
   }
-});
+  $data = $stmh->fetchall ();
+  for($a=0;$a<count($member);$a++){
+    $sum_time=0;//合計時間の初期化
+    $sum_eff=0;//効率の合計初期化
+    $count_eff=0;//効率の平均を求めるときに使う値
+    foreach ( $data as $wtime ) {
+      if(($wtime["member"]==$member[$a]) && ($wtime["dd"]==$DAY)){      //$member[]の名前と一致したら
+        $fl_time=(float)$wtime["work_time"];  //float型に変換
+        $sum_time+=$fl_time;                  //作業時間を足していく
+        if(($wtime["work"]=="収穫") && ($wtime["eff"]!="")){
+          $fl_eff=(float)$wtime["eff"];         //float型に変換
+          $sum_eff=+$fl_eff;                   //作業効率値を足していく
+          $count_eff+=1;
+        }
+      }      
+    }
+    $sum_worktime[$a]=$sum_time;              //作業時間の合計を配列に保存
+    if($count_eff>1){                         //効率の平均値を配列に保存
+      $ave_eff[$a]=($sum_eff/$count_eff);       
+    }else{
+      $ave_eff[$a]=0;
+    }
+      print $ave_eff[$a];
+  }  
+?>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.min.js"></script>
 
+  <h2 color="#ffa500">作業時間の合計</h2>
+  <font size="4" color="#ff0000"><?=$Y?>年<?=$M?>月</font><br>
+  <canvas id="作業時間合計" width="20" height="5"></canvas><br><br>
+  <br><br><br><br><br><br><br>
+
+  <h2 color="#ffa500">平均作業効率</h2>
+  <font size="4" color="#ff0000">2020年1月</font><br>
+  <canvas id="平均作業効率" width="20" height="5"></canvas><br><br>
+
+  <script type="text/javascript">
+  var member = <?php echo json_encode($member); ?>;
+  var sum_worktime = <?php echo json_encode($sum_worktime); ?>;
+  var ave_eff = <?php echo json_encode($ave_eff); ?>;
+  var work_time = document.getElementById('作業時間合計').getContext('2d');
+  var myChart1 = new Chart(work_time, {
+    type: 'bar',
+    data: {
+      labels: member,
+      datasets: [{
+        label: '作業時間合計',
+        data: sum_worktime,
+        backgroundColor: "rgba(20,255,0,0.9)"    
+      }]
+    }   
+  });
+  var work_time2 = document.getElementById('平均作業効率').getContext('2d');
+  var myChart2 = new Chart(work_time2, {
+    type: 'bar',
+    data: {
+      labels: member,
+      datasets: [{
+        label: '平均作業効率',
+        data: ave_eff,
+        backgroundColor: "rgba(20,255,0,0.9)"
+      }]
+    }
+  });
 <?php
 }
 ?>
-</script>
 </body>
 </html>
