@@ -230,7 +230,7 @@ if($Y!="" && $M!="" && $DAY==""){
     $sum_eff=0;//効率の合計初期化
     $count_eff=0;//効率の平均を求めるときに使う値
     foreach ( $data as $wtime ) {
-      if(($wtime["member"]==$member[$a]) && ($wtime["dd"]==$DAY)){      //$member[]の名前と一致したら
+      if(($wtime["member"]==$member[$a]) && ($wtime["dd"]==$DAY)){      //$member[]の名前と一致かつ$DAYの日付と一致したら
         $fl_time=(float)$wtime["work_time"];  //float型に変換
         $sum_time+=$fl_time;                  //作業時間を足していく
         if(($wtime["work"]=="収穫") && ($wtime["eff"]!="")){
@@ -252,12 +252,12 @@ if($Y!="" && $M!="" && $DAY==""){
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.min.js"></script>
 
   <h2 color="#ffa500">作業時間の合計</h2>
-  <font size="4" color="#ff0000"><?=$Y?>年<?=$M?>月</font><br>
+  <font size="4" color="#ff0000"><?=$Y?>年<?=$M?>月<?=$DAY?>日</font><br>
   <canvas id="作業時間合計" width="20" height="5"></canvas><br><br>
   <br><br><br><br><br><br><br>
 
   <h2 color="#ffa500">平均作業効率</h2>
-  <font size="4" color="#ff0000">2020年1月</font><br>
+  <font size="4" color="#ff0000"><?=$Y?>年<?=$M?>月<?=$DAY?>日</font><br>
   <canvas id="平均作業効率" width="20" height="5"></canvas><br><br>
 
   <script type="text/javascript">
