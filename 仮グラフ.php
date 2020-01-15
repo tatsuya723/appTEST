@@ -42,17 +42,20 @@ try{
 /*▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲
 ▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲*/
 
-
-
-//$tabname="b_".$_POST["year"]."_".$_POST["month"];//テーブル名作成
-$tabsel="SELECT * FROM sample_member";//セレクト文作成
+//sample_memberから取得
 try{
-  $stmh=$pdo->query($tabsel);
+  $stmh=$pdo->query("SELECT * FROM sample_member");
   $stmh->execute();
 }catch(PDOException $Exception){
   print "エラー:"."データテーブルが見つかりません。<br>";
 }
+$sample_member = $stmh->fetchall ();
+foreach ( $sample_member as $member_b ) {
+  if($member_b["work"] == "収穫"){
+    $member[] = $member_b["収穫"];
+  }  
 
+}
 ?>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.min.js"></script>
