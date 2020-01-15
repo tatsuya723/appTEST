@@ -83,7 +83,7 @@ foreach ( $sample_member as $member_b ) {
 <canvas id="平均作業効率" width="20" height="5"></canvas><br><br>
 
 <script type="text/javascript">
-var member = <?php echo json_encode($MEMBER); ?>;
+var member = <?php echo json_encode($member); ?>;
 var work_time = document.getElementById('作業時間合計').getContext('2d');
 var myChart1 = new Chart(work_time, {
     type: 'bar',
