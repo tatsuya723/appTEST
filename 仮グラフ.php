@@ -156,7 +156,7 @@ if($Y!="" && $M!=""){
       if($wtime["member"]==$member[$a]){      //$member[]の名前と一致したら
         $fl_time=(float)$wtime["work_time"];  //float型に変換
         $sum_time+=$fl_time;                  //作業時間を足していく
-        if(($wtime["work"]=="収穫") && ($wtime["eff"]!="NAN")){
+        if(($wtime["work"]=="収穫") && ($wtime["eff"]!=NAN)){
           $fl_eff=(float)$wtime["eff"];         //float型に変換
           $sum_eff=+$fl_eff;                   //作業効率値を足していく
           $count_eff+=1;
