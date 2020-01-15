@@ -156,7 +156,7 @@ if($Y!="" && $M!=""){
       if($wtime["member"]==$member[$a]){      //$member[]の名前と一致したら
         $fl_time=(float)$wtime["work_time"];  //float型に変換
         $sum_time+=$fl_time;                  //作業時間を足していく
-        if(($wtime["work"]=="収穫") && ($wtime["eff"]!=NAN)){
+        if(($wtime["work"]=="収穫") && ($wtime["eff"]!="")){
           $fl_eff=(float)$wtime["eff"];         //float型に変換
           $sum_eff=+$fl_eff;                   //作業効率値を足していく
           $count_eff+=1;
@@ -164,8 +164,12 @@ if($Y!="" && $M!=""){
       }      
     }
     $sum_worktime[$a]=$sum_time;              //作業時間の合計を配列に保存
-    $ave_eff[$a]=($sum_eff/$count_eff);       //効率の平均値を配列に保存
-    print $ave_eff[$a];
+    if($count_eff>1){
+      $ave_eff[$a]=($sum_eff/$count_eff);       //効率の平均値を配列に保存
+    }else{
+      $ave_eff[$a]=0;
+    }
+      print $ave_eff[$a];
   }
   
 ?>
