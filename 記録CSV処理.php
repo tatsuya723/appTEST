@@ -55,8 +55,8 @@ if($_POST['key1']=="11"){
 	for($i=0;$i<count($rs);$i++){
 		if(($rs[$i]['member'] == $key21) && ($rs[$i]['dd'] == $D)){
 			$csv .= "".",". $rs[$i]['card_id']  .",".  $rs[$i]['member'] .",".  $rs[$i]['work_time'] .",". $rs[$i]['work'] .",".$rs[$i]['eff'].",".$rs[$i]['bx'].",". $rs[$i]['rane'].",". $rs[$i]['d_ymd'].",".$rs[$i]['dt']. "\n";
-		$csv = str_replace(',', '","', $csv);
-		$csv = str_replace("\n", chr(10), $csv);
+		//$csv = str_replace(',', '","', $csv);
+		//$csv = str_replace("\n", chr(10), $csv);
 		}
 	}
 
@@ -77,8 +77,8 @@ if($_POST['key1']=="11"){
 	for($i=0;$i<count($rs);$i++){
 		if($rs[$i]['member'] == $key21){
 			$csv .= "".",". $rs[$i]['card_id']  .",".  $rs[$i]['member'] .",".  $rs[$i]['work_time'] .",". $rs[$i]['work'] .",".$rs[$i]['eff'].",".$rs[$i]['bx'].",". $rs[$i]['rane'].",". $rs[$i]['d_ymd'].",".$rs[$i]['dt']. "\n";
-			$csv = str_replace(',', '","', $csv);
-			$csv = str_replace("\n", chr(10), $csv);
+			//$csv = str_replace(',', '","', $csv);
+			//$csv = str_replace("\n", chr(10), $csv);
 		}
 	}
 
@@ -101,8 +101,8 @@ if($_POST['key1']=="11"){
 	for($i=0;$i<count($rs);$i++){
 		if($rs[$i]['member'] == $key21){
 			$csv .= "".",". $rs[$i]['card_id']  .",".  $rs[$i]['member'] .",".  $rs[$i]['work_time'] .",". $rs[$i]['work'] .",".$rs[$i]['eff'].",".$rs[$i]['bx'].",". $rs[$i]['rane'].",". $rs[$i]['d_ymd'].",".$rs[$i]['dt']. "\n";
-			$csv = str_replace(',', '","', $csv);
-			$csv = str_replace("\n", chr(10), $csv);
+			//$csv = str_replace(',', '","', $csv);
+			//$csv = str_replace("\n", chr(10), $csv);
 		}
 	}
 
@@ -124,8 +124,8 @@ if($_POST['key1']=="11"){
 	for($i=0;$i<count($rs);$i++){
 		if($rs[$i]['dd'] == $D){
 			$csv .= "".",". $rs[$i]['card_id']  .",".  $rs[$i]['member'] .",".  $rs[$i]['work_time'] .",". $rs[$i]['work'] .",".$rs[$i]['eff'].",".$rs[$i]['bx'].",". $rs[$i]['rane'].",". $rs[$i]['d_ymd'].",".$rs[$i]['dt']. "\n";
-			$csv = str_replace(',', '","', $csv);
-			$csv = str_replace("\n", chr(10), $csv);
+			//$csv = str_replace(',', '","', $csv);
+			//$csv = str_replace("\n", chr(10), $csv);
 		}
 	}
 
@@ -147,8 +147,8 @@ if($_POST['key1']=="11"){
 	
 	for($i=0;$i<count($rs);$i++){
 		$csv .= "".",". $rs[$i]['card_id']  .",".  $rs[$i]['member'] .",".  $rs[$i]['work_time'] .",". $rs[$i]['work'] .",".$rs[$i]['eff'].",".$rs[$i]['bx'].",". $rs[$i]['rane'].",". $rs[$i]['d_ymd'].",".$rs[$i]['dt']. "\n";
-		$csv = str_replace(',', '","', $csv);
-		$csv = str_replace("\n", chr(10), $csv);
+		//$csv = str_replace(',', '","', $csv);
+		//$csv = str_replace("\n", chr(10), $csv);
 	}
 
 	
@@ -169,8 +169,8 @@ if($_POST['key1']=="11"){
 	
 	for($i=0;$i<count($rs);$i++){
 		$csv .= "".",". $rs[$i]['card_id']  .",".  $rs[$i]['member'] .",".  $rs[$i]['work_time'] .",". $rs[$i]['work'] .",".$rs[$i]['eff'].",".$rs[$i]['bx'].",". $rs[$i]['rane'].",". $rs[$i]['d_ymd'].",".$rs[$i]['dt']. "\n";
-		$csv = str_replace(',', '","', $csv);
-		$csv = str_replace("\n", chr(10), $csv);
+		//$csv = str_replace(',', '","', $csv);
+		//$csv = str_replace("\n", chr(10), $csv);
 		}
 
 
@@ -190,8 +190,8 @@ if($_POST['key1']=="11"){
 	
 	for($i=0;$i<count($rs);$i++){
 		$csv .= "".",". $rs[$i]['card_id']  .",".  $rs[$i]['member'] .",".  $rs[$i]['work_time'] .",". $rs[$i]['work'] .",".$rs[$i]['eff'].",".$rs[$i]['bx'].",". $rs[$i]['rane'].",". $rs[$i]['d_ymd'].",".$rs[$i]['dt']. "\n";	
-		$csv = str_replace(',', '","', $csv);
-		$csv = str_replace("\n", chr(10), $csv);
+		//$csv = str_replace(',', '","', $csv);
+		//$csv = str_replace("\n", chr(10), $csv);
 	}
 		
 
