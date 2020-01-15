@@ -171,49 +171,6 @@ if($Y!="" && $M!="" && $DAY==""){
     }
       print $ave_eff[$a];
   }  
-?>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.min.js"></script>
-
-  <h2 color="#ffa500">作業時間の合計</h2>
-  <font size="4" color="#ff0000"><?=$Y?>年<?=$M?>月</font><br>
-  <canvas id="作業時間合計" width="20" height="5"></canvas><br><br>
-  <br><br><br><br><br><br><br>
-
-  <h2 color="#ffa500">平均作業効率</h2>
-  <font size="4" color="#ff0000">2020年1月</font><br>
-  <canvas id="平均作業効率" width="20" height="5"></canvas><br><br>
-
-  <script type="text/javascript">
-  var member = <?php echo json_encode($member); ?>;
-  var sum_worktime = <?php echo json_encode($sum_worktime); ?>;
-  var ave_eff = <?php echo json_encode($ave_eff); ?>;
-  var work_time = document.getElementById('作業時間合計').getContext('2d');
-  var myChart1 = new Chart(work_time, {
-    type: 'bar',
-    data: {
-      labels: member,
-      datasets: [{
-        label: '作業時間合計',
-        data: sum_worktime,
-        backgroundColor: "rgba(20,255,0,0.9)"    
-      }]
-    }   
-  });
-  var work_time2 = document.getElementById('平均作業効率').getContext('2d');
-  var myChart2 = new Chart(work_time2, {
-    type: 'bar',
-    data: {
-      labels: member,
-      datasets: [{
-        label: '平均作業効率',
-        data: ave_eff,
-        backgroundColor: "rgba(20,255,0,0.9)"
-      }]
-    }
-  });
-  </script>
-<?php
 }elseif($Y!="" && $M!="" && $DAY!=""){
   $tabname="b_".$_POST["year"]."_".$_POST["month"];//テーブル名作成
   $tabsel="SELECT * FROM ".$tabname;//セレクト文作成
@@ -248,48 +205,47 @@ if($Y!="" && $M!="" && $DAY==""){
     }
       print $ave_eff[$a];
   }  
-?>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.min.js"></script>
-
-  <h2 color="#ffa500">作業時間の合計</h2>
-  <font size="4" color="#ff0000"><?=$Y?>年<?=$M?>月<?=$DAY?>日</font><br>
-  <canvas id="作業時間合計" width="20" height="5"></canvas><br><br>
-  <br><br><br><br><br><br><br>
-
-  <h2 color="#ffa500">平均作業効率</h2>
-  <font size="4" color="#ff0000"><?=$Y?>年<?=$M?>月<?=$DAY?>日</font><br>
-  <canvas id="平均作業効率" width="20" height="5"></canvas><br><br>
-
-  <script type="text/javascript">
-  var member = <?php echo json_encode($member); ?>;
-  var sum_worktime = <?php echo json_encode($sum_worktime); ?>;
-  var ave_eff = <?php echo json_encode($ave_eff); ?>;
-  var work_time = document.getElementById('作業時間合計').getContext('2d');
-  var myChart1 = new Chart(work_time, {
-    type: 'bar',
-    data: {
-      labels: member,
-      datasets: [{
-        label: '作業時間合計',
-        data: sum_worktime,
-        backgroundColor: "rgba(20,255,0,0.9)"    
-      }]
-    }   
-  });
-  var work_time2 = document.getElementById('平均作業効率').getContext('2d');
-  var myChart2 = new Chart(work_time2, {
-    type: 'bar',
-    data: {
-      labels: member,
-      datasets: [{
-        label: '平均作業効率',
-        data: ave_eff,
-        backgroundColor: "rgba(20,255,0,0.9)"
-      }]
-    }
-  });
-<?php
 }
 ?>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.min.js"></script>
+
+<h2 color="#ffa500">作業時間の合計</h2>
+<font size="4" color="#ff0000"><?=$Y?>年<?=$M?>月</font><br>
+<canvas id="作業時間合計" width="20" height="5"></canvas><br><br>
+<br><br><br><br><br><br><br>
+
+<h2 color="#ffa500">平均作業効率</h2>
+<font size="4" color="#ff0000">2020年1月</font><br>
+<canvas id="平均作業効率" width="20" height="5"></canvas><br><br>
+
+<script type="text/javascript">
+var member = <?php echo json_encode($member); ?>;
+var sum_worktime = <?php echo json_encode($sum_worktime); ?>;
+var ave_eff = <?php echo json_encode($ave_eff); ?>;
+var work_time = document.getElementById('作業時間合計').getContext('2d');
+var myChart1 = new Chart(work_time, {
+  type: 'bar',
+  data: {
+    labels: member,
+    datasets: [{
+      label: '作業時間合計',
+      data: sum_worktime,
+      backgroundColor: "rgba(20,255,0,0.9)"    
+    }]
+  }   
+});
+var work_time2 = document.getElementById('平均作業効率').getContext('2d');
+var myChart2 = new Chart(work_time2, {
+  type: 'bar',
+  data: {
+    labels: member,
+    datasets: [{
+      label: '平均作業効率',
+      data: ave_eff,
+      backgroundColor: "rgba(20,255,0,0.9)"
+    }]
+  }
+});
+</script>
 </body>
 </html>
