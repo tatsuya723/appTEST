@@ -54,7 +54,9 @@ foreach ( $sample_member as $member_b ) {
   if($member_b["work"] == "収穫"){
     $member[] = $member_b["収穫"];
   }  
-
+}
+for($a=0;$a<count($member);$a++){
+  print $member[$a];
 }
 ?>
 
