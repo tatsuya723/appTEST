@@ -156,6 +156,17 @@ if($Y!="" && $M!=""){
   }catch(PDOException $Exception){
       print "エラー:"."データテーブルが見つかりません。<br>";
   }
+  $data = $stmh->fetchall ();
+  for($a=0;$a<count($member);$a++){
+    $sum_time=0;//合計時間の初期化
+    foreach ( $data as $wtime ) {
+      if($wtime["member"]==$member[$a]){ //$member[]の名前と一致したら
+        $fl_time=(float)$wtime["work_time"];
+        $sum_time+=$fltime;
+      }      
+    }
+    $sum_worktime[$a]=$sum_time;  
+  }
 }
 
 /*▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲
