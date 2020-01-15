@@ -164,6 +164,7 @@ if($Y!="" && $M!=""){
     $sum_worktime[$a]=$sum_time;              //作業時間の合計を配列に保存
     $ave_eff[$a]=($sum_eff/$count_eff);       //効率の平均値を配列に保存
   }
+  print $ave_eff;
 ?>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.min.js"></script>
@@ -202,7 +203,7 @@ var myChart1 = new Chart(work_time, {
   }   
 });
 var work_time2 = document.getElementById('平均作業効率').getContext('2d');
-var myChart1 = new Chart(work_time2, {
+var myChart2 = new Chart(work_time2, {
   type: 'bar',
   data: {
     labels: member,
