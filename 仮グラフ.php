@@ -137,6 +137,7 @@ foreach ( $sample_member as $member_b ) {
 ▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲*/
 $Y=$_POST["year"];
 $M=$_POST["month"];
+$W=$_POST["work"]
 if($Y!="" && $M!="" && $DAY==""){
   $tabname="b_".$_POST["year"]."_".$_POST["month"];//テーブル名作成
   $tabsel="SELECT * FROM ".$tabname;//セレクト文作成
@@ -152,13 +153,25 @@ if($Y!="" && $M!="" && $DAY==""){
     $sum_eff=0;//効率の合計初期化
     $count_eff=0;//効率の平均を求めるときに使う値
     foreach ( $data as $wtime ) {
-      if($wtime["member"]==$member[$a]){      //$member[]の名前と一致したら
-        $fl_time=(float)$wtime["work_time"];  //float型に変換
-        $sum_time+=$fl_time;                  //作業時間を足していく
-        if(($wtime["work"]=="収穫") && ($wtime["eff"]!="")){
-          $fl_eff=(float)$wtime["eff"];         //float型に変換
-          $sum_eff=+$fl_eff;                   //作業効率値を足していく
-          $count_eff+=1;
+      if($W==""){
+        if($wtime["member"]==$member[$a]){      //$member[]の名前と一致したら
+          $fl_time=(float)$wtime["work_time"];  //float型に変換
+          $sum_time+=$fl_time;                  //作業時間を足していく
+          if(($wtime["work"]=="収穫") && ($wtime["eff"]!="")){
+            $fl_eff=(float)$wtime["eff"];         //float型に変換
+            $sum_eff=+$fl_eff;                   //作業効率値を足していく
+            $count_eff+=1;
+          }
+        }
+      }else{
+        if($wtime["member"]==$member[$a] && $wtime["work"]==$W){      //$member[]の名前かつ指定した仕事内容と一致したら
+          $fl_time=(float)$wtime["work_time"];  //float型に変換
+          $sum_time+=$fl_time;                  //作業時間を足していく
+          if(($W=="収穫") && ($wtime["work"]=="収穫") && ($wtime["eff"]!="")){　//仕事内容指定が"収穫"かつ$wtimeが"収穫"かつ効率値が入っていたら
+            $fl_eff=(float)$wtime["eff"];         //float型に変換
+            $sum_eff=+$fl_eff;                   //作業効率値を足していく
+            $count_eff+=1;
+          }
         }
       }      
     }
@@ -170,6 +183,7 @@ if($Y!="" && $M!="" && $DAY==""){
     }
       print $ave_eff[$a];
   }  
+  
 }elseif($Y!="" && $M!="" && $DAY!=""){
   $tabname="b_".$_POST["year"]."_".$_POST["month"];//テーブル名作成
   $tabsel="SELECT * FROM ".$tabname;//セレクト文作成
@@ -185,15 +199,27 @@ if($Y!="" && $M!="" && $DAY==""){
     $sum_eff=0;//効率の合計初期化
     $count_eff=0;//効率の平均を求めるときに使う値
     foreach ( $data as $wtime ) {
-      if(($wtime["member"]==$member[$a]) && ($wtime["dd"]==$DAY)){      //$member[]の名前と一致かつ$DAYの日付と一致したら
-        $fl_time=(float)$wtime["work_time"];  //float型に変換
-        $sum_time+=$fl_time;                  //作業時間を足していく
-        if(($wtime["work"]=="収穫") && ($wtime["eff"]!="")){
-          $fl_eff=(float)$wtime["eff"];         //float型に変換
-          $sum_eff=+$fl_eff;                   //作業効率値を足していく
-          $count_eff+=1;
+      if($W==""){
+        if(($wtime["member"]==$member[$a]) && ($wtime["dd"]==$DAY)){      //$member[]の名前が一致かつ$DAYの日付と一致したら
+          $fl_time=(float)$wtime["work_time"];  //float型に変換
+          $sum_time+=$fl_time;                  //作業時間を足していく
+          if(($wtime["work"]=="収穫") && ($wtime["eff"]!="")){
+            $fl_eff=(float)$wtime["eff"];         //float型に変換
+            $sum_eff=+$fl_eff;                   //作業効率値を足していく
+            $count_eff+=1;
+          }
         }
-      }      
+      }else{
+        if(($wtime["member"]==$member[$a]) && ($wtime["work"]==$W) && ($wtime["dd"]==$DAY)){      //$member[]の名前かつ指定した仕事内容と一致かつ日付が一致したら
+          $fl_time=(float)$wtime["work_time"];  //float型に変換
+          $sum_time+=$fl_time;                  //作業時間を足していく
+          if(($W=="収穫") && ($wtime["work"]=="収穫") && ($wtime["eff"]!="")){　//仕事内容指定が"収穫"かつ$wtimeが"収穫"かつ効率値が入っていたら
+            $fl_eff=(float)$wtime["eff"];         //float型に変換
+            $sum_eff=+$fl_eff;                   //作業効率値を足していく
+            $count_eff+=1;
+          }
+        }
+      }            
     }
     $sum_worktime[$a]=$sum_time;              //作業時間の合計を配列に保存
     if($count_eff>1){                         //効率の平均値を配列に保存
@@ -201,7 +227,6 @@ if($Y!="" && $M!="" && $DAY==""){
     }else{
       $ave_eff[$a]=0;
     }
-      print $ave_eff[$a];
   }  
 }
 ?>
