@@ -13,7 +13,15 @@
 <a href="作業記録.php"><font size="5">戻る</font></a><br>
 
 <form name="form1" method="post" action="仮グラフ.php">
-       
+        <font size="4" color="#000000">作業内容を指定:</font><br>
+        <select name="work">
+        <option value="" selected>----作業内容を選択してください----</option>
+        <option value="収穫">収穫</option>
+        <option value="芽かき">芽かき</option>
+        <option value="追い巻き">追い巻き</option>
+        </select>
+        <br> 
+        
         <font size="4" color="#000000">日付で検索:</font><br>
         <select name="year">
         <option value="" selected>----年を選択してください----</option>
