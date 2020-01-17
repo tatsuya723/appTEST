@@ -46,6 +46,7 @@ try{
     $stmh=$pdo->prepare($tabup);
     $stmh->execute(array($Cid));
     print "更新しました。";
+    print $Cid;
 }catch(PDOException $Exception){
     print "エラー。<br>";
 }
