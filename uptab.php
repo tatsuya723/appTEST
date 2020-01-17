@@ -33,7 +33,7 @@ $Fname=$_POST["first_name"];
 $work=$_POST["work"];
 $Cid=$_POST["card_id"];
 //$tabup="UPDATE sample_member SET last_name=" . $Lname . ", first_name=" . $Fname . ", work=" . $work . " WHERE card_id=?".$Cid;
-$tabup="UPDATE sample_member SET last_name='$Lname', first_name='$Fname', work='$work' WHERE card_id='$Cid'";
+//$tabup="UPDATE sample_member SET last_name='$Lname', first_name='$Fname', work='$work' WHERE card_id='$Cid'";
 //$tabup="UPDATE sample_member SET last_name='島井' WHERE card_id='012e4cd486597ec4'";//動いた→WHERE以降でエラー
 
 $key = array('card_id' => $Cid);
