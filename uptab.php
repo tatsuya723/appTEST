@@ -1,16 +1,13 @@
 <html>
 <head>
-    <title>カード登録情報編集</title>
+    <title>カード情報書き換え</title>
     <meta charset="utf-8">
 </head>
 <body>
-<hr size="9" noshade>
-<h1>#データ更新ページ</h1>
-<hr size="4" noshade>
-[<a href="カード管理.php">戻る</a>]
-<br>
+
 
 <?php
+if(isset($_POST["action"])){
 /*▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲
     //DB接続処理
 ▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲*/
@@ -26,44 +23,25 @@ try{
     $pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES,false);
     //print"接続しました<br>";
 }catch(PDOException $Exception){
-    die('エラー:'.$Exception->getMessage());}
+    die('エラー:'.$Exception->getMessage());
+}
 /*▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲
 ▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲*/
-
-if(isset($_GET['id'])){
-
-$tabsel = "SELECT * FROM sample_member";
+$Lname=$_POST["last_name"];
+$Fname=$_POST["first_name"];
+$work=$_POST["work"];
+$Cid=$_POST["card_id"];
+$tabup="UPDATE sample_member SET last_name='".$Lname."',first_name='".$Fname."',work='".$work."' WHERE card_id='".$Cid."'";
 try{
-    $stmh=$pdo->query($tabsel);
+    $stmh=$pdo->query($tabup);
     $stmh->execute();
+    print "更新しました。";
 }catch(PDOException $Exception){
-    print "エラー:".$Exception->getMessage();
+    print "エラー。<br>";
 }
 
-
-$rs = $stmh->fetchall ();
-foreach ( $rs as $row ) {
-    if($row['card_id']==$_GET['id']){
-    ?>
-    <font size="3" color="#000000">カードID：</font><font size="4" color="#ff0000"><?=htmlspecialchars($row['card_id'])?></font>
-    <br>
-    <form name="form1" method="post" action="uptab.php">
-    姓　　　：   <input type="text" name="last_name" value="<?=htmlspecialchars($row['last_name'])?>"><br>
-    名　　　：   <input type="text" name="first_name" value="<?=htmlspecialchars($row['first_name'])?>"><br>
-    作業内容：   <input type="text" name="work" value="<?=htmlspecialchars($row['work'])?>"><br>
-                <input type="hidden" name="caad_id" value="<?=$row['card_id']?>">
-                <input type="hidden" name="action" value="update">
-                <input type="submit" value="更新">
-    </form> 
-    
-    <?php    
-    }
-}//foreachの括弧
-
 ?>
-
-  
-
+<a href="カード管理.php">戻る</a><br>
 <?php
 }
 ?>
