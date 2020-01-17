@@ -31,8 +31,6 @@ try{
 ▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲*/
 
 if(isset($_GET['id'])){
-print $_GET['id'];
-print "<br>";
 
 $tabsel = "SELECT * FROM sample_member";
 try{
@@ -47,18 +45,11 @@ $rs = $stmh->fetchall ();
 foreach ( $rs as $row ) {
     if($row['card_id']==$_GET['id']){
     ?>
-    <table width="400" border="1" cellspacing="2" cellpadding="18">
-        <tbody>
-        <tr><th>カードID</th></tr>
-        <tr>
-        <td align="center"><?=htmlspecialchars($row['card_id'])?></td>
-        </tr>
-        </tbody>
-    </table>
+    <font size="5" color="#000000">カードID：<?=htmlspecialchars($row['card_id'])?></font>
     <br>
     <form name="form1" method="post" action="カード管理.php">
-    姓      ：     <input type="text" name="last_name" value="<?=htmlspecialchars($row['last_name'])?>"><br>
-    名      ：     <input type="text" name="first_name" value="<?=htmlspecialchars($row['first_name'])?>"><br>
+    姓　　　：   <input type="text" name="last_name" value="<?=htmlspecialchars($row['last_name'])?>"><br>
+    名　　　：   <input type="text" name="first_name" value="<?=htmlspecialchars($row['first_name'])?>"><br>
     作業内容：   <input type="text" name="work" value="<?=htmlspecialchars($row['work'])?>"><br>
                 <input type="hidden" name="caad_id" value="<?=$row['card_id']?>">
                 <input type="hidden" name="action" value="update">
