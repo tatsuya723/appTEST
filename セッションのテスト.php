@@ -13,7 +13,7 @@ $pass = "style";
 if($_SESSION["pass"]==$pass){    
     print "セッションid=pass<br>";
     ?>
-    
+    <a href="setes.php"><font size="5">セッションテストページ</font></a><br>
 
     <?php
 }else{
