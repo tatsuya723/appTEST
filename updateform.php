@@ -30,8 +30,8 @@ try{
 /*▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲
 ▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲*/
 
-if(isset($_GET['card_id'])){
-print $_GET['card_id'];
+if(isset($_GET['id'])){
+print $_GET['id'];
 print "<br>";
 
 $tabsel = "SELECT * FROM sample_member";
@@ -45,7 +45,7 @@ try{
 
 $rs = $stmh->fetchall ();
 foreach ( $rs as $row ) {
-    if($row['card_id']==$_GET['card_id']){
+    if($row['card_id']==$_GET['id']){
     ?>
     <table width="400" border="1" cellspacing="2" cellpadding="18">
         <tbody>
