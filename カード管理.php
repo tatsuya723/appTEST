@@ -70,8 +70,8 @@
             <tr>
             <td align="center"><?=htmlspecialchars($row['card_id'])?></td>
             <td align="center"><?=htmlspecialchars($row['last_name'])?></td>
-            <td align="center"><?=htmlspecialchars($row['state'])?></td>
-            <td align="center"><b><?=htmlspecialchars($row['rane'])?></b></td>
+            <td align="center"><?=htmlspecialchars($row['first_name'])?></td>
+            <td align="center"><b><?=htmlspecialchars($row['work'])?></b></td>
             <td align="center"><a href="updateform.php?id=<?=htmlspecialchars($row['card_id'])?>">編集</td>
             </tr>
         <?php
