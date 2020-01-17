@@ -51,7 +51,7 @@ foreach ( $rs as $row ) {
     姓　　　：   <input type="text" name="last_name" value="<?=htmlspecialchars($row['last_name'])?>"><br>
     名　　　：   <input type="text" name="first_name" value="<?=htmlspecialchars($row['first_name'])?>"><br>
     作業内容：   <input type="text" name="work" value="<?=htmlspecialchars($row['work'])?>"><br>
-                <input type="hidden" name="caad_id" value="<?=$row['card_id']?>">
+                <input type="hidden" name="card_id" value="<?=$row['card_id']?>">
                 <input type="hidden" name="action" value="update">
                 <input type="submit" value="更新">
     </form> 
