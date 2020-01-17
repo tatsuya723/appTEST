@@ -10,7 +10,7 @@
 if(isset($_POST["action"])){
 /*▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲
     //DB接続処理
-▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲
+▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲*/
 $dbhost="ec2-174-129-255-46.compute-1.amazonaws.com";
 $dbname="dflv6jh505d9tv";
 $dbuser="qajdgcrnucpdpx";
@@ -27,27 +27,28 @@ try{
 }
 /*▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲
 ▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲*/
-$pg_conn = pg_connect("host=ec2-174-129-255-46.compute-1.amazonaws.com port=5432 dbname=dflv6jh505d9tv user=qajdgcrnucpdpx password=d2144f11fa2bc512c9f5f4d65cef0b1f804fabef86759d786bd6ca430eba6fa8");
+//$pg_conn = pg_connect("host=ec2-174-129-255-46.compute-1.amazonaws.com port=5432 dbname=dflv6jh505d9tv user=qajdgcrnucpdpx password=d2144f11fa2bc512c9f5f4d65cef0b1f804fabef86759d786bd6ca430eba6fa8");
 $Lname=$_POST["last_name"];
 $Fname=$_POST["first_name"];
 $work=$_POST["work"];
 $Cid=$_POST["card_id"];
 //$tabup="UPDATE sample_member SET last_name=" . $Lname . ", first_name=" . $Fname . ", work=" . $work . " WHERE card_id=?".$Cid;
-//$tabup="UPDATE sample_member SET last_name='$Lname', first_name='$Fname', work='$work' WHERE card_id='$Cid'";
+$tabup="UPDATE sample_member SET last_name='$Lname', first_name='$Fname', work='$work' WHERE card_id=?";
 //$tabup="UPDATE sample_member SET last_name='島井' WHERE card_id='012e4cd486597ec4'";//動いた→WHERE以降でエラー
 
 $key = array('card_id' => $Cid);
 $data = array('last_name' => $Lname, 'first_name' => $Fname, 'work' => $work);
-var_dump(pg_update( $pg_conn, 'sample_member', $data, $key));
+//var_dump(pg_update( $pg_conn, 'sample_member', $data, $key));
 
-/*
+
 try{
-    $stmh=$pdo->query($tabup);
-    $stmh->execute();
+    //$stmh=$pdo->query($tabup);
+    $stmh=$pdo->prepare($tabup);
+    $stmh->execute(array($Cid));
     print "更新しました。";
 }catch(PDOException $Exception){
     print "エラー。<br>";
-}*/
+}
 
 ?>
 <a href="カード管理.php">戻る</a><br>
