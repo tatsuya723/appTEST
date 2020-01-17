@@ -31,7 +31,7 @@ $Lname=$_POST["last_name"];
 $Fname=$_POST["first_name"];
 $work=$_POST["work"];
 $Cid=$_POST["card_id"];
-$tabup="UPDATE sample_member SET last_name='".$Lname."',first_name='".$Fname."',work='".$work."' WHERE card_id='".$Cid."'";
+$tabup="UPDATE sample_member SET last_name=" . $Lname . ", first_name=" . $Fname . ", work=" . $work . " WHERE card_id=" . $Cid . "";
 try{
     $stmh=$pdo->query($tabup);
     $stmh->execute();
