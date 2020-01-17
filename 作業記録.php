@@ -1,9 +1,17 @@
+<?php
+session_start();
+?>
 <html>
 <head>
 <title>作業記録管理ページ</title>
 <meta charset=utf-8>
 </head>
 <body>
+<?php
+$_SESSION["pass"] = htmlspecialchars($_POST["pass"]);
+$pass = "style";
+if((isset($_SESSION["pass"])) && ($_SESSION["pass"]==$pass)){
+?>
 <hr size="9" noshade>
 <h1>#作業記録管理ページ</h1>
 <hr size="4" noshade>
@@ -1031,6 +1039,11 @@ if($_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]!="" && $DAY
         || ($work!="" && $_POST["month"]=="" && $DAY=="")){
 print "年月または名前を指定してください。<br>";*/
 
+}
+}else{
+?>
+    <a href="ログイン画面.html">ログインしてください。</a><br>
+<?php
 }
 ?>
 
