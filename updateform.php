@@ -45,7 +45,7 @@ $rs = $stmh->fetchall ();
 foreach ( $rs as $row ) {
     if($row['card_id']==$_GET['id']){
     ?>
-    <font size="5" color="#000000">カードID：<?=htmlspecialchars($row['card_id'])?></font>
+    <font size="3" color="#000000">カードID：</font><font size="4" color="#ff0000"><?=htmlspecialchars($row['card_id'])?></font>
     <br>
     <form name="form1" method="post" action="カード管理.php">
     姓　　　：   <input type="text" name="last_name" value="<?=htmlspecialchars($row['last_name'])?>"><br>
