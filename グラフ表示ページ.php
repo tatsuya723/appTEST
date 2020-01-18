@@ -149,7 +149,7 @@ foreach ( $sample_member as $member_b ) {
 ▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲*/
 $Y=$_POST["year"];
 $M=$_POST["month"];
-if($Y!="" && $M!="" && $DAY==""){
+if($Y!="" && $M!="" && $DAY==""){//年月のみ指定
   $tabname="b_".$_POST["year"]."_".$_POST["month"];//テーブル名作成
   $tabsel="SELECT * FROM ".$tabname;//セレクト文作成
   try{
@@ -180,9 +180,8 @@ if($Y!="" && $M!="" && $DAY==""){
     }else{
       $ave_eff[$a]=0;
     }
-      print $ave_eff[$a];
   }  
-}elseif($Y!="" && $M!="" && $DAY!=""){
+}elseif($Y!="" && $M!="" && $DAY!=""){  //年月日指定
   $tabname="b_".$_POST["year"]."_".$_POST["month"];//テーブル名作成
   $tabsel="SELECT * FROM ".$tabname;//セレクト文作成
   try{
