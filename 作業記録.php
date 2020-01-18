@@ -10,12 +10,12 @@ session_start();
 <?php
 $_SESSION["pass"] = htmlspecialchars($_POST["pass"]);
 $pass = "style";
-if((isset($_SESSION["pass"])) && ($_SESSION["pass"]==$pass)){
+if((isset($_SESSION["pass"]) && $_SESSION["pass"]==$pass) || (isset($_GET["id"] && $_GET["id"]==$pass))){
 ?>
 <hr size="9" noshade>
 <h1>#作業記録管理ページ</h1>
 <hr size="4" noshade>
-<a href="index.php">ホームページへ</a><br>
+<a href="index.php?id=<?=htmlspecialchars($_SESSION["pass"])?>">ホームページへ</a><br>
 <a href="仮グラフ.php"><font size="5">グラフ表示</font></a><br>
 <form name="form1" method="post" action="作業記録.php">
        
