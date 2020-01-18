@@ -41,9 +41,9 @@ try{
     if((isset($_SESSION["pass"])) && ($_SESSION["pass"]==$pass)){
     ?>
     <!--<a href="作業記録.php"><font size="5">作業記録管理ページ</font></a><br>-->
+    <a href="" onclick="document.session_post.submit();">作業記録管理ページ</a>
     <form method="post" name="session_post" action="作業記録.php">
-    <input type="hidden" name="pass" value="名前">
-    <a href="javascript:session_post.submit()">作業記録管理ページ</a>
+    <input type="hidden" name="pass" value=<?=$_SESSION["pass"]?>>
     </form>
     <?php
     }else{
