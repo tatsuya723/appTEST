@@ -55,7 +55,7 @@ foreach ( $rs as $row ) {
     ?>
     <font size="3" color="#000000">カードID：</font><font size="4" color="#ff0000"><?=htmlspecialchars($row['card_id'])?></font>
     <br>
-    <form name="form1" method="post" action="uptab.php">
+    <form name="form3" method="post" action="uptab.php">
     姓　　　：   <input type="text" name="last_name" value="<?=htmlspecialchars($row['last_name'])?>"><br>
     名　　　：   <input type="text" name="first_name" value="<?=htmlspecialchars($row['first_name'])?>"><br>
     作業内容：   <input type="text" name="work" value="<?=htmlspecialchars($row['work'])?>"><br>

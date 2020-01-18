@@ -1,6 +1,3 @@
-<?php
-session_start();
-?>
 <html>
     <head>
         <title>カード管理ページ</title>
@@ -8,11 +5,7 @@ session_start();
         <link rel="stylesheet" type="text/css" href="tes1.css">
     </head>
     <body text="#000000">
-    <?php
-    $_SESSION["pass"] = htmlspecialchars($_POST["pass"]);
-    $pass = "Nstyle";
-    if(isset($_SESSION["pass"]) && $_SESSION["pass"]==$pass){
-    ?>
+
     <hr size="9" noshade>
     <h1>#カード管理ページ</h1>
     <hr size="4" noshade>
@@ -85,14 +78,7 @@ session_start();
         <?php
         }//foreachの括弧
     }
-
-    }else{
-        print "パスワードが間違っているか、入力されていません。<br>";
-    ?>
-        <a href="ログイン画面(カード管理).html">ログインページへ。</a><br>
-    <?php
-    }
-    ?>
+?>
 
     </body>
 </html>
