@@ -21,7 +21,7 @@ if(isset($_SESSION["pass"]) && $_SESSION["pass"]==$pass){
 <a href="index.php">ホームページへ</a><br>
 <a href="作業記録.php"><font size="5">戻る</font></a><br>
 
-<form name="form1" method="post" action="仮グラフ.php">
+<form name="form1" method="post" action="グラフ表示ページ.php">
        
         <font size="4" color="#000000">日付で検索:</font><br>
         <select name="year">
