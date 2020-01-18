@@ -47,7 +47,7 @@ try{
     <?php
     }else{
     ?>
-        <a href="ログイン画面.html"><font size="5">作業記録管理ページ</font></a><br>
+        <a href="ログイン画面.html"><font size="5">作業記録管理ページ</font></a><br><br>
     <?php
     }
     ?>
