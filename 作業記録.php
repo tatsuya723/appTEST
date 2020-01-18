@@ -101,6 +101,7 @@ if(isset($_SESSION["pass"]) && $_SESSION["pass"]==$pass){
         </select>
         日     
         <br>
+        <input type="hidden" name="pass" value="<?=$_SESSION["pass"]?>">
         <input type="submit" value="検索">
 </form>
 
