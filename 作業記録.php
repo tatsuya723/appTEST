@@ -16,7 +16,7 @@ if(isset($_SESSION["pass"]) && $_SESSION["pass"]==$pass){
 <hr size="9" noshade>
 <h1>#作業記録管理ページ</h1>
 <hr size="4" noshade>
-<a href="index.php?id=<?=htmlspecialchars($_SESSION["pass"])?>">ホームページへ</a><br>
+<a href="index.php">ホームページへ</a><br>
 <a href="仮グラフ.php"><font size="5">グラフ表示</font></a><br>
 <form name="form1" method="post" action="作業記録.php">
        
