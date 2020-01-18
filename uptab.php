@@ -1,6 +1,4 @@
-<?php
-session_start();
-?>
+
 <html>
 <head>
     <title>カード情報書き換え</title>
