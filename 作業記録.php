@@ -161,10 +161,10 @@ if($_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]!="" && $DAY
         print "エラー:"."データテーブルが見つかりません。<br>";
     }
     ?>
-    <font size="3" color="#000000"><b>[指定内容]<b></font><br>
-    <font size="3" color="#000000">名前　　：</font>
+    <font size="3" color="#000000"><b>[指定内容]</b></font><br>
+    <font size="3" color="#000000">名前　　　：</font>
     <font size="4" color="#ff0000"><?=$search_key?></font><br>
-    <font size="3" color="#000000">作業内容：</font>
+    <font size="3" color="#000000">作業内容　：</font>
     <font size="4" color="#ff0000"><?=$work?></font><br>   
     <font size="3" color="#000000">指定年月日：</font>
     <font size="4" color="#ff0000"><?=$_POST["year"]?>年<?=$_POST["month"]?>月<?=$_POST["day"]?>日</font><br>
@@ -287,10 +287,14 @@ if($_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]!="" && $DAY
         print "エラー:"."データテーブルが見つかりません。<br>";
     }
     ?>
-    <font size="3" color="#000000">検索ワード：</font>
-    <font size="4" color="#ff0000"><?=$_POST["search_key"]?></font><br>
+
+    <font size="3" color="#000000"><b>[指定内容]</b></font><br>
+    <font size="3" color="#000000">名前　　　：</font>
+    <font size="4" color="#ff0000"><?=$search_key?></font><br>
+    <font size="3" color="#000000">作業内容　：</font>
+    <font size="4" color="#ff0000"><?=$work?></font><br>   
     <font size="3" color="#000000">指定年月日：</font>
-    <font size="4" color="#ff0000"><?=$_POST["year"]?>年<?=$_POST["month"]?>月</font><br>
+    <font size="4" color="#ff0000"><?=$_POST["year"]?>年<?=$_POST["month"]?>月<?=$_POST["day"]?>日</font><br>
 
     <form name="formcsv" method="post" action="記録CSV処理.php">
         <input type="hidden" name="key1" value="<?=$KEY1?>">
@@ -398,10 +402,15 @@ if($_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]!="" && $DAY
     $KEY33=$DAY;
     $GYOU = 0;
     ?>
-    <font size="3" color="#000000">検索ワード：</font>
-    <font size="4" color="#ff0000"><?=$_POST["search_key"]?></font><br>
+
+    <font size="3" color="#000000"><b>[指定内容]</b></font><br>
+    <font size="3" color="#000000">名前　　　：</font>
+    <font size="4" color="#ff0000"><?=$search_key?></font><br>
+    <font size="3" color="#000000">作業内容　：</font>
+    <font size="4" color="#ff0000"><?=$work?></font><br>   
     <font size="3" color="#000000">指定年月日：</font>
-    <font size="4" color="#ff0000"><?=$_POST["year"]?>年</font><br>
+    <font size="4" color="#ff0000"><?=$_POST["year"]?>年<?=$_POST["month"]?>月<?=$_POST["day"]?>日</font><br>
+
     
     <form name="formcsv" method="post" action="記録CSV処理.php">
         <input type="hidden" name="key1" value="<?=$KEY1?>">
@@ -535,8 +544,12 @@ if($_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]!="" && $DAY
         print "エラー:"."データテーブルが見つかりません。<br>";
     }
     ?>
-    <font size="3" color="#000000">検索ワード：</font>
-    <font size="4" color="#ff0000">無し</font><br>
+
+    <font size="3" color="#000000"><b>[指定内容]</b></font><br>
+    <font size="3" color="#000000">名前　　　：</font>
+    <font size="4" color="#ff0000"><?=$search_key?></font><br>
+    <font size="3" color="#000000">作業内容　：</font>
+    <font size="4" color="#ff0000"><?=$work?></font><br>   
     <font size="3" color="#000000">指定年月日：</font>
     <font size="4" color="#ff0000"><?=$_POST["year"]?>年<?=$_POST["month"]?>月<?=$_POST["day"]?>日</font><br>
     
@@ -657,10 +670,14 @@ if($_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]!="" && $DAY
         print "エラー:"."データテーブルが見つかりません。<br>";
     }
     ?>
-    <font size="3" color="#000000">検索ワード：</font>
-    <font size="4" color="#ff0000">なし</font><br>
+
+    <font size="3" color="#000000"><b>[指定内容]</b></font><br>
+    <font size="3" color="#000000">名前　　　：</font>
+    <font size="4" color="#ff0000"><?=$search_key?></font><br>
+    <font size="3" color="#000000">作業内容　：</font>
+    <font size="4" color="#ff0000"><?=$work?></font><br>   
     <font size="3" color="#000000">指定年月日：</font>
-    <font size="4" color="#ff0000"><?=$_POST["year"]?>年<?=$_POST["month"]?>月</font><br>
+    <font size="4" color="#ff0000"><?=$_POST["year"]?>年<?=$_POST["month"]?>月<?=$_POST["day"]?>日</font><br>
     
     <form name="formcsv" method="post" action="記録CSV処理.php">
         <input type="hidden" name="key1" value="<?=$KEY1?>">
@@ -766,10 +783,14 @@ if($_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]!="" && $DAY
     $KEY33=$DAY;
     $GYOU = 0;
     ?>
-    <font size="3" color="#000000">検索ワード：</font>
-    <font size="4" color="#ff0000">なし</font><br>
+
+    <font size="3" color="#000000"><b>[指定内容]</b></font><br>
+    <font size="3" color="#000000">名前　　　：</font>
+    <font size="4" color="#ff0000"><?=$search_key?></font><br>
+    <font size="3" color="#000000">作業内容　：</font>
+    <font size="4" color="#ff0000"><?=$work?></font><br>   
     <font size="3" color="#000000">指定年月日：</font>
-    <font size="4" color="#ff0000"><?=$_POST["year"]?>年<br>
+    <font size="4" color="#ff0000"><?=$_POST["year"]?>年<?=$_POST["month"]?>月<?=$_POST["day"]?>日</font><br>
     
     <form name="formcsv" method="post" action="記録CSV処理.php">
         <input type="hidden" name="key1" value="<?=$KEY1?>">
@@ -969,7 +990,8 @@ if($_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]!="" && $DAY
         print "エラー:"."データテーブルが見つかりません。<br>";       
     }
     ?>
-    
+    <font size="3" color="#000000"><b>[指定内容]</b></font><br>
+    <font size="4" color="#ff0000">なし</font><br><br>
     <font size="4" color="#ff0000">今月の記録</font><br>
     
     <form name="formcsv" method="post" action="記録CSV処理.php">
