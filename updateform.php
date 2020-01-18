@@ -1,16 +1,9 @@
-<?php
-session_start();
-?>
 <html>
 <head>
     <title>カード登録情報編集</title>
     <meta charset="utf-8">
 </head>
 <body>
-<?php
-$pass = "Nstyle";
-if(isset($_SESSION["pass"]) && $_SESSION["pass"]==$pass){
-?>
 
 <hr size="9" noshade>
 <h1>#データ更新ページ</h1>
@@ -75,12 +68,6 @@ foreach ( $rs as $row ) {
 <?php
 }
 
-}else{
-    print "パスワードが間違っているか、入力されていません。<br>";
-?>
-    <a href="ログイン画面(カード管理).html">ログインページへ。</a><br>
-<?php
-}
 ?>
 
 </body>
