@@ -1,4 +1,6 @@
-
+<?php
+session_start();
+?>
 <html>
 <head>
     <title>カード情報書き換え</title>
@@ -7,6 +9,9 @@
 <body>
 
 <?php
+$pass = "Nstyle";
+if(isset($_SESSION["pass"]) && $_SESSION["pass"]==$pass){
+
 if(isset($_POST["action"])){
 /*▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲
     //DB接続処理
@@ -41,8 +46,13 @@ try{
 }
 
 ?>
-<a href="カード管理.php">戻る</a><br>
+<a href="" onclick="document.card.submit();return false;">戻る</a>
+<form method="post" name="card" action="カード管理.php">
+    <input type="hidden" name="pass" value=<?=$_SESSION["pass"]?>>
+</form>
 <?php
+}
+
 }
 ?>
 

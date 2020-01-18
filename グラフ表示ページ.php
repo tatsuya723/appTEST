@@ -19,7 +19,10 @@ if(isset($_SESSION["pass"]) && $_SESSION["pass"]==$pass){
 <h1>#作業記録ページ</h1>
 <hr size="10" noshade>
 <a href="index.php">ホームページへ</a><br>
-<a href="作業記録.php"><font size="5">戻る</font></a><br>
+<a href="" onclick="document.sagyou.submit();return false;">戻る</a><br><br>
+<form method="post" name="sagyou" action="作業記録.php">
+  <input type="hidden" name="pass" value=<?=$_SESSION["pass"]?>>
+</form>
 
 <form name="form1" method="post" action="グラフ表示ページ.php">
        

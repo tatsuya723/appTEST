@@ -1,4 +1,6 @@
-
+<?php
+session_start();
+?>
 <html>
 <head>
     <title>カード登録情報編集</title>
@@ -6,10 +8,18 @@
 </head>
 <body>
 
+<?php
+$pass = "Nstyle";
+if(isset($_SESSION["pass"]) && $_SESSION["pass"]==$pass){
+?>
+
 <hr size="9" noshade>
 <h1>#データ更新ページ</h1>
 <hr size="4" noshade>
-[<a href="カード管理.php">戻る</a>]
+<a href="" onclick="document.card.submit();return false;">戻る</a>
+<form method="post" name="card" action="カード管理.php">
+    <input type="hidden" name="pass" value=<?=$_SESSION["pass"]?>>
+</form>
 <br>
 
 <?php
@@ -69,6 +79,7 @@ foreach ( $rs as $row ) {
 <?php
 }
 
+}
 ?>
 
 </body>
