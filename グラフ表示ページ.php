@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <html> 
 <head>
     <title>ホームページ</title>
@@ -5,6 +8,12 @@
     <link rel="stylesheet" type="text/css" href="tes1.css">
 </head>
 <body bgcolor="#e0ffff" text="#000000">
+
+
+<?php
+$pass = "Nstyle";
+if(isset($_SESSION["pass"]) && $_SESSION["pass"]==$pass){
+?>
 
 <hr size="10" noshade>
 <h1>#作業記録ページ</h1>
@@ -244,5 +253,14 @@ var myChart2 = new Chart(work_time2, {
   }
 });
 </script>
+<?php
+}else{
+?>
+  <a href="ログイン画面(作業記録).html">ログインしてください。</a><br>
+<?php
+}
+?>  
+
+?>
 </body>
 </html>

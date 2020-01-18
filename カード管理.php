@@ -10,7 +10,7 @@ session_start();
     <body text="#000000">
     <?php
     $_SESSION["pass"] = htmlspecialchars($_POST["pass"]);
-    $pass = "style";
+    $pass = "Nstyle";
     if(isset($_SESSION["pass"]) && $_SESSION["pass"]==$pass){
     ?>
     <hr size="9" noshade>
