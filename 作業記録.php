@@ -981,7 +981,6 @@ if($_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]!="" && $DAY
     $tabname="b_".$Y."_".$M;//テーブル名作成
     $tabsel="SELECT * FROM ".$tabname;//セレクト文作成
     $search_key=$_POST["search_key"];
-    print $M;
     //クエリ実行
     try{
     $stmh=$pdo->query($tabsel);
