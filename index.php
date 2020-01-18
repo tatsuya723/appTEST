@@ -40,19 +40,23 @@ try{
     <?php
     if((isset($_SESSION["pass"])) && ($_SESSION["pass"]==$pass)){
     ?>
-        <a href="" onclick="document.session_post.submit();return false;"><font size="5">作業記録管理ページ</font></a>
-        <form method="post" name="session_post" action="作業記録.php">
+        <a href="" onclick="document.sagyou.submit();return false;"><font size="5">作業記録管理ページ</font></a>
+        <a href="" onclick="document.sagyou.submit();return false;"><font size="5">カード管理ページ</font></a>
+        <form method="post" name="sagyou" action="作業記録.php">
+        <input type="hidden" name="pass" value=<?=$_SESSION["pass"]?>>
+        </form>
+        <form method="post" name="card" action="カード管理.php">
         <input type="hidden" name="pass" value=<?=$_SESSION["pass"]?>>
         </form>
     <?php
     }else{
     ?>
-        <a href="ログイン画面.html"><font size="5">作業記録管理ページ</font></a><br><br>
+        <a href="ログイン画面(作業記録).html"><font size="5">作業記録管理ページ</font></a><br><br>
+        <a href="ログイン画面(カード管理).html"><font size="5">カード管理ページ</font></a>
     <?php
     }
     ?>
-    <a href="カード管理.php"><font size="5">カード管理ページ</font></a><br><br>
-    <a href="セッションテスト.html"><font size="5">パスワードてすと</font></a><br>
+    
     <br><br>
     <hr size="4" noshade>
     <h2>作業の状況</h2>

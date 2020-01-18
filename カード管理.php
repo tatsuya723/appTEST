@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <html>
     <head>
         <title>カード管理ページ</title>
@@ -5,6 +8,11 @@
         <link rel="stylesheet" type="text/css" href="tes1.css">
     </head>
     <body text="#000000">
+    <?php
+    $_SESSION["pass"] = htmlspecialchars($_POST["pass"]);
+    $pass = "style";
+    if(isset($_SESSION["pass"]) && $_SESSION["pass"]==$pass){
+    ?>
     <hr size="9" noshade>
     <h1>#カード管理ページ</h1>
     <hr size="4" noshade>
@@ -76,6 +84,12 @@
             </tr>
         <?php
         }//foreachの括弧
+    }
+
+    }else{
+    ?>
+        <a href="ログイン画面(カード管理).html">ログインしてください。</a><br>
+    <?php
     }
     ?>
 

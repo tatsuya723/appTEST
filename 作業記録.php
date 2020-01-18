@@ -10,7 +10,6 @@ session_start();
 <?php
 $_SESSION["pass"] = htmlspecialchars($_POST["pass"]);
 $pass = "style";
-//if((isset($_SESSION["pass"]) && $_SESSION["pass"]==$pass) ||　(isset($_GET["id"] && $_GET["id"]==$pass))){
 if(isset($_SESSION["pass"]) && $_SESSION["pass"]==$pass){
 ?>
 <hr size="9" noshade>
@@ -1043,7 +1042,7 @@ print "年月または名前を指定してください。<br>";*/
 }
 }else{
 ?>
-    <a href="ログイン画面.html">ログインしてください。</a><br>
+    <a href="ログイン画面(作業記録).html">ログインしてください。</a><br>
 <?php
 }
 ?>
