@@ -18,7 +18,7 @@ if(isset($_SESSION["pass"]) && $_SESSION["pass"]==$pass){
 <h1>#作業記録管理ページ</h1>
 <hr size="4" noshade>
 <a href="index.php">ホームページへ</a><br>
-<a href="グラフ表示ページ.php"><font size="5">グラフ表示</font></a><br>
+<a href="グラフ表示ページ.php">グラフ表示</a><br>
 <form name="form1" method="post" action="作業記録.php">
        
         <font size="4" color="#000000">名前で検索:</font><br>
@@ -161,8 +161,11 @@ if($_POST["search_key"]!="" && $_POST["year"]!="" && $_POST["month"]!="" && $DAY
         print "エラー:"."データテーブルが見つかりません。<br>";
     }
     ?>
-    <font size="3" color="#000000">検索ワード：</font>
+    <font size="3" color="#000000"><b>[指定内容]<b></font><br>
+    <font size="3" color="#000000">名前　　：</font>
     <font size="4" color="#ff0000"><?=$search_key?></font><br>
+    <font size="3" color="#000000">作業内容：</font>
+    <font size="4" color="#ff0000"><?=$work?></font><br>   
     <font size="3" color="#000000">指定年月日：</font>
     <font size="4" color="#ff0000"><?=$_POST["year"]?>年<?=$_POST["month"]?>月<?=$_POST["day"]?>日</font><br>
 
