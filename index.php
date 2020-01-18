@@ -51,7 +51,7 @@ try{
     <?php
     }
     ?>
-    <a href="カード管理.php"><font size="5">カード管理ページ</font></a><br>
+    <a href="カード管理.php"><font size="5">カード管理ページ</font></a><br><br>
     <a href="セッションテスト.html"><font size="5">パスワードてすと</font></a><br>
     <br><br>
     <hr size="4" noshade>
