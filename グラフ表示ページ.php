@@ -264,6 +264,6 @@ var myChart2 = new Chart(work_time2, {
 }
 ?>  
 
-?>
+
 </body>
 </html>
