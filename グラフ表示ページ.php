@@ -201,7 +201,7 @@ if($Y!="" && $M!="" && $DAY==""){//年月のみ指定
         $sum_time+=$fl_time;                  //作業時間を足していく
         if(($wtime["work"]=="収穫") && ($wtime["eff"]!="")){
           $fl_eff=(float)$wtime["eff"];         //float型に変換
-          $sum_eff=+$fl_eff;                   //作業効率値を足していく
+          $sum_eff+=$fl_eff;                   //作業効率値を足していく
           $count_eff+=1;
         }
       }      
