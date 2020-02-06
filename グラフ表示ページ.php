@@ -207,7 +207,7 @@ if($Y!="" && $M!="" && $DAY==""){//年月のみ指定
       }      
     }
     $sum_worktime[$a]=$sum_time;              //作業時間の合計を配列に保存
-    if($count_eff>1){                         //効率の平均値を配列に保存
+    if($count_eff>0){                         //効率の平均値を配列に保存
       $ave_eff[$a]=($sum_eff/$count_eff);       
     }else{
       $ave_eff[$a]=0;
